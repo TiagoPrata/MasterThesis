@@ -1,0 +1,47 @@
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+
+% ---
+% Define nome e preâmbulo do glossário
+% ---
+\phantompart
+%\renewcommand{\glossaryname}{Glossário}  A opção babel do glossaries faz a tradução.
+\renewcommand{\glossarypreamble}{Esta é a descrição do glossário. Experimente
+visualizar outros estilos de glossários, como o \texttt{altlisthypergroup},
+por exemplo.\\
+\\}
+
+% ---
+% Traduções para o ambiente glossaries
+% ---  
+% A opção babel do glossaries faz a tradução.
+
+%\providetranslation{Glossary}{Glossário}
+%\providetranslation{Acronyms}{Siglas}
+%\providetranslation{Notation (glossaries)}{Notação}
+%\providetranslation{Description (glossaries)}{Descrição}
+%\providetranslation{Symbol (glossaries)}{Símbolo}
+%\providetranslation{Page List (glossaries)}{Lista de Páginas}
+%\providetranslation{Symbols (glossaries)}{Símbolos}
+%\providetranslation{Numbers (glossaries)}{Números} 
+% ---
+
+% ---
+% Estilo de glossário
+% ---
+% \setglossarystyle{index}
+% \setglossarystyle{altlisthypergroup}
+ \setglossarystyle{tree}  % Já selecionado no arquivo .sty 
+
+
+% ---
+% Imprime o glossário
+% ---
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\glossaryname}
+\printglossaries % imprime todas as entradas
+
+\imprimirglossario  % não imprime acronimos (siglas) e nem simbolos
+% ---

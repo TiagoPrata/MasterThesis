@@ -246,3 +246,5 @@ TSWLatexianTemp*
 
 # ABNTex2
 *.loq
+*.sbl
+*.simbolos
