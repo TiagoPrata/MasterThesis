@@ -22,12 +22,6 @@
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{microtype} 			% para melhorias de justificação
-		
-% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
-\usepackage{lipsum}				% para geração de dummy text
-
-% Pacote de glossario
-\usepackage{./9_Extras/styles/anbtex2-glossario}
 
 % Pacotes de citações
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
@@ -57,7 +51,7 @@
 \local{São Paulo}
 \data{2019}
 \orientador{Alexandre Brincalepe Campo}
-\coorientador{Paulo Marcos de Aguiar}
+%\coorientador{----}
 \instituicao{Instituto Federal de São Paulo - IFSP}
 \tipotrabalho{Tese (Mestrado)}
 % O preambulo deve conter o tipo do trabalho, o objetivo, 
@@ -121,14 +115,7 @@
 % compila o indice
 \makeindex
 
-% GLOSSARIO
-\makeglossaries
-
-\input{./1_preText/glossarioItens}
-
-% Exemplo de configurações do glossairo
-\renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}  
- \glsseelist{#2}}
+%\input{./1_preText/glossarioItens}
 
 % ----------------------------------------------------------
 % Início do documento
@@ -194,10 +181,18 @@
 \cleardoublepage
 
 % inserir lista de abreviaturas e siglas
-\imprimirlistadesiglas
+\begin{siglas}
+  \item[MIMO] \textit{Multiple Input Multiple Output}
+  \item[PID] Proporcional Integral Derivativo
+\end{siglas}
 
 % inserir lista de símbolos
-\imprimirlistadesimbolos 
+\begin{simbolos}
+  \item[$ \Gamma $] Letra grega Gama
+  \item[$ \Lambda $] Lambda
+  \item[$ \zeta $] Letra grega minúscula zeta
+  \item[$ \in $] Pertence
+\end{simbolos}
 
 % inserir o sumario
 \pdfbookmark[0]{\contentsname}{toc}
@@ -241,7 +236,7 @@
 
 % Glossário
 % Consulte o manual da classe abntex2 para orientações sobre o glossário.
-%\input{./3_posText/glossario}
+% \input{./3_posText/glossario}
 
 % Apêndices
 % Inicia os apêndices
