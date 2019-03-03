@@ -1,20 +1,18 @@
-\chapter{Introdução}
-
-Controle de processos é fundamental na industria.	[ok]
-Objetivo do controle.								[ok]
-Otimizar além de controlar.							[ok]
-Estratégias utilizando modelos matemáticos.			[ok]
-Porque não usar PID em alguns casos?				[]
-Conceito do MPC.									[]
-
 \newacronym{mimo}{MIMO}{Multiple Input Multiple Output}
 \newacronym{pid}{PID}{Proporcional Integral Derivativo}
+\newacronym{mpc}{MPC}{Model Predictive Control}
+\chapter{Introdução}
 
+%Controle de processos é fundamental na industria.	[ok]
+%Objetivo do controle.								[ok]
+%Otimizar além de controlar.						[ok]
+%Estratégias utilizando modelos matemáticos.		[ok]
+%Porque não usar PID em alguns casos?				[ok - mais ou menos]
+%Conceito do MPC.									[ok]
 O controle de processos tem fundamental importância no desenvolvimento industrial, sendo amplamente utilizado em praticamente todos os segmentos da indústria, contribuindo de maneira significativa para a maior velocidade na estabilização de sinais, aumento da qualidade de produtos, diminuição de riscos e redução de custos operacionais. Seu objetivo, de forma simplificada, consiste em avaliar e corrigir desvios entre um valor desejado e o real valor medido na saída da planta para uma dada variável do processo (ou variáveis, como em casos de processos com multiplas entradas e multiplas saídas, também conhecidos por sua sigla em inglês \acrshort{mimo} (\textit{\acrlong{mimo}})). A aplicação correta de estratégias de controle acarreta numa operação eficiênte da planta, mantendo suas variáveis relevantes em condições próximas as desejadas. A sintonia bem feita do controle auxilia também na otimização do processo, possibilitando que o sistema opere com menor variabilidade, maximizando a produção e minimizando a utilização de recursos. No \autoref{otimizacao} abordaremos mais sobre otimização.
 Modelos matemáticos podem auxiliar a estratégia de controle uma vez que um modelo da planta ou processo pode ser utilizado para estabelecer a relação existente entre as variáveis manipuladas e variáveis controladas, assim podendo auxiliar na predição do comportamento dinâmico do sistema analisado. A modelagem matemática pode ser feita utilizando dados empíricos ou através da aplicação de relações físico-químicas.
 
-A estratégia de controle predominante na indústria é o controle \acrshort{pid} (\acrlong{pid})
-
+A estratégia de controle predominante na indústria é o controle \acrshort{pid} (\acrlong{pid}) que, além de levar em consideração o efeito proporcional (P) do erro medido, também atua em desvios relativos aos efeitos integrais (I) e derivativos (D). Seu elevado número de aplicações deve-se a uma grande variedade de vantagens como: sua rápida de implementação, facilidade de compreensão, disponibilidade em praticamente todas as plataformas industriais de controle e principalmente pelo fato de não requerer um modelo matemático do processo; porém apesar de poder ser aplicado com eficiência em uma grande variedade de processos, o controle \acrshort{pid} aparece com menos frequência em sistemas não-lineares, como em plantas de controle de pH, por exemplo. Em casos como esse, outra técnica bastante utilizada na indústria (porém em proporções bem menores que o \acrshort{pid}) pode ser utilizada: o controle \acrshort{mpc} (\textit{\acrlong{mpc}}). Essa técnica consiste em predizer o comportamento futuro de um sistema utilizando para isso um modelo do mesmo. Mais detalhes sobre o \acrshort{mpc} serão apresentados no \autoref{mpc}.
 
 \section{Motivação e justificativas}
 
