@@ -34,22 +34,19 @@ sujeto a (também denotado por "\acrshort{sujeitoa}") restrições, que podem se
 	\label{min_limites}
 	x_{li} \leq x \leq x_{ls}
 	\end{equation}
-	Onde $li$ e $ls$ indicam 'limite inferior' e 'limite superior', respectivamente.
+	Onde $li$ e $ls$ indicam `limite inferior' e `limite superior', respectivamente.
 \end{itemize}
 
 Sendo que as equações \ref{min_restr_desigualdade} e \ref{min_restr_igualdade} definem restrições na relação entre as variáveis de otimização, enquanto \ref{min_limites} define as regiões limites destas mesmas variáveis.
 
-A sessão a seguir irá mostrar exemplos e métodos numéricos simples que nos permitirão entender em maiores detalhes como um problema de minimização pode ser resolvido. No \autoref{mpc} faremos uso das minimizações para compreender como o \acrshort{mpc} calcula valores ótimos dadas determinadas restrições em um dado horizonte de controle, sendo assim uma maior compreensão sobre problemas de minimização pode fazer grande diferença no entendimento do controle \acrshort{mpc} em si.
+Existem diversas métodos para encontrar a solução ótima para um problema de otimização e a sessão a seguir irá mostrar exemplos e métodos numéricos simples que nos permitirão entender em maiores detalhes como um problema de minimização pode ser resolvido. No \autoref{mpc} faremos uso das minimizações para compreender como o \acrshort{mpc} calcula valores ótimos dadas determinadas restrições em um dado horizonte de controle, pois uma maior compreensão sobre problemas de minimização pode fazer grande diferença no entendimento do controle \acrshort{mpc} em si.
 
-\section{Como resolver problemas de otimização}
-
-\subsection{Introdução}
-
-intro
+\section{Algoritmos de otimização}
 
 \subsection{Método de pesquisa em grade}
 
-pesquisa em grade
+\lstinputlisting[caption=Scheduler, language=Python, style=Python_lang]{./4_Algorithms/grid_search_scalar.py}
+
 
 \subsection{Método de busca de descidas mais íngrimes}
 
