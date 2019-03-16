@@ -1,3 +1,8 @@
+# Linguagem:        Python
+# Autor:            Tiago Correa Prata
+# Disponivel em:    
+# § \url{https://github.com/TiagoPrata/MasterThesis/blob/master/4_algorithms/grid_search_scalar.py} §
+
 import numpy as np
 import matplotlib.pyplot as plt
 

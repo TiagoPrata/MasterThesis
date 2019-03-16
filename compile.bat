@@ -18,6 +18,7 @@ del "*.lof" /s /f /q
 del "*.log" /s /f /q
 del "*.loq" /s /f /q
 del "*.lot" /s /f /q
+del "*.lol" /s /f /q
 del "*.sbl" /s /f /q
 del "*.simbolos" /s /f /q
 del "*.toc" /s /f /q
