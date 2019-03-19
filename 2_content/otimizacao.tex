@@ -1,6 +1,6 @@
 \newacronym{sujeitoa}{s.a.}{sujeito a}
 \chapter{Otimização}
-\label{otimizacao}
+\label{cap_otimizacao}
 
 \section{O problema da otimização}
 
@@ -9,7 +9,7 @@ Segundo \citeonline{Haugen2018} normalmente problemas de otimização são apres
 \citeonline{Haugen2018} ainda mostra que há várias formas de formular matematicamente um problema de otimização (minimização), mas que de forma geral, dado um modelo matemático $M$, é possível representá-lo como a minimização de $x$ para uma função $f(x)$, ou seja:
 
 \begin{equation}
-\min_{x} f(x)
+	\min_{x} f(x)
 \end{equation}
 
 sujeto a (também denotado por "\acrshort{sujeitoa}") restrições, que podem ser na forma de:
@@ -17,45 +17,65 @@ sujeto a (também denotado por "\acrshort{sujeitoa}") restrições, que podem se
 \begin{itemize}
 \item Restrições de desigualdade:
 	\begin{equation}
-	\label{min_restr_desigualdade}
+	\label{equ_min_restr_desigualdade}
 	g(x) \leq 0
 	\end{equation}
 	onde $g$ pode ser uma função linear ou não-linear.
 	
 \item Restrições de igualdade:
 	\begin{equation}
-	\label{min_restr_igualdade}
+	\label{equ_min_restr_igualdade}
 	h(x) = 0
 	\end{equation}
 	onde $h$ pode ser uma função linear ou não-linear de $x$.
 	
 \item Limites superiores e inferiores
 	\begin{equation}
-	\label{min_limites}
+	\label{equ_min_limites}
 	x_{li} \leq x \leq x_{ls}
 	\end{equation}
 	Onde $li$ e $ls$ indicam `limite inferior' e `limite superior', respectivamente.
 \end{itemize}
 
-Sendo que as equações \ref{min_restr_desigualdade} e \ref{min_restr_igualdade} definem restrições na relação entre as variáveis de otimização, enquanto \ref{min_limites} define as regiões limites destas mesmas variáveis.
+Sendo que as equações \ref{equ_min_restr_desigualdade} e \ref{equ_min_restr_igualdade} definem restrições na relação entre as variáveis de otimização, enquanto \ref{equ_min_limites} define as regiões limites destas mesmas variáveis.
 
-Existem diversas métodos para encontrar a solução ótima para um problema de otimização e a sessão a seguir irá mostrar exemplos e métodos numéricos simples que nos permitirão entender em maiores detalhes como um problema de minimização pode ser resolvido. No \autoref{mpc} faremos uso das minimizações para compreender como o \acrshort{mpc} calcula valores ótimos dadas determinadas restrições em um dado horizonte de controle, pois uma maior compreensão sobre problemas de minimização pode fazer grande diferença no entendimento do controle \acrshort{mpc} em si.
+Existem diversas métodos para encontrar a solução ótima para um problema de otimização e a sessão a seguir irá mostrar exemplos e métodos numéricos simples que nos permitirão entender em maiores detalhes como um problema de minimização pode ser resolvido. No \autoref{cap_mpc} faremos uso das minimizações para compreender como o \acrshort{mpc} calcula valores ótimos dadas determinadas restrições em um dado horizonte de controle, pois uma maior compreensão sobre problemas de minimização pode fazer grande diferença no entendimento do controle \acrshort{mpc} em si.
 
 \section{Algoritmos de otimização}
 
 \subsection{Método de pesquisa em grade}
 
+O método apresentado nesta sessão não aplicável a praticamente nenhum problema real devido a sua ineficiência computacional, porém ele ajuda a ilustrar o objetivo de todo o método numérico voltado para minimização.
 
+Este método consiste em testar todos os valores de todas as variáveis (em um conjunto de dados definido) para verificar qual combinação minimiza a função objetivo, ou seja, testar todos os valores possíveis para $x(1)$, $x(2)$, $x(3)$, $...$, $x(n)$ com o objetivo de encontrar o \gls{xopt}, valor de $x$ que minimiza $f$.
+
+No caso de um único $x$, um laço condicional simples poderia testar todos os valores da função objetivo. Para ilustrar essa ideia o algorítmo \ref{alg_grid_search_scalar}, em Python, mostra como a função $f(x)$ abaixo poderia ser computada, caso o intervalo de teste de $x$ fosse igual 100, ou seja, $N = 100$.
+
+\begin{equation}
+	\label{equ_grid_search_scalar}
+	f(x) = 0,00232x^4 - 0,111x^3 + 1,8x^2 - 11,6x + 34,4
+\end{equation}
+
+Sendo que:
+\[	2 \leq x \leq 22 \]
 
 \lstinputlisting[	
 	caption={[Pesquisa em grade com número escalar]
 			 Pesquisa em grade com número escalar \\
 		     Fonte: Autor},
-	label={grid_search_scalar},
+	label={alg_grid_search_scalar},
 	language=Python,
 	style=Python_lang]
 	{./4_Algorithms/grid_search_scalar.py}
 	
+\begin{figure}
+	\includegraphics[scale=1]{./5_images/fig_grid_search_scalar.pdf} 
+	\caption{Pesquisa em grade com número escalar}
+	\begin{center}
+		\makebox[\width]{Fonte: Autor}
+	\end{center}
+	\label{fig_grid_search_scalar}
+\end{figure}
 
 \subsection{Método de busca de descidas mais íngrimes}
 
