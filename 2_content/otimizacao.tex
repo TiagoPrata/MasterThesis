@@ -110,12 +110,12 @@ apresentados métodos que, apesar de serem mais eficientes computacionalmente,
 podem tender para mínimos locais.
 	
 \begin{figure}
-	\includegraphics[scale=1]{./5_images/fig_grid_search_scalar.pdf} 
-	\caption{Pesquisa em grade com número escalar}
 	\begin{center}
+		\includegraphics[width=0.8\textwidth]{./5_images/fig_grid_search_scalar.pdf} 
+		\caption{Pesquisa em grade com número escalar}
+		\label{fig_grid_search_scalar}
 		\makebox[\width]{Fonte: Autor}
 	\end{center}
-	\label{fig_grid_search_scalar}
 \end{figure}
 
 Ainda neste método, casos onde há uma maior quantidade de $x$ ($x_1$, $x_2$, \dots)
@@ -135,23 +135,34 @@ $f_{min} = 0,5$, $x_{1_{opt}} = 1$ e $x_{2_{opt}} = 2$.\footnote{
 	O algorítmo em Python para este cálculo pode ser encontrado no
 	\autoref{cap_algoritmos_extras}, algorítmo \ref{alg_grid_search_vectorial}.}
 Porém se a restrição da inequação \ref{equ_grid_search_vect_bounds} for aplicada
-encontramos os valores descritos em \ref{equ_grid_search_vect_bounds_output}.
+encontramos os valores descritos nas equações descritas em \ref{equ_grid_search_vect_bounds_output}.
 
 \begin{equation}
 	\label{equ_grid_search_vect_bounds}
 	f(x) = x_1 - x_2 + 1,5 \leq 0
 \end{equation}
 
-\begin{subequations}
+% \begin{subequations}
+% 	\label{equ_grid_search_vect_bounds_output}
+% 	\begin{align}
+% 		f_{min} = 0,628 \\
+% 		x_{1_{opt}} = 0,748 \\
+% 		x_{2_{opt}} = 2,25
+% 	\end{align}
+% \end{subequations}
+
+\begin{equation}
 	\label{equ_grid_search_vect_bounds_output}
-	\begin{align}
+	\begin{aligned}
 		f_{min} = 0,628 \\
 		x_{1_{opt}} = 0,748 \\
 		x_{2_{opt}} = 2,25
-	\end{align}
-\end{subequations}
+	\end{aligned}
+\end{equation}
 
-As figuras \ref{fig_grid_search_vectorial_nobounds} e \ref{fig_grid_search_vectorial_withbounds} mostram a função custo (outra forma de chamarmos a função objetivo) sem restrição e com a restrição descrita pela inequação \ref{equ_min_restr_desigualdade}, respectivamente.
+As figuras \ref{fig_grid_search_vectorial_nobounds} e \ref{fig_grid_search_vectorial_withbounds}
+mostram a função custo (outra forma de chamarmos a função objetivo) sem restrição e com a
+restrição descrita pela inequação \ref{equ_min_restr_desigualdade}, respectivamente.
 
 \begin{figure}[h]
     \centering
@@ -160,18 +171,52 @@ As figuras \ref{fig_grid_search_vectorial_nobounds} e \ref{fig_grid_search_vecto
         \includegraphics[width=0.9\textwidth]{./5_images/fig_grid_search_vectorial1.png} 
 		\caption{Pesquisa em grade com duas variáveis e sem restrição}
 		\label{fig_grid_search_vectorial_nobounds}
+		Fonte: \citeonline{Haugen2018}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{./5_images/fig_grid_search_vectorial2.png} 
 		\caption{Pesquisa em grade com duas variáveis e com restrição}  
 		\label{fig_grid_search_vectorial_withbounds}		      
+		Fonte: \citeonline{Haugen2018}
 	\end{minipage}
 \end{figure}
 
 \subsection{Método de busca de descidas mais íngrimes}
 
-steepest descent method
+Este método consiste em estimar o próximo valor de $x$ baseando-se na deriavada
+da função custo calculada em $x$. Exemplificando para um caso escalar podemos dizer que
+o próximo valor de $x$, isto é, $x_{k+1}$ será dado por:
+
+\begin{align}
+	\label{equ_steepest_decent_xk1}
+	x_{k+1} &= x_k + \Delta x_k \\ 
+	\Delta x_k &= -K f'(x_k)
+\end{align}
+
+\noindent
+Onde: \\
+$x_k$ = $x$ atual \\
+$\Delta x_k$ = diferença entre $x_k$ e $x_{k+1}$ \\
+$K$ = fator multiplicador do incremento \\
+$f'(x_k)$ = derivada (ou gradiente) da função custo calculada em $x_k$ \newline
+
+A derivada $f'(x_k)$ indica quão inclinada está a função custo no ponto $x_k$,
+assim sendo o fator $K$ determina o peso que essa inclinação terá para o cálculo
+do próximo valor de $x$.
+
+A figura \ref{fig_steepest_decent_slope} mostra graficamente a influência da derivada
+da função custo na amplitude de $\Delta x_k$ entre iterações.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.75\textwidth]{./5_images/fig_steepest_decent_slope.png} 
+		\caption{Influência de $f'(x_k)$ no cálculo de $x_{k+1}$ no método de descidas mais íngrimes}
+		\label{fig_steepest_decent_slope}
+		\makebox[\width]{Fonte: \citeonline{Haugen2018}}
+	\end{center}
+\end{figure}
+
 
 \subsection{Método de Newton}
 
