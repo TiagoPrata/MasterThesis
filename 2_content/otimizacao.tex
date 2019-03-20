@@ -59,6 +59,8 @@ No caso de um único $x$, um laço condicional simples poderia testar todos os v
 Sendo que:
 \[	2 \leq x \leq 22 \]
 
+O intervalo $N = 100$ indica que serão analisados 100 valores entre $2$ e $22$.
+
 \lstinputlisting[	
 	caption={[Pesquisa em grade com número escalar]
 			 Pesquisa em grade com número escalar \\
@@ -67,6 +69,10 @@ Sendo que:
 	language=Python,
 	style=Python_lang]
 	{./4_Algorithms/grid_search_scalar.py}
+
+A figura \ref{fig_grid_search_scalar} plotada a partir do código acima mostra, destacado em vermelho, o valor de $x$ onde a $f(x)$ apresentava seu menor valor. Repare que o gráfico apresenta dois vales distintos: um deles é o já mencionado destaque em vermelho, onde o valor $x$ é $18,76$ e outro onde $x$ vale aproximadamente $5,5$. O vale do gráfico onde o valor de $x$ produz o menor valor de $f(x)$ é conhecido como \textit{mínimo global}, todos os outros são \textit{mínimos locais}, pois são os valores mínimos da função apenas para uma região limitada.
+
+Algorítmos que buscam encontrar o valor mínimo de uma função podem erroneamente convergir para mínimos locais. O método de pesquisa em grade não é um desses algorítmos, pois ao verificar todos os valores de $x$ ele sempre encontrará o valor de $x$ que minimiza a função objetivo, porém nas próximas sessões serão apresentados métodos que, apesar de serem mais eficientes computacionalmente, podem tender para mínimos locais.
 	
 \begin{figure}
 	\includegraphics[scale=1]{./5_images/fig_grid_search_scalar.pdf} 
@@ -75,6 +81,49 @@ Sendo que:
 		\makebox[\width]{Fonte: Autor}
 	\end{center}
 	\label{fig_grid_search_scalar}
+\end{figure}
+
+Ainda neste método, casos onde há uma maior quantidade de $x$ ($x_1$, $x_2$, \dots) deve-se utilizar laços aninhados para que a varredura de todas as possibilidades possa ser feita. 
+
+Como exemplo, minimizemos a equação \ref{equ_grid_search_vect_no_bounds}, sendo $0 \leq x_1 \leq 2$ e $1 \leq x_2 \leq 3$.
+
+\begin{equation}
+	\label{equ_grid_search_vect_no_bounds}
+	f(x) = (x_1 - 1)^2 + (x_2 - 2)^2 + 0,5
+\end{equation}
+
+Neste caso, sem muito esforço notamos que $f_{min} = 0,5$, $x_{1_{opt}} = 1$ e $x_{2_{opt}} = 2$.\footnote{O algorítmo em Python para este cálculo pode ser encontrado no \autoref{cap_algoritmos_extras}, algorítmo \ref{alg_grid_search_vectorial}.} Porém se a restrição da inequação \ref{equ_grid_search_vect_bounds} for aplicada encontramos os valores descritos em \ref{equ_grid_search_vect_bounds_output}.
+
+\begin{equation}
+	\label{equ_grid_search_vect_bounds}
+	f(x) = x_1 - x_2 + 1,5 \leq 0
+\end{equation}
+
+\begin{subequations}
+	\label{equ_grid_search_vect_bounds_output}
+	\begin{align}
+		f_{min} = 0,628 \\
+		x_{1_{opt}} = 0,748 \\
+		x_{2_{opt}} = 2,25
+	\end{align}
+\end{subequations}
+
+As figuras \ref{fig_grid_search_vectorial_nobounds} e \ref{fig_grid_search_vectorial_withbounds} mostram a função custo (outra forma de chamarmos a função objetivo) sem restrição e com a restrição descrita pela inequação \ref{equ_min_restr_desigualdade}, respectivamente.
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{./5_images/fig_grid_search_vectorial1.png} 
+		\caption{Pesquisa em grade com duas variáveis e sem restrição}
+		\label{fig_grid_search_vectorial_nobounds}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{./5_images/fig_grid_search_vectorial2.png} 
+		\caption{Pesquisa em grade com duas variáveis e com restrição}  
+		\label{fig_grid_search_vectorial_withbounds}		      
+	\end{minipage}
 \end{figure}
 
 \subsection{Método de busca de descidas mais íngrimes}

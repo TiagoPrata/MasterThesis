@@ -37,8 +37,8 @@ print(f_min)
 print(x_opt)
 
 # Configuracoes de grafico
-plt.plot(x_array, f_array)
-plt.plot(x_opt, f_min, 'r*')
+plt.plot(x_array, f_array, 'b.')
+plt.plot(x_opt, f_min, 'ro')
 plt.xlabel('$x$')
 plt.ylabel('$f(x)$')
 # Plota grafico (Exibido na figura § \ref{fig_grid_search_scalar}§)
