@@ -135,7 +135,8 @@ $f_{min} = 0,5$, $x_{1_{opt}} = 1$ e $x_{2_{opt}} = 2$.\footnote{
 	O código-fonte em Python para este cálculo pode ser encontrado no
 	\cref{ch:codigos_extras}, código \ref{lst:grid_search_vectorial}.}
 Porém se a restrição da \cref{eq:grid_search_vect_bounds} for aplicada
-encontramos os valores descritos nas equações descritas na \cref{eq:grid_search_vect_bounds_output}.
+encontraremos os valores ótimos descritos nas equações presentes em
+\cref{eq:grid_search_vect_bounds_output}.
 
 \begin{equation}
 	\label{eq:grid_search_vect_bounds}
@@ -160,9 +161,11 @@ encontramos os valores descritos nas equações descritas na \cref{eq:grid_searc
 	\end{aligned}
 \end{equation}
 
-As figuras \ref{fig:grid_search_vectorial_nobounds} e \ref{fig:grid_search_vectorial_withbounds}
-mostram a função custo (outra forma de chamarmos a função objetivo) sem restrição e com a
-restrição descrita pela \cref{eq:min_restr_desigualdade}, respectivamente.
+O motivo de os valores de $x_{1_opt}$ e de $x_{2_opt}$ serem diferentes quando a restrição
+da \cref{eq:grid_search_vect_bounds} é aplicada pode ser visualmente observado nas figuras
+\ref{fig:grid_search_vectorial_nobounds} e \ref{fig:grid_search_vectorial_withbounds} onde
+elas mostram uma alteração do ponto mínimo da função custo (outra forma de chamarmos a função
+objetivo) devido a redução do conjunto imagem de $f(x)$.
 
 \begin{figure}[h]
     \centering
@@ -184,9 +187,12 @@ restrição descrita pela \cref{eq:min_restr_desigualdade}, respectivamente.
 
 \subsection{Método de busca de descidas mais íngrimes}
 
-Este método consiste em estimar o próximo valor de $x$ baseando-se na deriavada
-da função custo calculada em $x$. Exemplificando para um caso escalar podemos dizer que
-o próximo valor de $x$, isto é, $x_{k+1}$ será dado por:
+Tal qual o método de pesquisa em grade, a maioria dos outros algorítmos de otimização
+consiste em testar valores de $x$ e indicar qual deles retorna o menor $f(x)$,
+porém, diferentemente do método anterior, a técnica apresentada nesta sessão não testa
+todos os valores possíveis de $x$, na realidade ela calcula o próximo valor de $x$ baseando-se
+na deriavada da função custo calculada calculada no ponto $x$. Exemplificando para um
+caso escalar podemos dizer que o próximo valor de $x$, isto é, $x_{k+1}$ será dado por:
 
 \begin{align}
 	\label{eq:steepest_decent_xk1}
@@ -202,11 +208,12 @@ $K$ = fator multiplicador do incremento \\
 $f'(x_k)$ = derivada (ou gradiente) da função custo calculada em $x_k$ \newline
 
 A derivada $f'(x_k)$ indica quão inclinada está a função custo no ponto $x_k$,
-assim sendo o fator $K$ determina o peso que essa inclinação terá para o cálculo
-do próximo valor de $x$.
+assim o fator $K$ determina o peso que essa inclinação terá para o cálculo do
+próximo valor de $x$.
 
 A \cref{fig:steepest_decent_slope} mostra graficamente a influência da derivada
-da função custo na amplitude de $\Delta x_k$ entre iterações.
+da função custo na amplitude de $\Delta x_k$ entre iterações. Quanto maior a inclinação
+maior o incremento.
 
 \begin{figure}
 	\begin{center}
