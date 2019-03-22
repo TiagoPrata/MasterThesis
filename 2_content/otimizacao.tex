@@ -70,7 +70,7 @@ testar todos os valores possíveis para $x(1)$, $x(2)$, $x(3)$, $...$, $x(n)$ co
 objetivo de encontrar o \gls{xopt}, valor de $x$ que minimiza $f$.
 
 No caso de um único $x$, um laço condicional simples poderia testar todos os valores da
-função objetivo. Para ilustrar essa ideia o algorítmo \ref{lst:grid_search_scalar}, em
+função objetivo. Para ilustrar essa ideia o código-fonte \ref{lst:grid_search_scalar}, em
 Python, mostra como a função $f(x)$ abaixo poderia ser computada, caso o intervalo de
 teste de $x$ fosse igual 100, ou seja, $N = 100$.
 
@@ -91,7 +91,7 @@ O intervalo $N = 100$ indica que serão analisados 100 valores entre $2$ e $22$.
 	label={lst:grid_search_scalar},
 	language=Python,
 	style=Python_lang]
-	{./4_Algorithms/grid_search_scalar.py}
+	{./4_Codes/grid_search_scalar.py}
 
 A \cref{fig:grid_search_scalar} plotada a partir do código acima mostra,
 destacado em vermelho, o valor de $x$ onde a $f(x)$ apresentava seu menor valor.
@@ -132,8 +132,8 @@ $0 \leq x_1 \leq 2$ e $1 \leq x_2 \leq 3$.
 
 Neste caso, sem muito esforço notamos que
 $f_{min} = 0,5$, $x_{1_{opt}} = 1$ e $x_{2_{opt}} = 2$.\footnote{
-	O algorítmo em Python para este cálculo pode ser encontrado no
-	\cref{ch:algoritmos_extras}, algorítmo \ref{lst:grid_search_vectorial}.}
+	O código-fonte em Python para este cálculo pode ser encontrado no
+	\cref{ch:codigos_extras}, código \ref{lst:grid_search_vectorial}.}
 Porém se a restrição da \cref{eq:grid_search_vect_bounds} for aplicada
 encontramos os valores descritos nas equações descritas na \cref{eq:grid_search_vect_bounds_output}.
 
