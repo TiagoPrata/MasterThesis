@@ -48,7 +48,7 @@ Sendo que as equações \ref{eq:min_restr_desigualdade} e \ref{eq:min_restr_igua
 definem restrições na relação entre as variáveis de otimização, enquanto
 \ref{eq:min_limites} define as regiões limites destas mesmas variáveis.
 
-Existem diversas métodos para encontrar a solução ótima para um problema de otimização
+Existem diversos métodos para encontrar a solução ótima para um problema de otimização
 e a sessão a seguir irá mostrar exemplos e métodos numéricos simples que nos permitirão
 entender em maiores detalhes como um problema de minimização pode ser resolvido. No
 \cref{ch:mpc} faremos uso das minimizações para compreender como o \acrshort{mpc}
@@ -60,13 +60,13 @@ no entendimento do controle \acrshort{mpc} em si.
 
 \subsection{Método de pesquisa em grade}
 
-O método apresentado nesta sessão não aplicável a praticamente nenhum problema real
+O método apresentado nesta sessão não é aplicável a praticamente nenhum problema real
 devido a sua ineficiência computacional, porém ele ajuda a ilustrar o objetivo de
 todo o método numérico voltado para minimização.
 
 Este método consiste em testar todos os valores de todas as variáveis (em um conjunto
 de dados definido) para verificar qual combinação minimiza a função objetivo, ou seja,
-testar todos os valores possíveis para $x(1)$, $x(2)$, $x(3)$, $...$, $x(n)$ com o
+testar todos os valores possíveis para $x_1$, $x_2$, $x_3$, $...$, $x_n$ com o
 objetivo de encontrar o \gls{xopt}, valor de $x$ que minimiza $f$.
 
 No caso de um único $x$, um laço condicional simples poderia testar todos os valores da
@@ -133,9 +133,9 @@ $0 \leq x_1 \leq 2$ e $1 \leq x_2 \leq 3$.
 Neste caso, sem muito esforço notamos que
 $f_{min} = 0,5$, $x_{1_{opt}} = 1$ e $x_{2_{opt}} = 2$.\footnote{
 	O código-fonte em Python para este cálculo pode ser encontrado no
-	\cref{ch:codigos_extras}, código \ref{lst:grid_search_vectorial}.}
+	\cref{ch:codigos_extras}, código-fonte \ref{lst:grid_search_vectorial}.}
 Porém se a restrição da \cref{eq:grid_search_vect_bounds} for aplicada
-encontraremos os valores ótimos descritos nas equações presentes em
+encontraremos valores distintos, descritos nas equações presentes em
 \cref{eq:grid_search_vect_bounds_output}.
 
 \begin{equation}
@@ -161,7 +161,7 @@ encontraremos os valores ótimos descritos nas equações presentes em
 	\end{aligned}
 \end{equation}
 
-O motivo de os valores de $x_{1_opt}$ e de $x_{2_opt}$ serem diferentes quando a restrição
+O motivo de os valores de $x_{1_{opt}}$ e de $x_{2_{opt}}$ serem diferentes quando a restrição
 da \cref{eq:grid_search_vect_bounds} é aplicada pode ser visualmente observado nas figuras
 \ref{fig:grid_search_vectorial_nobounds} e \ref{fig:grid_search_vectorial_withbounds} onde
 elas mostram uma alteração do ponto mínimo da função custo (outra forma de chamarmos a função
