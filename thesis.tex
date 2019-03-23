@@ -117,7 +117,7 @@ de automação e controle.}
 
 % Exemplo de configurações do glossairo
 \renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}  
- \glsseelist{#2}}
+\glsseelist{#2}}
 
 % ----------------------------------------------------------
 % Início do documento
@@ -138,7 +138,8 @@ de automação e controle.}
 
 % Folha de rosto
 % (o * indica que haverá a ficha bibliográfica)
-\imprimirfolhaderosto*
+\imprimirfolhaderosto
+% \imprimirfolhaderosto*	% TODO: Substituir por essa linha quando inserir Ficha Catalografica
 
 % Inserir a ficha bibliografica
 %\include{./1_pretext/fichaCatalografica}
@@ -147,7 +148,7 @@ de automação e controle.}
 %\include{./1_pretext/errata}
 
 % Inserir folha de aprovação
-%\include{./1_pretext/folhaDeAprovacao}
+\include{./1_pretext/folhaDeAprovacao}
 
 % Dedicatória
 %\include{./1_pretext/dedicatoria}
