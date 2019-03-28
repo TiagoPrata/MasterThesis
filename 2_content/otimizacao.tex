@@ -132,8 +132,8 @@ $0 \leq x_1 \leq 2$ e $1 \leq x_2 \leq 3$.
 
 Neste caso, sem muito esforço notamos que
 $f_{min} = 0,5$, $x_{1_{opt}} = 1$ e $x_{2_{opt}} = 2$.\footnote{
-	O código-fonte em Python para este cálculo pode ser encontrado no
-	\cref{ch:codigos_extras}, código-fonte \ref{lst:grid_search_vectorial}.}
+	O código-fonte em Python para este cálculo pode ser encontrado no							% Footnote
+	\cref{ch:codigos_extras}, código-fonte \ref{lst:grid_search_vectorial}.}					% Footnote
 Porém se a restrição da \cref{eq:grid_search_vect_bounds} for aplicada
 encontraremos valores distintos, descritos nas equações presentes em
 \cref{eq:grid_search_vect_bounds_output}.
@@ -205,7 +205,9 @@ Onde: \\
 $x_k$ = $x$ atual \\
 $\Delta x_k$ = diferença entre $x_k$ e $x_{k+1}$ \\
 $K$ = fator multiplicador do incremento \\
-$f'(x_k)$ = derivada (ou gradiente) da função custo calculada em $x_k$ \newline
+$f'(x_k)$ = derivada (ou gradiente\footnote{
+	$f'()$ indica o gradiente da função custo para casos vetoriais						% Footnote
+}) da função custo calculada em $x_k$ \newline
 
 A derivada $f'(x_k)$ indica quão inclinada está a função custo no ponto $x_k$,
 assim o fator $K$ determina o peso que essa inclinação terá para o cálculo do
