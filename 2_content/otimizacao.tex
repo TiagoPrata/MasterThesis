@@ -194,28 +194,29 @@ todos os valores possíveis de $x$, na realidade ela calcula o próximo valor de
 na deriavada da função custo calculada no ponto $x$. Exemplificando para um caso escalar
 podemos dizer que o próximo valor de $x$, isto é, $x_{k+1}$, será dado por:
 
-\begin{align}
-	\label{eq:steepest_decent_xk1}
-	x_{k+1} &= x_k + \Delta x_k \\ 
-	\Delta x_k &= -K f'(x_k)
-\end{align}
+\begin{subequations}
+	\begin{align}
+		x_{k+1} &= x_k + \Delta x_k		\label{eq:steepest_decent_xk1_a} \\ 
+		\Delta x_k &= -K f'(x_k)		\label{eq:steepest_decent_xk1_b}
+	\end{align}
+\end{subequations}
 
 \noindent
 Onde: \\
 $x_k$ = $x$ atual \\
 $\Delta x_k$ = diferença entre $x_k$ e $x_{k+1}$ \\
 $K$ = fator multiplicador do incremento \\
-$f'(x_k)$ = derivada (ou gradiente\footnote{
-	$f'()$ indica o gradiente da função custo para casos vetoriais						% Footnote
-}) da função custo calculada em $x_k$ \newline
+$f'(x_k)$ = derivada (ou gradiente) da função custo calculada em $x_k$ \newline
 
 A derivada $f'(x_k)$ indica quão inclinada está a função custo no ponto $x_k$,
 assim o fator $K$ determina o peso que essa inclinação terá para o cálculo do
 próximo valor de $x$.
 
 A \cref{fig:steepest_decent_slope} mostra graficamente a influência da derivada
-da função custo na amplitude de $\Delta x_k$ entre iterações. Quanto maior a inclinação
-maior o incremento.
+da função custo na amplitude de $\Delta x_k$ entre iterações. Na figura vemos
+a derivada aplicada sobre dois pontos distintos, $x_a$ e $x_b$, e podemos notar
+que $f'(x_b)$ será menor que $f'(x_a)$ uma vez que $x_b$ está mais próximo ao 
+ponto mínimo de $f'$.
 
 \begin{figure}
 	\begin{center}
@@ -225,6 +226,32 @@ maior o incremento.
 		\makebox[\width]{Fonte: \citeonline{Haugen2018}}
 	\end{center}
 \end{figure}
+
+Como indicado na \cref{eq:steepest_decent_xk1_a}, o cálculo de $x_{k+1}$ depende
+de $x_k$, ou seja, o valor do próximo $x$ calculado depende do $x$ anterior, e
+sendo assim uma dúvida comum vem à tona: "Como calcular $x_1$ sendo que não temos
+o valor de $x_0$?". Para esse caso devemos estimar o valor de $x_0$, geralmente
+escolhendo um valor que esteja próximo da região ótima da função custo. De fato
+a maior parte das funções de otimização requerem como argumento um valor de $x_0$
+estimado, pois é a partir dele que serão iniciadas as buscas até o ponto mínimo
+da função.
+
+As mesmas equações se aplicam para casos onde $\mathrm{x}$ é um vetor, com a diferença que
+ao invés de calcularmos a devivada sobre o ponto $\mathrm{x}_k$, calculamos o gradiente
+do vetor $\mathrm{x}_k$, tal qual vemos na \cref{eq:steepest_decent_xk1_vectorial_b}.
+
+\begin{subequations}
+	\begin{align}
+		\mathrm{x}_{k+1} &= \mathrm{x}_k + \Delta \mathrm{x}_k		\label{eq:steepest_decent_xk1_vectorial_a} \\ 
+		\Delta \mathrm{x}_k &= -K \nabla f(\mathrm{x}_k)			\label{eq:steepest_decent_xk1_vectorial_b}
+	\end{align}
+\end{subequations}
+
+\noindent
+Sendo que: \\
+$\mathrm{x}_k$ = $\mathrm{x}$ atual \\\
+$K$ = fator multiplicador do incremento \\
+$\nabla f(\mathrm{x}_k)$ = gradiente da função custo calculada em $\mathrm{x}_k$ \newline
 
 % TODO: Finalizar
 
