@@ -206,7 +206,8 @@ Onde: \\
 $x_k$ = $x$ atual \\
 $\Delta x_k$ = diferença entre $x_k$ e $x_{k+1}$ \\
 $K$ = fator multiplicador do incremento \\
-$f'(x_k)$ = derivada (ou gradiente) da função custo calculada em $x_k$ \newline
+$f'(x_k)$ = derivada da função custo calculada em $x_k$
+\newline
 
 A derivada $f'(x_k)$ indica quão inclinada está a função custo no ponto $x_k$,
 assim o fator $K$ determina o peso que essa inclinação terá para o cálculo do
@@ -242,18 +243,62 @@ do vetor $\mathrm{x}_k$, tal qual vemos na \cref{eq:steepest_decent_xk1_vectoria
 
 \begin{subequations}
 	\begin{align}
-		\mathrm{x}_{k+1} &= \mathrm{x}_k + \Delta \mathrm{x}_k		\label{eq:steepest_decent_xk1_vectorial_a} \\ 
-		\Delta \mathrm{x}_k &= -K \nabla f(\mathrm{x}_k)			\label{eq:steepest_decent_xk1_vectorial_b}
+		\mathrm{x}_{k+1} &= \mathrm{x}_k + \Delta \mathrm{x}_k			\label{eq:steepest_decent_xk1_vectorial_a} \\ 
+		\Delta \mathrm{x}_k &= \mathrm{-K} \nabla f(\mathrm{x}_k)		\label{eq:steepest_decent_xk1_vectorial_b}
 	\end{align}
 \end{subequations}
 
 \noindent
 Sendo que: \\
-$\mathrm{x}_k$ = $\mathrm{x}$ atual \\\
-$K$ = fator multiplicador do incremento \\
-$\nabla f(\mathrm{x}_k)$ = gradiente da função custo calculada em $\mathrm{x}_k$ \newline
+\[
+	\mathrm{x}_k = 					% TODO: Ajustar a esquerda
+	\begin{bmatrix}
+		x(1)_{k} \\
+		x(2)_{k} \\
+		\vdots \\
+		x(n)_{k}
+	\end{bmatrix}
+\]
+$\mathrm{K}$ = fator multiplicador do incremento \\
+$\nabla f(\mathrm{x}_k)$ = gradiente da função custo calculada em $\mathrm{x}_k$
+\newline
 
-% TODO: Finalizar
+Além de requerer um valor estimado para $x_0$, este método também apresenta um
+critério de parada, isto é, uma condição que quando alcançada irá para o laço de
+iterações por já ter encontrado o $f_{min}$. Este critério é dado pela \cref{eq:steepest_descent_stop}
+e ao alcançá-la então $x_{opt}$ será $x_{k+1}$.
+
+\begin{equation}
+	\label{eq:steepest_descent_stop}
+	|f(x_{k+1})-f(x_k)| \leq df
+\end{equation}
+
+\noindent
+Onde: \\
+$df$ = Valor do critério de parada (ex. 0,00001)
+\newline
+
+O código-fonte \ref{lst:steepest_descent_vectorial} exemplifica a utilização deste método
+para as equações descritas em \ref{eq:steepest_decent_vectorial_example}.
+
+\begin{subequations}
+	\label{eq:steepest_decent_vectorial_example}
+	\begin{gather}
+		\min_{x} f(x) \\ 
+		f(\mathrm{x}) = [x(1) - 1]^2 + [x(2) - 2]^2 + 0,5		\label{eq:steepest_decent_vectorial_example_fobj} \\
+		|f(\mathrm{x}_{k+1}) - f(\mathrm{x}_k)| \leq df 		\label{eq:steepest_decent_vectorial_example_stop} \\
+		df = 10^{-4}											\label{eq:steepest_decent_vectorial_example_df}
+	\end{gather}
+\end{subequations}
+
+\lstinputlisting[	
+	caption={[Busca por descidas mais íngremes]
+			Busca por descidas mais íngremes \\
+		    Fonte: Autor},
+	label={lst:steepest_descent_vectorial},
+	language=Python,
+	style=Python_lang]
+	{./4_Codes/steepest_descent_vectorial.py}
 
 \subsection{Método de Newton}
 
