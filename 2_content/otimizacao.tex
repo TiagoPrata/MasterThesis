@@ -231,7 +231,7 @@ ponto mínimo de $f'$.
 Como indicado na \cref{eq:steepest_decent_xk1_a}, o cálculo de $x_{k+1}$ depende
 de $x_k$, ou seja, o valor do próximo $x$ calculado depende do $x$ anterior, e
 sendo assim uma dúvida comum vem à tona: "Como calcular $x_1$ sendo que não temos
-o valor de $x_0$?". Para esse caso devemos estimar o valor de $x_0$, geralmente
+o valor de $x_0$?". Para esse caso devemos estimar $x_0$, geralmente
 escolhendo um valor que esteja próximo da região ótima da função custo. De fato
 a maior parte das funções de otimização requerem como argumento um valor de $x_0$
 estimado, pois é a partir dele que serão iniciadas as buscas até o ponto mínimo
@@ -264,7 +264,7 @@ $\nabla f(\mathrm{x}_k)$ = gradiente da função custo calculada em $\mathrm{x}_
 \newline
 
 Além de requerer um valor estimado para $x_0$, este método também apresenta um
-critério de parada, isto é, uma condição que quando alcançada irá para o laço de
+critério de parada, isto é, uma condição que quando alcançada irá parar o laço de
 iterações por já ter encontrado o $f_{min}$. Este critério é dado pela \cref{eq:steepest_descent_stop}
 e ao alcançá-la então $x_{opt}$ será $x_{k+1}$.
 
@@ -299,6 +299,40 @@ para as equações descritas em \ref{eq:steepest_decent_vectorial_example}.
 	language=Python,
 	style=Python_lang]
 	{./4_Codes/steepest_descent_vectorial.py}
+
+Um problema conhecido deste método é o fato de ele poder não distinguir entre
+mínimos locais e mínimos globais fazendo com que o valor que é apontado como
+$f_{min}$ possa ser na verdade apenas um mínimo local. O valor de $x_0$
+estimado para a função tem impacto direto neste resultado, pois como este método
+inicia o cálculo da derivada de $f(x)$ no ponto $x_0$, então as iterações seguintes
+dependerão exclusivamente da iteração anterior, fazendo assim uma convergência para
+o mínimo mais próximo, seja ele local ou global. As
+\cref{fig:steepest_descent_global_minimum,fig:steepest_descent_local_minimum}
+mostram mais detalhadamente esta diferença.
+
+\begin{figure}
+    \centering
+    \begin{minipage}{0.47\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{./5_images/steepest_descent_global_minimum.png} 
+		\caption{Método de descida mais íngrime convergindo para mínimo global}
+		\label{fig:steepest_descent_global_minimum}
+		Fonte: \citeonline{Haugen2018}
+    \end{minipage}\hfill
+    \begin{minipage}{0.47\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{./5_images/steepest_descent_local_minimum.png} 
+		\caption{Método de descida mais íngrime convergindo para mínimo local}  
+		\label{fig:steepest_descent_local_minimum}		      
+		Fonte: \citeonline{Haugen2018}
+	\end{minipage}
+\end{figure}
+
+As \cref{fig:steepest_descent_global_minimum,fig:steepest_descent_local_minimum}
+apresentam a mesma função custo, porém na \cref{fig:steepest_descent_global_minimum}
+$x_0 = 12$, e as derivadas consecutivas a partid desde valor converger para o
+mínimo global; já na \cref{fig:steepest_descent_local_minimum} estimasse $x_0 = 10$
+resultando em um $f_{min}$ completamente diferente, convergendo para um mínimo local.
 
 \subsection{Método de Newton}
 
