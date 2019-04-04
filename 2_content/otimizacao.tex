@@ -1,4 +1,6 @@
 \newacronym{sujeitoa}{s.a.}{sujeito a}
+\newacronym{nlp}{NLP}{\textit{Nonlinear Programming}}
+
 \chapter{Otimização}
 \label{ch:otimizacao}
 
@@ -343,7 +345,24 @@ o $f_{min}$ qaundo o critério de parada é atingido.
 \subsection{Otimizadores de programação não-linear (NLP)}
 \label{subsec:otimizadores_nlp}
 
-% TODO: NLP
+Muitos métodos de otimização não suportam restrições como as descritas nas
+\cref{eq:min_restr_desigualdade,eq:min_restr_igualdade}, este é, por exemplo, o caso
+do método de busca de descidas mais íngrimes, porém outros métodos podem levar esse tipo
+de restrição em conta, e estes são conhecidos como Otimizadores de Programação não-linear
+(do inglês \acrlong{nlp}, ou simplesmente \acrshort{nlp}) \cite{Haugen2018}.
+
+Otimizadores \acrshort{nlp} são úteis quando há a necessidade de métodos de otimização
+que sejam mais robustos e mais flexíveis do que técnicas mais simples, como o método
+de busca de Newton, ou aqueles apresentados nas sessões anteriores deste trabalho e por
+isso muitos softwares como o MATLAB\textsuperscript{\tiny\textregistered} e o Python
+dispõem de ferramentas para cálculo de métodos \acrshort{nlp}. No
+MATLAB\textsuperscript{\tiny\textregistered} o \textit{MATLAB's Optimization Toolbox}
+dispõe a função \textit{fmincon} enquanto no Python podemos encontrar a função
+\textit{scipy.optimize.minimize} na biblioteca \textit{SciPy}. Estas funções citadas
+têm extensa documentação disponível e serão utilizadas no decorrer deste trabalho, porém
+não apresentaremos maiores detalhes sobre elas. Os autores \citeonline{Haugen2018},
+\citeonline{Ruggiero2000} detalham os procedimentos de cálculo para os métodos descritos
+aqui além de muitos outros.
 
 \section{Algumas aplicações de otimização}
 \label{sec:aplicacoes_de_otimizacao}
