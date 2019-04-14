@@ -1,5 +1,6 @@
 \newacronym{sujeitoa}{s.a.}{sujeito a}
 \newacronym{nlp}{NLP}{\textit{Nonlinear Programming}}
+\newacronym{mhe}{MHE}{\textit{Moving Horizon Estimation}}
 
 \chapter{Otimização}
 \label{ch:otimizacao}
@@ -370,7 +371,50 @@ aqui além de muitos outros.
 \subsection{Estimação de parâmetros}
 \label{subsec:estimacao_de_parametros}
 
-% TODO: estimação de param
+Estimar parâmetros de um modelo pode ser uma das inúmeras aplicações dos métodos de otimização.
+Segundo \citeonline{Haugen2018} um problema de estimação de parâmetros pode ser formulado
+como mostrado na \cref{eq:parameter_estimation}, visando encontrar os parâmetros que
+apresentem menor diferença entre o sistema real e o modelo sendo avaliado.
+A comparação o sistema real e o virtual é feita atravéz do acumulo da diferença das saídas dos
+dois sistemas elevada ao quadrado ao longo de $N$ iterações.
+
+\begin{equation}
+	\label{eq:parameter_estimation}
+	\min_{P} \sum_{k=1}^{N} e(k)^2
+\end{equation}
+
+\noindent
+Onde: \\
+$P$ = vetor de parâmetros a ser estimado. Sendo $ P = [p(1), p(2), ..., p(r)]^T $ \\
+$e$ = erro de predição. Sendo $ e = y_{medido} - y_{modelo} $ \\
+$ y_{medido} $ = medição da saída do sistema real \\
+$ y_{modelo} $ = cálculo da saída do modelo simulado \\
+$ N $ = quantidade de amostras
+\newline
+
+O diagrama de blocos apresentado na \cref{fig:parameter_estimation} apresenta de forma
+visual a comparação entre o sistema real e o modelo matemático.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.75\textwidth]{./5_images/fig_parameter_estimation.png} 
+		\caption{Diagrama de blocos do quadrado da diferença entre o sistema real e o modelo}
+		\label{fig:parameter_estimation}
+		\makebox[\width]{Fonte: \citeonline{Haugen2018}}
+	\end{center}
+\end{figure}
+
+Para estimar os parâmetros $P$ de um dado modelo é necessário dividir os dados amostrais
+$N$ em dois grupos: um deles destinado a adaptação do modelo, ou seja, encontrar o vetor $P$
+que minimize a função custo, e o outro grupo destinado a validação, isto é, verificar se os
+parâmetros encontrados durante a adaptação realmente é válido e preciso.
+
+Quando dispomos de dados previamente coletados do sistema é possível fazer uma \textit{Estimação
+offline}, onde as fases de coleta e estimação acontecem em momentos distintos. Já a
+\textit{Estimação Online} ocorre quando a coleta dos dados e a estimação dos parâmetros acontece
+ao mesmo tempo. A \cref{subsec:moving_horizon_estimation} descreve com mais detalhes a
+Estimação de Horizonte Móvel (do inglês, \acrlong{mhe}, ou simplesmente \acrshort{mhe}), que,
+assim como o filtro de Kalman, pode ser utilizado como estimador de parâmetros \textit{online}.
 
 \subsection{Moving Horizon Estimation}
 \label{subsec:moving_horizon_estimation}
