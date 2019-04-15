@@ -419,7 +419,176 @@ assim como o filtro de Kalman, pode ser utilizado como estimador de parâmetros 
 \subsection{Moving Horizon Estimation}
 \label{subsec:moving_horizon_estimation}
 
-% TODO: MHE
+O método conhecido como \acrlong{mhe} é um método estimador de parâmetros \textit{online}
+que utiliza as medições atuais, anteriores e também as entradas do sistema sob um horizonte
+fixo de tempo para calcular o estado atual do sistema, assim como ilustrado na \cref{fig:mhe}.
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=0.75\textwidth]{./5_images/fig_mhe.png} 
+		\caption{Horizonte de tempo analisado pelo método \acrlong{mhe}}
+		\label{fig:mhe}
+		\makebox[\width]{Fonte: \citeonline{Haugen2018}}
+	\end{center}
+\end{figure}
+
+O modelo de espaço de estado que descreve o sistema pode ser descrito como indicado na
+\cref{eq:mhe_main}.
+
+\begin{subequations}
+	\label{eq:mhe_main}
+	\begin{gather}
+		\mathrm{x}_{k+1} = \mathrm{f}(\mathrm{x}_k, \cdots) + \mathrm{w}_k		\label{eq:mhe_main_a} \\
+		\mathrm{y}_k = \mathrm{g}(\mathrm{x}_k, \cdots) + \mathrm{v}_k			\label{eq:mhe_main_b}
+	\end{gather}
+\end{subequations}
+
+\noindent
+Onde: 
+\begin{itemize}
+	\item $\mathrm{x}$ é o vetor de estado a ser estimado.
+		\begin{equation}
+			\mathrm{x}_k =
+			\begin{bmatrix}
+				x(1)_{k} \\
+				x(2)_{k} \\
+				\vdots \\
+				x(n)_{k}
+			\end{bmatrix}
+		\end{equation}
+		
+	\item $\mathrm{f}$ é um vetor de $n$ funções lineares ou não-lineares de $x_k$
+		\begin{equation}
+			\mathrm{f} =
+			\begin{bmatrix}
+				f_1(x_k, \cdots) \\
+				f_2(x_k, \cdots) \\
+				\vdots \\
+				f_n(x_k, \cdots) \\
+			\end{bmatrix}
+		\end{equation}
+		O pontos representam possíveis argumentos adicionais de $f$ como a variável de
+		controle ($u_k$), os disturbios do processo ($d_k$), e os parâmetros ($p$).
+		
+	\item $\mathrm{w}_k$ representa os distúrbios do não conhecidos ou não modelados do processo
+			agindo sobre o estado, no instante $k$. Não é necessário assumir nenhuma propriedade
+			estatística particular para este distúrbio, porém é sensato assumir um ruído, como o
+			ruído branco, com uma matriz de covariância $Q$, assim como utilizado no filtro de
+			Kalman. A matriz $Q$ será apresentada com mais detalhes a seguir.
+	
+	\item $\mathrm{y}$ é o vetor de saída com $m$ elementos.
+	
+	\item $\mathrm{g}$ é um vetor de $m$ funções lineares ou não-lineares de $x_k$, onde os pontos
+			também representam possíveis argumentos adicionais.
+
+	\item $\mathrm{v}_k$ representa o erro medido, e, assim como $\mathrm{w}_k$, não necessita
+			assumir nenhuma propriedade estatística particular, porém também é comum utilizar
+			um ruído branco, com uma matriz de covariância $R$, também melhor apresentada a
+			seguir.
+	
+\end{itemize}
+
+O problema de otimização do \acrshort{mhe} pode ser descrito como na \cref{eq:mhe_minimization}.
+
+\begin{equation}
+	\label{eq:mhe_minimization}
+	\min_{X} \sum_{i=k-N}^{k-1} \Vert x_{i+1} - f(x_i, \cdots) \Vert^2_{Q^{-1}} + 
+			\sum_{i=k-N}^{k} \Vert y_i - g(x_i, \cdots) \Vert^2_{R^{-1}}
+\end{equation}
+
+Sendo que $X$ é a matriz contendo o estado a cada ponto do horizonte de estimação:
+\begin{equation}
+	\begin{aligned}
+		X &= [\mathrm{x}_{k-N}, \mathrm{x}_{k-N-1}, \cdots, \mathrm{x}_{k-1}, \mathrm{x}_k] \\
+		&=
+		\begin{bmatrix}
+			x(1)_{k-N} & x(1)_{k-(n-1)} & \cdots & x(1)_{k-1} & x(1)_k		\\
+			x(2)_{k-N} & x(2)_{k-(n-1)} & \cdots & x(2)_{k-1} & x(2)_k		\\
+			\vdots & \vdots & \ddots & \vdots & \vdots						\\
+			x(n)_{k-N} & x(n)_{k-(n-1)} & \cdots & x(n)_{k-1} & x(n)_k	
+		\end{bmatrix}
+	\end{aligned}
+\end{equation}
+
+E com base na \cref{eq:mhe_main} este problema também pode ser descrito como:
+
+\begin{equation}
+	\label{eq:mhe_minimization2}
+	\min_{X} \sum_{i=k-N}^{k-1} \Vert w_i \Vert^2_{Q^{-1}} + 
+			\sum_{i=k-N}^{k} \Vert v_i \Vert^2_{R^{-1}}
+\end{equation}
+
+Ou mesmo:
+
+\begin{equation}
+	\label{eq:mhe_minimization3}
+	\min_{X} \sum_{i=k-N}^{k-1} w^T_i Q^{-1} w_i + 
+			\sum_{i=k-N}^{k} v^T_i R^{-1} v_i
+\end{equation}
+
+\noindent
+Onde: 
+\begin{itemize}
+	\item $\mathrm{w}_i$ é o vetor de disturbio do processo.
+		\begin{equation}
+			\mathrm{w}_i =
+			\begin{bmatrix}
+				w(1)_{i} \\
+				w(2)_{i} \\
+				\vdots \\
+				w(n)_{i}
+			\end{bmatrix}
+		\end{equation}
+		
+	\item $\mathrm{v}_i$ é um vetor de erros de medição.
+		\begin{equation}
+			\mathrm{v}_i =
+			\begin{bmatrix}
+				v(1)_{i} \\
+				v(2)_{i} \\
+				\vdots \\
+				v(m)_{i}
+			\end{bmatrix}
+		\end{equation}
+		
+	\item $\mathrm{Q}^{-1}$ é a matriz de ponderação de $\mathrm{w}_i$
+		\begin{equation}
+			\mathrm{Q}^{-1} =
+			\begin{bmatrix}
+				\frac{1}{Q_{11}} & \cdots & 0 \\
+				\vdots & \ddots & \vdots \\
+				0 & \cdots & \frac{1}{Q_{nn}}
+			\end{bmatrix}
+		\end{equation}
+		Assumindo que $w$ é aleatório, então $Q$ pode ser interpretado como a inversa
+		da matriz de covariância do disturbio do processo.
+
+	\item $\mathrm{R}^{-1}$ é a matriz de ponderação de $\mathrm{v}_i$
+		\begin{equation}
+			\mathrm{R}^{-1} =
+			\begin{bmatrix}
+				\frac{1}{R_{11}} & \cdots & 0 \\
+				\vdots & \ddots & \vdots \\
+				0 & \cdots & \frac{1}{R_{nn}}
+			\end{bmatrix}
+		\end{equation}
+		Assumindo que $v$ é aleatório, então $R$ pode ser interpretado como a inversa
+		da matriz de covariância do disturbio do processo.
+	
+\end{itemize}
+
+Desta forma a \cref{eq:mhe_minimization3} pode ser reescrita como:
+
+\begin{equation}
+	\label{eq:mhe_minimization4}
+	\min_{X} \sum_{i=k-N}^{k-1} \begin{bmatrix} \frac{w(1)^2_i}{Q_{11}} + \cdots + \frac{w(n)^2_i}{Q_{nn}} \end{bmatrix} + 
+			\sum_{i=k-N}^{k} \begin{bmatrix} \frac{v(1)^2_i}{R_{11}} + \cdots + \frac{v(n)^2_i}{R_{mm}} \end{bmatrix}
+\end{equation}
+
+Resumidamente observa-se que o \acrshort{mhe} utiliza as medições (minimizando a influência dos
+erros de medição) e o modelo (minimizando os erros de modelo) para calcular o estado estimado.
+
+% TODO: Inserir exemplo de aplicação do MHE
 
 \subsection{Model Predictive Control}
 \label{subsec:model_predictive_control}
