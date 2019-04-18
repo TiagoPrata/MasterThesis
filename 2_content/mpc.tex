@@ -6,7 +6,28 @@
 % =====================================================================================================
 \section{Introdução}
 
-% TODO: intro
+% TODO: Utilizar
+% \cite{Haugen2018}
+% O \acrshort{mpc} tem como princípio calcular a melhor sequência de variáveis de controle sob um dado
+% futuro ou horizonte de tempo baseando-se no modelo do processo, valores dos estados atuais (medidos e estimados),
+% valores de \textit{setpoint}, distúrbios conhecidos e limitantes das variáveis de controle, variáveis de
+% processo e variáveis de estado.
+
+
+% =====================================================================================================
+% ============================================= Section ===============================================
+% =====================================================================================================
+\section{Aplicação prática}
+\label{sec:aplicacao_pratica}
+
+Segundo \citeonline{Haugen2018} tanto o \acrshort{mpc} quanto o \acrshort{mhe} são problemas praticamente
+identicos do ponto de vista matemático, pois ambos exploram um modelo matemático sobre dado um horizonte de
+tempo, porém, apesar de matematicamente parecidos, eles atuam de forma inversa um ao outro, pois
+enquanto o \acrshort{mhe} utiliza as variáveis de controle e os valores medidos do processo para estimar
+as variáveis estados (como já apresentado na \cref{subsec:moving_horizon_estimation}), o \acrshort{mpc}
+utiliza as variáveis de estado e os valores medidos do processo para estimar as variáveis de controle.
+
+
 
 % =====================================================================================================
 % ============================================= Section ===============================================
