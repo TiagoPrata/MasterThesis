@@ -5,6 +5,9 @@
 \chapter{Otimização}
 \label{ch:otimizacao}
 
+% =====================================================================================================
+% ============================================= Section ===============================================
+% =====================================================================================================
 \section{O problema da otimização}
 \label{sec:problema_da_otimizacao}
 
@@ -60,9 +63,15 @@ calcula valores ótimos dadas determinadas restrições em um dado horizonte de 
 pois uma maior compreensão sobre problemas de minimização pode fazer grande diferença
 no entendimento do controle \acrshort{mpc} em si.
 
+% =====================================================================================================
+% ============================================= Section ===============================================
+% =====================================================================================================
 \section{Algoritmos de otimização}
 \label{sec:algoritmos_de_otimizacao}
 
+% .....................................................................................................
+% ............................................ Subsection .............................................
+% .....................................................................................................
 \subsection{Método de pesquisa em grade}
 \label{subsec:metodo_pesquisa_em_grade}
 
@@ -191,6 +200,9 @@ objetivo) devido a redução do conjunto imagem de $f(x)$.
 	\end{minipage}
 \end{figure}
 
+% .....................................................................................................
+% ............................................ Subsection .............................................
+% .....................................................................................................
 \subsection{Método de busca de descidas mais íngrimes}
 \label{subsec:metodo_descida_mais_ingrime}
 
@@ -343,6 +355,9 @@ resultando em um $f_{min}$ completamente diferente, convergendo para um mínimo 
 Em ambas as figuras a linha verde indica o valor de $x_0$ e a linha vermelha indica
 o $f_{min}$ qaundo o critério de parada é atingido.
 
+% .....................................................................................................
+% ............................................ Subsection .............................................
+% .....................................................................................................
 \subsection{Otimizadores de programação não-linear (NLP)}
 \label{subsec:otimizadores_nlp}
 
@@ -365,9 +380,15 @@ não apresentaremos maiores detalhes sobre elas. Os autores \citeonline{Haugen20
 \citeonline{Ruggiero2000} detalham os procedimentos de cálculo para os métodos descritos
 aqui além de muitos outros.
 
+% =====================================================================================================
+% ============================================= Section ===============================================
+% =====================================================================================================
 \section{Algumas aplicações de otimização}
 \label{sec:aplicacoes_de_otimizacao}
 
+% .....................................................................................................
+% ............................................ Subsection .............................................
+% .....................................................................................................
 \subsection{Estimação de parâmetros}
 \label{subsec:estimacao_de_parametros}
 
@@ -416,6 +437,9 @@ ao mesmo tempo. A \cref{subsec:moving_horizon_estimation} descreve com mais deta
 Estimação de Horizonte Móvel (do inglês, \acrlong{mhe}, ou simplesmente \acrshort{mhe}), que,
 assim como o filtro de Kalman, pode ser utilizado como estimador de parâmetros \textit{online}.
 
+% .....................................................................................................
+% ............................................ Subsection .............................................
+% .....................................................................................................
 \subsection{Moving Horizon Estimation}
 \label{subsec:moving_horizon_estimation}
 
@@ -588,6 +612,9 @@ Desta forma a \cref{eq:mhe_minimization3} pode ser reescrita como:
 Resumidamente observa-se que o \acrshort{mhe} utiliza as medições (minimizando a influência dos
 erros de medição) e o modelo (minimizando os erros de modelo) para calcular o estado estimado.
 
+% -----------------------------------------------------------------------------------------------------
+% ------------------------------------------- Subsubsection -------------------------------------------
+% -----------------------------------------------------------------------------------------------------
 \subsubsection{Exemplo}
 \label{subsubsec:mhe_example}
 
