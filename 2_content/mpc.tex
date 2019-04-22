@@ -1,11 +1,6 @@
 \chapter{Modelo Preditivo de Controle}
 \label{ch:mpc}
 
-% =====================================================================================================
-% ============================================= Section ===============================================
-% =====================================================================================================
-\section{Introdução}
-
 % TODO: Utilizar
 % \cite{Haugen2018}
 % O \acrshort{mpc} tem como princípio calcular a melhor sequência de variáveis de controle sob um dado
@@ -17,6 +12,26 @@
 % o MPC produz o sinal de controle que fornece o melhor equilíbrio entre erros de controle e mudanças
 % de sinal de controle. Não é possível obter erros de controle muito pequenos e alterações de sinal de
 % controle muito pequenas. Portanto, um equilíbrio sempre existirá.
+
+Segundo \citeonline{Rossiter2003} uma das principais diferenças entre o \acrshort{mpc} e a maioria das
+leis de controle (como o \acrshort{pid}, por exemplo) é que a maioria delas não leva em consideração
+as ações futuras do controle, porém o \acrshort{mpc} sim, e para essas ações futuras sejam consideradas
+é necessário possuir um modelo do sistema que mostre as dependências das saídas e das atuais variáveis
+medidas e as entradas atuais e futuras. % TODO: Conferir traducao deste pedaco. Rossiter pag 2
+Este modelo não precisa ser linear, e nem tão pouco ser extremamente fiel em descrever todas as interações
+físico-químicas do sistema. Na verdade, a regra básica do modelo, ainda segundo \citeonline{Rossiter2003}
+é que ele deve ser o mais simples possível, ou seja, deve ser o modelamento mínimo necessário para que
+possamos observar predições com o nível de precisão necessário.
+
+Além de comparar com outros métodos de controle e de descrever os modelos utilizados no \acrshort{mpc},
+\citeonline{Rossiter2003} também salienta alguns parametros e características que são importantes importantes
+para a técnica. Eles são descritos nos itens a seguir:
+
+\begin{itemize}
+    \item \textbf{Selecionar as entradas}
+        % TODO: Teminar daqui
+    
+\end{itemize}
 
 
 % =====================================================================================================
