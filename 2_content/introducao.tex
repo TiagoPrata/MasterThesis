@@ -96,8 +96,9 @@ tornou uma ferramenta padrão na tomada de decisões numa grande variedade de á
 O controle \acrshort{mpc} é um modo de implementação da otimização dinâmica e a execução
 deste trabalho em torno dessa técnica se deve ao fato de que ao longo dos últimos 25 anos
 ela evoluiu para dominar a indústria de processos, onde tem sido utilizada em milhares
-de problemas \cite{Borrelli2017}, e também ao seu crescimento em outras indústrias,
-como por exemplo a descrita por \citeonline{Yakub2013} em seu estudo comparativo
+de problemas \cite{Borrelli2017}, bem como no controle dos processos de fabricação de cimento,
+torres de destilação, plantas de PVC \cite{Camacho2007}, e também ao seu crescimento em outras
+indústrias, como por exemplo a descrita por \citeonline{Yakub2013} em seu estudo comparativo
 mostrando a utilização do \acrshort{mpc} no controle do sistema dinâmico de um automóvel.
 
 % =====================================================================================================
@@ -106,4 +107,20 @@ mostrando a utilização do \acrshort{mpc} no controle do sistema dinâmico de u
 \section{Organização do trabalho}
 \label{sec:organizacao_do_trabalho}
 
-% TODO: Fazer organização do trabalho
+Este trabalho, além de visar abordar uma implementação prática de um controle \acrshort{mpc}
+também busca ser um ponto de partida teórico e experimental para estudantes de graduação ou
+pós-graduação, de língua portuguesa, que possuam algum conhecimento sobre teoria de controle,
+porém que ainda estejam iniciando suas pesquisas sobre otimização de processos e controle preditivo.
+
+A \cref{fig:estrutura_do_trabalho} indica um possível fluxo de leitura desde trabalho, sendo importante
+ressaltar que os \cref{ch:otimizacao} e \cref{ch:controle_preditivo} servem de base para uma melhor
+compreensão do \cref{ch:mpc} e portanto podem ser lidos sem respeitar a ordem numérica dos mesmos.
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=0.4\textwidth]{./5_images/fig_estrutura_do_trabalho.png} 
+		\caption{Diagrama do fluxo de leitura do trabalho}
+		\label{fig:estrutura_do_trabalho}
+		\makebox[\width]{Fonte: Autor}
+	\end{center}
+\end{figure}
