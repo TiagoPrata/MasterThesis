@@ -1,38 +1,56 @@
 \chapter{Modelo Preditivo de Controle}
 \label{ch:mpc}
 
-% TODO: Utilizar
-% \cite{Haugen2018}
-% O \acrshort{mpc} tem como princípio calcular a melhor sequência de variáveis de controle sob um dado
-% futuro ou horizonte de tempo baseando-se no modelo do processo, valores dos estados atuais (medidos e estimados),
-% valores de \textit{setpoint}, distúrbios conhecidos e limitantes das variáveis de controle, variáveis de
-% processo e variáveis de estado.
-
-% \cite{Haugen2018}
-% o MPC produz o sinal de controle que fornece o melhor equilíbrio entre erros de controle e mudanças
-% de sinal de controle. Não é possível obter erros de controle muito pequenos e alterações de sinal de
-% controle muito pequenas. Portanto, um equilíbrio sempre existirá.
-
-Segundo \citeonline{Rossiter2003} uma das principais diferenças entre o \acrshort{mpc} e a maioria das
-leis de controle (como o \acrshort{pid}, por exemplo) é que a maioria delas não leva em consideração
-as ações futuras do controle, porém o \acrshort{mpc} sim, e para essas ações futuras sejam consideradas
-é necessário possuir um modelo do sistema que mostre as dependências das saídas e das atuais variáveis
-medidas e as entradas atuais e futuras. % TODO: Conferir traducao deste pedaco. Rossiter pag 2
+O \acrshort{mpc} é uma técnica originária dos anos 70 que teve um crescimento considerável nas últimas
+décadas \cite{Camacho2007} e segundo \citeonline{Rossiter2003} uma das principais diferenças entre o
+\acrshort{mpc} e a maioria das leis de controle (como o \acrshort{pid}, por exemplo) é que a maioria
+delas não leva em consideração as ações futuras do controle, porém o \acrshort{mpc} sim, e para essas
+ações futuras sejam consideradas é necessário possuir um modelo do sistema que mostre as dependências
+das saídas e das atuais variáveis medidas e as entradas atuais e futuras. % TODO: Conferir traducao deste pedaco. Rossiter pag 2
 Este modelo não precisa ser linear, e nem tão pouco ser extremamente fiel em descrever todas as interações
 físico-químicas do sistema. Na verdade, a regra básica do modelo, ainda segundo \citeonline{Rossiter2003}
 é que ele deve ser o mais simples possível, ou seja, deve ser o modelamento mínimo necessário para que
 possamos observar predições com o nível de precisão necessário.
 
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=0.75\textwidth]{./5_images/fig_mpc_basic_structure.png} 
+		\caption{Estrutura básica do \acrshort{mpc}}
+		\label{fig:mpc_basic_structure}
+		\makebox[\width]{Fonte: Autor, adaptado de \citeonline{Camacho2007}}
+	\end{center}
+\end{figure}
+
 Além de comparar com outros métodos de controle e de descrever os modelos utilizados no \acrshort{mpc},
-\citeonline{Rossiter2003} também salienta alguns parametros e características que são importantes importantes
-para a técnica. Eles são descritos nos itens a seguir:
+\citeonline{Rossiter2003} também salienta alguns outros parametros e características que são importantes
+importantes para a técnica:
 
 \begin{itemize}
-    \item \textbf{Selecionar as entradas}
-        % TODO: Teminar daqui
+    \item A \textbf{seleção das entradas} do sistema deve ser feita considerando a função custo que se
+            deseja minimizar.
+
+    \item O intervalo de tempo futuro, no qual o \acrshort{mpc} fará o cálculo das predições de controle
+            (também conhecido como \textbf{horizonte retrocendente} (\textit{Recending Horizon})) deve
+            incluir todas as dinâmicas significativas para o sistema, caso contrário o controle apresentará
+            uma performance ruim e alguns eventos não poderão ser observados.
+
+    \item O controle será tão preciso quanto seu modelo permitir. Para conseguir um controle mais preciso
+            é necessário também possuir um modelo mais preciso.
+
+    \item Um dos principais pontos do \acrshort{mpc} é a capacidade de \textbf{lidar com restrições} on-line
+            de maneira sistemática, permitindo assim uma melhor performance.
+
+    \item Ao utilizar um modelo, este método calcula a otimização do custo levando em conta as
+            \textbf{mudanças futuras na trajetória} desejada e distúrbios mensuráveis.
+
+    \item Outra características extremamente importante do \acrshort{mpc} é sua capacidade intrínseca de
+            controlar sistemas \acrshort{mimo}.
     
 \end{itemize}
 
+o MPC produz o sinal de controle que fornece o melhor equilíbrio entre erros de controle e mudanças
+de sinal de controle. Não é possível obter erros de controle muito pequenos e alterações de sinal de
+controle muito pequenas. Portanto, um equilíbrio sempre existirá.
 
 % =====================================================================================================
 % ============================================= Section ===============================================
