@@ -22,15 +22,15 @@ possamos observar predições com o nível de precisão necessário.
 \end{figure}
 
 Além de comparar com outros métodos de controle e de descrever os modelos utilizados no \acrshort{mpc},
-\citeonline{Rossiter2003} também salienta alguns outros parametros e características que são importantes
-importantes para a técnica:
+\citeonline{Rossiter2003} também salienta alguns outros parâmetros e características que são importantes
+para a técnica:
 
 \begin{itemize}
     \item A \textbf{seleção das entradas} do sistema deve ser feita considerando a função custo que se
             deseja minimizar.
 
     \item O intervalo de tempo futuro, no qual o \acrshort{mpc} fará o cálculo das predições de controle
-            (também conhecido como \textbf{horizonte retrocendente} (\textit{Recending Horizon})) deve
+            (também conhecido como \textbf{horizonte retrocedente} (\textit{Recending Horizon})) deve
             incluir todas as dinâmicas significativas para o sistema, caso contrário o controle apresentará
             uma performance ruim e alguns eventos não poderão ser observados.
 
@@ -43,7 +43,7 @@ importantes para a técnica:
     \item Ao utilizar um modelo, este método calcula a otimização do custo levando em conta as
             \textbf{mudanças futuras na trajetória} desejada e distúrbios mensuráveis.
 
-    \item Outra características extremamente importante do \acrshort{mpc} é sua capacidade intrínseca de
+    \item Outra característica extremamente importante do \acrshort{mpc} é sua capacidade intrínseca de
             controlar sistemas \acrshort{mimo}.
     
 \end{itemize}
@@ -59,13 +59,13 @@ controle muito pequenas. Portanto, um equilíbrio sempre existirá.
 \label{sec:aplicacao_pratica}
 
 Segundo \citeonline{Haugen2018} tanto o \acrshort{mpc} quanto o \acrshort{mhe} são problemas praticamente
-identicos do ponto de vista matemático, pois ambos exploram um modelo matemático sobre dado um horizonte de
+idênticos do ponto de vista matemático, pois ambos exploram um modelo matemático sobre dado um horizonte de
 tempo, porém, apesar de matematicamente parecidos, eles atuam de forma inversa um ao outro, pois
 enquanto o \acrshort{mhe} utiliza as variáveis de controle e os valores medidos do processo para estimar
 as variáveis estados (como já apresentado na \cref{subsec:moving_horizon_estimation}), o \acrshort{mpc}
 utiliza as variáveis de estado e os valores medidos do processo para estimar as variáveis de controle.
 Na \cref{fig:mhe_mpc} é possível observar o \acrshort{mhe} atuando sob um horizonte de estimação, utilizando
-dados passados, e o \acrshort{mpc} atuando dob um horizonte de predição, predizendo os valores futuros.
+dados passados, e o \acrshort{mpc} atuando sob um horizonte de predição, predizendo os valores futuros.
 
 \begin{figure}
 	\begin{center}

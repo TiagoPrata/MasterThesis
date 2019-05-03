@@ -26,7 +26,7 @@ $f(x)$, ou seja:
 	\min_{x} f(x)
 \end{equation}
 
-sujeto a (também denotado por "\acrshort{sujeitoa}") restrições, que podem ser na forma de:
+sujeito a (também denotado por "\acrshort{sujeitoa}") restrições, que podem ser na forma de:
 
 \begin{itemize}
 \item Restrições de desigualdade:
@@ -117,9 +117,9 @@ de $f(x)$ é conhecido como \textit{mínimo global}, todos os outros são
 \textit{mínimos locais}, pois são os valores mínimos da função apenas para uma
 região limitada.
 
-Algorítmos que buscam encontrar o valor mínimo de uma função podem erroneamente
+Algoritmos que buscam encontrar o valor mínimo de uma função podem erroneamente
 convergir para mínimos locais. O método de pesquisa em grade não é um desses
-algorítmos, pois ao verificar todos os valores de $x$ ele sempre encontrará o
+algoritmos, pois ao verificar todos os valores de $x$ ele sempre encontrará o
 valor de $x$ que minimiza a função objetivo, porém nas próximas sessões serão
 apresentados métodos que, apesar de serem mais eficientes computacionalmente,
 podem tender para mínimos locais.
@@ -203,14 +203,14 @@ objetivo) devido a redução do conjunto imagem de $f(x)$.
 % .....................................................................................................
 % ............................................ Subsection .............................................
 % .....................................................................................................
-\subsection{Método de busca de descidas mais íngrimes}
-\label{subsec:metodo_descida_mais_ingrime}
+\subsection{Método de busca de descidas mais íngremes}
+\label{subsec:metodo_descida_mais_ingreme}
 
-Tal qual o método de pesquisa em grade, a maioria dos outros algorítmos de otimização
+Tal qual o método de pesquisa em grade, a maioria dos outros algoritmos de otimização
 consiste em testar valores de $x$ e indicar qual deles retorna o menor $f(x)$,
 porém, diferentemente do método anterior, a técnica apresentada nesta seção não testa
 todos os valores possíveis de $x$, na realidade ela calcula o próximo valor de $x$ baseando-se
-na deriavada da função custo calculada no ponto $x$. Exemplificando para um caso escalar
+na derivada da função custo calculada no ponto $x$. Exemplificando para um caso escalar
 podemos dizer que o próximo valor de $x$, isto é, $x_{k+1}$, será dado por:
 
 \begin{subequations}
@@ -241,7 +241,7 @@ ponto mínimo de $f'$.
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=0.75\textwidth]{./5_images/fig_steepest_decent_slope.png} 
-		\caption{Influência de $f'(x_k)$ no cálculo de $x_{k+1}$ no método de descidas mais íngrimes}
+		\caption{Influência de $f'(x_k)$ no cálculo de $x_{k+1}$ no método de descidas mais íngremes}
 		\label{fig:steepest_decent_slope}
 		\makebox[\width]{Fonte: \citeonline{Haugen2018}}
 	\end{center}
@@ -251,13 +251,13 @@ Como indicado na \cref{eq:steepest_decent_xk1_a}, o cálculo de $x_{k+1}$ depend
 de $x_k$, ou seja, o valor do próximo $x$ calculado depende do $x$ anterior, e
 sendo assim uma dúvida comum vem à tona: "Como calcular $x_1$ sendo que não temos
 o valor de $x_0$?". Para esse caso devemos estimar $x_0$, geralmente
-escolhendo um valor que esteja próximo da região ótima da função custo. De fato
+escolhendo um valor que esteja próximo da região ótima da função custo. De fato,
 a maior parte das funções de otimização requerem como argumento um valor de $x_0$
 estimado, pois é a partir dele que serão iniciadas as buscas até o ponto mínimo
 da função.
 
 As mesmas equações se aplicam para casos onde $\mathrm{x}$ é um vetor, com a diferença que
-ao invés de calcularmos a devivada sobre o ponto $\mathrm{x}_k$, calculamos o gradiente
+ao invés de calcularmos a derivada sobre o ponto $\mathrm{x}_k$, calculamos o gradiente
 do vetor $\mathrm{x}_k$, tal qual vemos na \cref{eq:steepest_decent_xk1_vectorial_b}.
 
 \begin{subequations}
@@ -349,11 +349,11 @@ mostram mais detalhadamente esta diferença.
 
 As \cref{fig:steepest_descent_global_minimum,fig:steepest_descent_local_minimum}
 apresentam a mesma função custo, porém na \cref{fig:steepest_descent_global_minimum}
-$x_0 = 12$, e as derivadas consecutivas a partir desde valor converger para o
+$x_0 = 12$, e as derivadas consecutivas a partir desde valor convergir para o
 mínimo global; já na \cref{fig:steepest_descent_local_minimum} estimasse $x_0 = 10$
-resultando em um $f_{min}$ completamente diferente, convergendo para um mínimo local.
+resultando em um $f_{min}$ completamente diferente, convergindo para um mínimo local.
 Em ambas as figuras a linha verde indica o valor de $x_0$ e a linha vermelha indica
-o $f_{min}$ qaundo o critério de parada é atingido.
+o $f_{min}$ quando o critério de parada é atingido.
 
 % .....................................................................................................
 % ............................................ Subsection .............................................
@@ -363,7 +363,7 @@ o $f_{min}$ qaundo o critério de parada é atingido.
 
 Muitos métodos de otimização não suportam restrições como as descritas nas
 \cref{eq:min_restr_desigualdade,eq:min_restr_igualdade}, este é, por exemplo, o caso
-do método de busca de descidas mais íngrimes, porém outros métodos podem levar esse tipo
+do método de busca de descidas mais íngremes, porém outros métodos podem levar esse tipo
 de restrição em conta, e estes são conhecidos como Otimizadores de Programação não-linear
 (do inglês \acrlong{nlp}, ou simplesmente \acrshort{nlp}) \cite{Haugen2018}.
 
@@ -396,7 +396,7 @@ Estimar parâmetros de um modelo pode ser uma das inúmeras aplicações dos mé
 Segundo \citeonline{Haugen2018} um problema de estimação de parâmetros pode ser formulado
 como mostrado na \cref{eq:parameter_estimation}, visando encontrar os parâmetros que
 apresentem menor diferença entre o sistema real e o modelo sendo avaliado.
-A comparação o sistema real e o virtual é feita atravéz do acumulo da diferença das saídas dos
+A comparação o sistema real e o virtual é feita através do acumulo da diferença das saídas dos
 dois sistemas elevada ao quadrado ao longo de $N$ iterações.
 
 \begin{equation}
@@ -491,8 +491,8 @@ Onde:
 				f_n(x_k, \cdots) \\
 			\end{bmatrix}
 		\end{equation}
-		O pontos representam possíveis argumentos adicionais de $f$ como a variável de
-		controle ($u_k$), os disturbios do processo ($d_k$), e os parâmetros ($p$).
+		Os pontos representam possíveis argumentos adicionais de $f$ como a variável de
+		controle ($u_k$), os distúrbios do processo ($d_k$), e os parâmetros ($p$).
 		
 	\item $\mathrm{w}_k$ representa os distúrbios do não conhecidos ou não modelados do processo
 			agindo sobre o estado, no instante $k$. Não é necessário assumir nenhuma propriedade
@@ -553,7 +553,7 @@ Ou mesmo:
 \noindent
 Onde: 
 \begin{itemize}
-	\item $\mathrm{w}_i$ é o vetor de disturbio do processo.
+	\item $\mathrm{w}_i$ é o vetor de distúrbio do processo.
 		\begin{equation}
 			\mathrm{w}_i =
 			\begin{bmatrix}
@@ -585,7 +585,7 @@ Onde:
 			\end{bmatrix}
 		\end{equation}
 		Assumindo que $w$ é aleatório, então $Q$ pode ser interpretado como a inversa
-		da matriz de covariância do disturbio do processo.
+		da matriz de covariância do distúrbio do processo.
 
 	\item $\mathrm{R}^{-1}$ é a matriz de ponderação de $\mathrm{v}_i$
 		\begin{equation}
@@ -597,7 +597,7 @@ Onde:
 			\end{bmatrix}
 		\end{equation}
 		Assumindo que $v$ é aleatório, então $R$ pode ser interpretado como a inversa
-		da matriz de covariância do disturbio do processo.
+		da matriz de covariância do distúrbio do processo.
 	
 \end{itemize}
 
