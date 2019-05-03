@@ -1,6 +1,6 @@
 \newacronym{sujeitoa}{s.a.}{sujeito a}
 \newacronym{nlp}{NLP}{\textit{Nonlinear Programming}}
-\newacronym{mhe}{MHE}{\textit{Moving Horizon Estimation}}
+\newacronym{mhe}{MHE}{Estimativa de Horizonte Móvel}
 
 \chapter{Otimização}
 \label{ch:otimizacao}
@@ -18,7 +18,7 @@ ou em função de $x$. A solução ótima é indicada por
 \simbolo{xopt}{$ x_{opt} $}{Valor ótimo de $x$ para minimizar $f(x)$}" \cite{Haugen2018}.
 
 \citeonline{Haugen2018} ainda mostra que há várias formas de formular matematicamente
-um problema de otimização (minimização), mas que de forma geral, dado um modelo
+um problema de otimização (minimização), mas que, de forma geral, dado um modelo
 matemático $M$, é possível representá-lo como a minimização de $x$ para uma função
 $f(x)$, ou seja:
 
@@ -56,9 +56,9 @@ definem restrições na relação entre as variáveis de otimização, enquanto
 \ref{eq:min_limites} define as regiões limites destas mesmas variáveis.
 
 Existem diversos métodos para encontrar a solução ótima para um problema de otimização
-e a seção a seguir irá mostrar exemplos e métodos numéricos simples que nos permitirão
-entender em maiores detalhes como um problema de minimização pode ser resolvido. No
-\cref{ch:mpc} faremos uso das minimizações para compreender como o \acrshort{mpc}
+e a seção a seguir irá mostrar exemplos e métodos numéricos simples para exemplificar
+em maiores detalhes como um problema de minimização pode ser resolvido. No
+\cref{ch:mpc} será feito uso das minimizações para compreender como o \acrshort{mpc}
 calcula valores ótimos dadas determinadas restrições em um dado horizonte de controle,
 pois uma maior compreensão sobre problemas de minimização pode fazer grande diferença
 no entendimento do controle \acrshort{mpc} em si.
@@ -84,6 +84,7 @@ de dados definido) para verificar qual combinação minimiza a função objetivo
 testar todos os valores possíveis para $x_1$, $x_2$, $x_3$, $...$, $x_n$ com o
 objetivo de encontrar o \gls{xopt}, valor de $x$ que minimiza $f$.
 
+% TODO: (Brincalepe) Mover o código de exemplo para o Apêndice
 No caso de um único $x$, um laço condicional simples poderia testar todos os valores da
 função objetivo. Para ilustrar essa ideia o código-fonte \ref{lst:grid_search_scalar}, em
 Python, mostra como a função $f(x)$ abaixo poderia ser computada, caso o intervalo de
@@ -100,15 +101,17 @@ Sendo que:
 O intervalo $N = 100$ indica que serão analisados 100 valores entre $2$ e $22$.
 
 \lstinputlisting[	
-	caption={[Pesquisa em grade com número escalar]
-			Pesquisa em grade com número escalar \\
-		    Fonte: Autor, adaptado de \citeonline{Haugen2018}},
+	caption={Pesquisa em grade com número escalar},
+	captionpos=t,
 	label={lst:grid_search_scalar},
 	language=Python,
 	style=Python_lang]
 	{./4_Codes/grid_search_scalar.py}
+	\begin{center}
+		\makebox[\width]{Fonte: Autor, adaptado de \citeonline{Haugen2018}}
+	\end{center}
 
-A \cref{fig:grid_search_scalar} plotada a partir do código acima mostra,
+A \cref{fig:grid_search_scalar} foi construída a partir do código acima, sendo
 destacado em vermelho, o valor de $x$ onde a $f(x)$ apresentava seu menor valor.
 Repare que o gráfico apresenta dois vales distintos: um deles é o já mencionado
 destaque em vermelho, onde o valor $x$ é $18,76$ e outro onde $x$ vale
@@ -125,12 +128,13 @@ apresentados métodos que, apesar de serem mais eficientes computacionalmente,
 podem tender para mínimos locais.
 	
 \begin{figure}
+	\caption{Pesquisa em grade com número escalar}
 	\begin{center}
 		\includegraphics[width=0.8\textwidth]{./5_images/fig_grid_search_scalar.pdf} 
-		\caption{Pesquisa em grade com número escalar}
 		\label{fig:grid_search_scalar}
-		\makebox[\width]{Fonte: Autor, adaptado de \citeonline{Haugen2018}}
 	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor, adaptado de \citeonline{Haugen2018}}
 \end{figure}
 
 Ainda neste método, casos onde há uma maior quantidade de $x$ ($x_1$, $x_2$, \dots)
@@ -145,12 +149,12 @@ $0 \leq x_1 \leq 2$ e $1 \leq x_2 \leq 3$.
 	f(x) = (x_1 - 1)^2 + (x_2 - 2)^2 + 0,5
 \end{equation}
 
-Neste caso, sem muito esforço notamos que
+Neste caso, de forma direta nota-se que
 $f_{min} = 0,5$, $x_{1_{opt}} = 1$ e $x_{2_{opt}} = 2$.\footnote{
 	O código-fonte em Python para este cálculo pode ser encontrado no							% Footnote
 	\cref{ch:codigos_extras}, código-fonte \ref{lst:grid_search_vectorial}.}					% Footnote
 Porém se a restrição da \cref{eq:grid_search_vect_bounds} for aplicada
-encontraremos valores distintos, descritos nas equações presentes em
+novos valores são encontrados, descritos nas equações presentes em
 \cref{eq:grid_search_vect_bounds_output}.
 
 \begin{equation}
@@ -180,21 +184,21 @@ O motivo de os valores de $x_{1_{opt}}$ e de $x_{2_{opt}}$ serem diferentes quan
 da \cref{eq:grid_search_vect_bounds} é aplicada pode ser visualmente observado nas figuras
 \ref{fig:grid_search_vectorial_nobounds} e \ref{fig:grid_search_vectorial_withbounds} onde
 elas mostram uma alteração do ponto mínimo da função custo (outra forma de chamarmos a função
-objetivo) devido a redução do conjunto imagem de $f(x)$.
+objetivo) devido à redução do conjunto imagem de $f(x)$.
 
 \begin{figure}[h]
     \centering
     \begin{minipage}{0.45\textwidth}
+		\caption{Pesquisa em grade com duas variáveis e sem restrição}
         \centering
         \includegraphics[width=0.9\textwidth]{./5_images/fig_grid_search_vectorial1.png} 
-		\caption{Pesquisa em grade com duas variáveis e sem restrição}
 		\label{fig:grid_search_vectorial_nobounds}
 		Fonte: \citeonline{Haugen2018}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
+		\caption{Pesquisa em grade com duas variáveis e com restrição}  
         \centering
         \includegraphics[width=0.9\textwidth]{./5_images/fig_grid_search_vectorial2.png} 
-		\caption{Pesquisa em grade com duas variáveis e com restrição}  
 		\label{fig:grid_search_vectorial_withbounds}		      
 		Fonte: \citeonline{Haugen2018}
 	\end{minipage}
@@ -239,17 +243,19 @@ que $f'(x_b)$ será menor que $f'(x_a)$ uma vez que $x_b$ está mais próximo ao
 ponto mínimo de $f'$.
 
 \begin{figure}
+	\caption{Influência de $f'(x_k)$ no cálculo de $x_{k+1}$ no método de descidas mais íngremes}
 	\begin{center}
 		\includegraphics[width=0.75\textwidth]{./5_images/fig_steepest_decent_slope.png} 
-		\caption{Influência de $f'(x_k)$ no cálculo de $x_{k+1}$ no método de descidas mais íngremes}
 		\label{fig:steepest_decent_slope}
-		\makebox[\width]{Fonte: \citeonline{Haugen2018}}
 	\end{center}
+	\centering
+	\makebox[\width]{Fonte: \citeonline{Haugen2018}}
 \end{figure}
+% TODO: Traduzir imagem
 
 Como indicado na \cref{eq:steepest_decent_xk1_a}, o cálculo de $x_{k+1}$ depende
 de $x_k$, ou seja, o valor do próximo $x$ calculado depende do $x$ anterior, e
-sendo assim uma dúvida comum vem à tona: "Como calcular $x_1$ sendo que não temos
+sendo assim uma dúvida comum vem à tona: "Como calcular $x_1$ sendo que não temos % TODO: (Brincalepe) Muito informal!
 o valor de $x_0$?". Para esse caso devemos estimar $x_0$, geralmente
 escolhendo um valor que esteja próximo da região ótima da função custo. De fato,
 a maior parte das funções de otimização requerem como argumento um valor de $x_0$
@@ -311,13 +317,15 @@ para as equações descritas em \ref{eq:steepest_decent_vectorial_example}.
 \end{subequations}
 
 \lstinputlisting[	
-	caption={[Busca por descidas mais íngremes]
-			Busca por descidas mais íngremes \\
-		    Fonte: Autor, adaptado de \citeonline{Haugen2018}},
+	caption={Busca por descidas mais íngremes},
+	captionpos=t,
 	label={lst:steepest_descent_vectorial},
 	language=Python,
 	style=Python_lang]
 	{./4_Codes/steepest_descent_vectorial.py}
+	\begin{center}
+		\makebox[\width]{Fonte: Autor, adaptado de \citeonline{Haugen2018}}
+	\end{center}
 
 Um problema conhecido deste método é o fato de ele poder não distinguir entre
 mínimos locais e mínimos globais fazendo com que o valor que é apontado como
@@ -332,16 +340,16 @@ mostram mais detalhadamente esta diferença.
 \begin{figure}
     \centering
     \begin{minipage}{0.47\textwidth}
+		\caption{Método de descida mais íngrime convergindo para mínimo global}
         \centering
         \includegraphics[width=0.9\textwidth]{./5_images/steepest_descent_global_minimum.png} 
-		\caption{Método de descida mais íngrime convergindo para mínimo global}
 		\label{fig:steepest_descent_global_minimum}
 		Fonte: \citeonline{Haugen2018}
     \end{minipage}\hfill
     \begin{minipage}{0.47\textwidth}
+		\caption{Método de descida mais íngrime convergindo para mínimo local}  
         \centering
         \includegraphics[width=0.9\textwidth]{./5_images/steepest_descent_local_minimum.png} 
-		\caption{Método de descida mais íngrime convergindo para mínimo local}  
 		\label{fig:steepest_descent_local_minimum}		      
 		Fonte: \citeonline{Haugen2018}
 	\end{minipage}
@@ -379,6 +387,7 @@ têm extensa documentação disponível e serão utilizadas no decorrer deste tr
 não apresentaremos maiores detalhes sobre elas. Os autores \citeonline{Haugen2018},
 \citeonline{Ruggiero2000} detalham os procedimentos de cálculo para os métodos descritos
 aqui além de muitos outros.
+% TODO: (Brincalepe): Adicionar documentação sobre essas funções em um anexo
 
 % =====================================================================================================
 % ============================================= Section ===============================================
@@ -396,7 +405,7 @@ Estimar parâmetros de um modelo pode ser uma das inúmeras aplicações dos mé
 Segundo \citeonline{Haugen2018} um problema de estimação de parâmetros pode ser formulado
 como mostrado na \cref{eq:parameter_estimation}, visando encontrar os parâmetros que
 apresentem menor diferença entre o sistema real e o modelo sendo avaliado.
-A comparação o sistema real e o virtual é feita através do acumulo da diferença das saídas dos
+A comparação o sistema real e o virtual é feita através do acúmulo da diferença das saídas dos
 dois sistemas elevada ao quadrado ao longo de $N$ iterações.
 
 \begin{equation}
@@ -417,25 +426,32 @@ O diagrama de blocos apresentado na \cref{fig:parameter_estimation} apresenta de
 visual a comparação entre o sistema real e o modelo matemático.
 
 \begin{figure}
+	\caption{Diagrama de blocos do quadrado da diferença entre o sistema real e o modelo}
 	\begin{center}
 		\includegraphics[width=0.75\textwidth]{./5_images/fig_parameter_estimation.png} 
-		\caption{Diagrama de blocos do quadrado da diferença entre o sistema real e o modelo}
 		\label{fig:parameter_estimation}
-		\makebox[\width]{Fonte: \citeonline{Haugen2018}}
 	\end{center}
+	\centering
+	\makebox[\width]{Fonte: \citeonline{Haugen2018}}
 \end{figure}
+% TODO: Traduzir imagem
 
 Para estimar os parâmetros $P$ de um dado modelo é necessário dividir os dados amostrais
 $N$ em dois grupos: um deles destinado a adaptação do modelo, ou seja, encontrar o vetor $P$
 que minimize a função custo, e o outro grupo destinado a validação, isto é, verificar se os
 parâmetros encontrados durante a adaptação realmente é válido e preciso.
 
-Quando dispomos de dados previamente coletados do sistema é possível fazer uma \textit{Estimação
-offline}, onde as fases de coleta e estimação acontecem em momentos distintos. Já a
-\textit{Estimação Online} ocorre quando a coleta dos dados e a estimação dos parâmetros acontece
+Quando dispomos de dados previamente coletados do sistema é possível fazer uma \textit{estimação
+em batelada}\footnote{																					% Footnote
+	TODO % TODO: Adicionar nota sobre estimacao em batelada
+}, onde as fases de coleta e estimação acontecem em momentos distintos. Já a
+\textit{estimação recursiva}\footnote{																	% Footnote
+	TODO % TODO: Adicionar nota sobre estimacao recursiva
+} ocorre quando a coleta dos dados e a estimação dos parâmetros acontece
 ao mesmo tempo. A \cref{subsec:moving_horizon_estimation} descreve com mais detalhes a
-Estimação de Horizonte Móvel (do inglês, \acrlong{mhe}, ou simplesmente \acrshort{mhe}), que,
-assim como o filtro de Kalman, pode ser utilizado como estimador de parâmetros \textit{online}.
+\acrlong{mhe} (do inglês, \textit{Moving Horizon Estimation}, ou simplesmente \acrshort{mhe}), que,
+assim como o filtro de Kalman, pode ser utilizado como estimador de parâmetros recursivo.
+% TODO: (Brincalepe) Filtro de Kalman será detalhado?
 
 % .....................................................................................................
 % ............................................ Subsection .............................................
@@ -446,15 +462,18 @@ assim como o filtro de Kalman, pode ser utilizado como estimador de parâmetros 
 O método conhecido como \acrlong{mhe} é um método estimador de parâmetros \textit{online}
 que utiliza as medições atuais, anteriores e também as entradas do sistema sob um horizonte
 fixo de tempo para calcular o estado atual do sistema, assim como ilustrado na \cref{fig:mhe}.
+% TODO: (Brincalepe) Incluir citação
 
 \begin{figure}[h]
+	\caption{Horizonte de tempo analisado pelo método \acrlong{mhe}}
 	\begin{center}
 		\includegraphics[width=0.75\textwidth]{./5_images/fig_mhe.png} 
-		\caption{Horizonte de tempo analisado pelo método \acrlong{mhe}}
 		\label{fig:mhe}
-		\makebox[\width]{Fonte: \citeonline{Haugen2018}}
 	\end{center}
+	\centering
+	\makebox[\width]{Fonte: \citeonline{Haugen2018}}
 \end{figure}
+% TODO: Traduzir imagem
 
 O modelo de espaço de estado que descreve o sistema pode ser descrito como indicado na
 \cref{eq:mhe_main}.
@@ -494,7 +513,7 @@ Onde:
 		Os pontos representam possíveis argumentos adicionais de $f$ como a variável de
 		controle ($u_k$), os distúrbios do processo ($d_k$), e os parâmetros ($p$).
 		
-	\item $\mathrm{w}_k$ representa os distúrbios do não conhecidos ou não modelados do processo
+	\item $\mathrm{w}_k$ representa os distúrbios não conhecidos ou não modelados do processo
 			agindo sobre o estado, no instante $k$. Não é necessário assumir nenhuma propriedade
 			estatística particular para este distúrbio, porém é sensato assumir um ruído, como o
 			ruído branco, com uma matriz de covariância $Q$, assim como utilizado no filtro de
@@ -513,6 +532,7 @@ Onde:
 \end{itemize}
 
 O problema de otimização do \acrshort{mhe} pode ser descrito como na \cref{eq:mhe_minimization}.
+% TODO: (Brincalepe) Detalhar Norma2
 
 \begin{equation}
 	\label{eq:mhe_minimization}
@@ -648,19 +668,23 @@ $L$ = carga
 \end{subequations}
 
 \lstinputlisting[	
-	caption={[Exemplo do método \acrlong{mhe}]
-	Exemplo do método \acrlong{mhe} \\
-	Fonte: Autor, adaptado de \citeonline{Haugen2018}},
+	caption={Exemplo do método \acrlong{mhe}},
+	captionpos=t,
 	label={lst:mhe_example},
 	language=Python,
 	style=Python_lang]
 	{./4_Codes/mhe_example.py}
-	
-\begin{figure}[h]
 	\begin{center}
-		\includegraphics[width=1\textwidth]{./5_images/fig_mhe_example.png} 
-		\caption{Simulação utilizando \acrlong{mhe}}
-		\label{fig:mhe_example}
 		\makebox[\width]{Fonte: Autor, adaptado de \citeonline{Haugen2018}}
 	\end{center}
+	
+\begin{figure}[h]
+	\caption{Simulação utilizando \acrlong{mhe}}
+	\begin{center}
+		\includegraphics[width=1\textwidth]{./5_images/fig_mhe_example.png} 
+		\label{fig:mhe_example}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor, adaptado de \citeonline{Haugen2018}}
 \end{figure}
+% TODO: (Brincalepe) Interpretar imagem

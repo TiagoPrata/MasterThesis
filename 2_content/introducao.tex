@@ -1,6 +1,6 @@
 \newacronym{mimo}{MIMO}{\textit{Multiple Input Multiple Output}}
 \newacronym{pid}{PID}{Proporcional Integral Derivativo}
-\newacronym{mpc}{MPC}{\textit{Model Predictive Control}}
+\newacronym{mpc}{MPC}{Controle Preditivo Baseado em Modelo}
 \chapter{Introdução}
 \label{ch:introducao}
 
@@ -10,6 +10,8 @@
 %Estratégias utilizando modelos matemáticos.		[ok]
 %Porque não usar PID em alguns casos?				[ok - mais ou menos]
 %Conceito do MPC.									[ok]
+% TODO: (Brincalepe) Incluir histórico e maior detalhamento da importância do MPC atualmente
+% TODO: (Brincalepe) Incluir citações
 O controle de processos tem fundamental importância no desenvolvimento industrial,
 sendo amplamente utilizado em praticamente todos os segmentos da indústria,
 contribuindo de maneira significativa para a maior velocidade na estabilização de sinais,
@@ -19,7 +21,7 @@ valor desejado e o real valor medido na saída da planta para uma dada variável
 processo (ou variáveis, como em casos de processos com múltiplas entradas e múltiplas
 saídas, também conhecidos por sua sigla em inglês \acrshort{mimo} (\textit{\acrlong{mimo}})).
 A aplicação correta de estratégias de controle acarreta numa operação eficiente da
-planta, mantendo suas variáveis relevantes em condições próximas as desejadas.
+planta, mantendo suas variáveis relevantes em condições próximas às desejadas.
 A sintonia bem-feita do controle auxilia também na otimização do processo,
 possibilitando que o sistema opere com menor variabilidade, maximizando a produção
 e minimizando a utilização de recursos. No \cref{ch:otimizacao} abordaremos mais
@@ -30,18 +32,19 @@ variáveis manipuladas e variáveis controladas, assim podendo auxiliar na predi
 comportamento dinâmico do sistema analisado. A modelagem matemática pode ser feita
 utilizando dados empíricos ou através da aplicação de relações físico-químicas.
 
+% TODO: (Brincalepe) Incluir citações
 A estratégia de controle predominante na indústria é o controle \acrshort{pid}
 (\acrlong{pid}) que, além de levar em consideração o efeito proporcional (P) do erro
 medido, também atua em desvios relativos aos efeitos integrais (I) e derivativos (D).
 Seu elevado número de aplicações deve-se a uma grande variedade de vantagens como:
-sua rápida de implementação, facilidade de compreensão, disponibilidade em praticamente
+sua rápida implementação, facilidade de compreensão, disponibilidade em praticamente
 todas as plataformas industriais de controle e principalmente pelo fato de não requerer
 um modelo matemático do processo; porém apesar de poder ser aplicado com eficiência em
 uma grande variedade de processos, o controle \acrshort{pid} aparece com menos frequência
 em sistemas não-lineares, como em plantas de controle de pH, por exemplo. Em casos como
 esse, outra técnica bastante utilizada na indústria (porém em proporções bem menores
-que o \acrshort{pid}) pode ser utilizada: o controle \acrshort{mpc} (controle preditivo
-baseado em modelo, do inglês \acrlong{mpc}). Essa técnica consiste em predizer o
+que o \acrshort{pid}) pode ser utilizada: o controle \acrshort{mpc} (\acrlong{mpc},
+do inglês \textit{Model Predictive Control}). Essa técnica consiste em predizer o
 comportamento futuro de um sistema utilizando para isso um modelo do mesmo. Mais
 detalhes sobre o \acrshort{mpc} serão apresentados no \cref{ch:mpc}.
 
@@ -52,11 +55,11 @@ detalhes sobre o \acrshort{mpc} serão apresentados no \cref{ch:mpc}.
 \label{sec:objetivos}
 
 Este trabalho propõe, como objetivo principal, desenvolver um controlador \acrshort{mpc}
-aplicado à um sistema didático com restrições de atuação.
+aplicado a um sistema didático com restrições de atuação.
 
 Além disso os seguintes objetivos específicos também serão realizados:
 \begin{itemize}
-    \item Estudo do funcionamento matemático do controle \acrshort{mpc}
+    \item Estudo do algorítmo do controle \acrshort{mpc}
     \item Avaliação o desempenho do controlador \acrshort{mpc} desenvolvido em
         comparação com um controlador \acrshort{pid}
     \item Comparação entre a implementação em duas ou mais plataformas,
@@ -67,9 +70,9 @@ Além disso os seguintes objetivos específicos também serão realizados:
             criar modelos, aplicações, dentre outras coisas.},                                      % Footnote
         Python\footnote{
             Python é uma linguagem de programação de alto nível,                                    % Footnote
-            interpretada e orientada à objeto, muito utilizada atualmente para                      % Footnote
+            interpretada e orientada a objeto, muito utilizada atualmente para                      % Footnote
             aplicações nas áreas de ciência de dados, aprendizagem de máquina,                      % Footnote
-            identificação de sistemas, etc.},                                                       % Footnote
+            identificação de sistemas, etc.}                                                        % Footnote
         ou similares.
 \end{itemize}
 
@@ -79,8 +82,10 @@ Além disso os seguintes objetivos específicos também serão realizados:
 \section{Motivação e justificativas}
 \label{sec:motivacao_e_justificativas}
 
+% TODO: (Brincalepe) Incluir citações
+% TODO: (Brincalepe) Paragrafo muito longo. Quebrar em pedaços
 Segundo \citeonline{Parkinson2018} o processo de determinar o melhor \textit{design}
-para uma aplicação ou processo é chamado de otimização, e normalmente engenheiros
+para uma aplicação ou processo é chamado de otimização. Normalmente engenheiros
 costumam tentar implementar tais técnicas em seus processos visando aumentar a
 eficiência diminuindo os gastos, por exemplo projetando o menor trocador de calor
 que realize a transferência de calor desejada, uma ponte de menor custo para o local,
@@ -107,20 +112,22 @@ mostrando a utilização do \acrshort{mpc} no controle do sistema dinâmico de u
 \section{Organização do trabalho}
 \label{sec:organizacao_do_trabalho}
 
+% TODO: (Brincalepe) Descrever este trecho como sendo um objetivo específico
 Este trabalho, além de visar abordar uma implementação prática de um controle \acrshort{mpc}
 também busca ser um ponto de partida teórico e experimental para estudantes de graduação ou
 pós-graduação, de língua portuguesa, que possuam algum conhecimento sobre teoria de controle,
 porém que ainda estejam iniciando suas pesquisas sobre otimização de processos e controle preditivo.
 
 A \cref{fig:estrutura_do_trabalho} indica um possível fluxo de leitura desde trabalho, sendo importante
-ressaltar que os \cref{ch:otimizacao, ch:controle_preditivo} servem de base para uma melhor
+ressaltar que os \cref{ch:otimizacao,ch:controle_preditivo} servem de base para uma melhor
 compreensão do \cref{ch:mpc} e, portanto, podem ser lidos sem respeitar a ordem numérica dos mesmos.
 
 \begin{figure}[h]
-	\begin{center}
+    \caption{Diagrama do fluxo de leitura do trabalho}
+    \begin{center}
 		\includegraphics[width=0.4\textwidth]{./5_images/fig_estrutura_do_trabalho.png} 
-		\caption{Diagrama do fluxo de leitura do trabalho}
 		\label{fig:estrutura_do_trabalho}
-		\makebox[\width]{Fonte: Autor}
-	\end{center}
+    \end{center}
+    \centering
+    \makebox[\width]{Fonte: Autor}
 \end{figure}

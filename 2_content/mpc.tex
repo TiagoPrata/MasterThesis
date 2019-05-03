@@ -7,18 +7,19 @@ décadas \cite{Camacho2007} e segundo \citeonline{Rossiter2003} uma das principa
 delas não leva em consideração as ações futuras do controle, porém o \acrshort{mpc} sim, e para essas
 ações futuras sejam consideradas é necessário possuir um modelo do sistema que mostre as dependências
 das saídas e das atuais variáveis medidas e as entradas atuais e futuras. % TODO: Conferir traducao deste pedaco. Rossiter pag 2
-Este modelo não precisa ser linear, e nem tão pouco ser extremamente fiel em descrever todas as interações
+Este modelo não precisa ser linear, e nem tampouco ser extremamente fiel em descrever todas as interações
 físico-químicas do sistema. Na verdade, a regra básica do modelo, ainda segundo \citeonline{Rossiter2003}
 é que ele deve ser o mais simples possível, ou seja, deve ser o modelamento mínimo necessário para que
 possamos observar predições com o nível de precisão necessário.
 
 \begin{figure}[h]
+    \caption{Estrutura básica do \acrshort{mpc}}
 	\begin{center}
 		\includegraphics[width=0.75\textwidth]{./5_images/fig_mpc_basic_structure.png} 
-		\caption{Estrutura básica do \acrshort{mpc}}
 		\label{fig:mpc_basic_structure}
-		\makebox[\width]{Fonte: Autor, adaptado de \citeonline{Camacho2007}}
-	\end{center}
+    \end{center}
+    \centering
+    \makebox[\width]{Fonte: Autor, adaptado de \citeonline{Camacho2007}}
 \end{figure}
 
 Além de comparar com outros métodos de controle e de descrever os modelos utilizados no \acrshort{mpc},
@@ -30,9 +31,9 @@ para a técnica:
             deseja minimizar.
 
     \item O intervalo de tempo futuro, no qual o \acrshort{mpc} fará o cálculo das predições de controle
-            (também conhecido como \textbf{horizonte retrocedente} (\textit{Recending Horizon})) deve
+            (também conhecido como \textbf{horizonte retrocedente} (\textit{Recending Horizon}) deve
             incluir todas as dinâmicas significativas para o sistema, caso contrário o controle apresentará
-            uma performance ruim e alguns eventos não poderão ser observados.
+            um desempenho ruim e alguns eventos não poderão ser observados.
 
     \item O controle será tão preciso quanto seu modelo permitir. Para conseguir um controle mais preciso
             é necessário também possuir um modelo mais preciso.
@@ -51,6 +52,7 @@ para a técnica:
 o MPC produz o sinal de controle que fornece o melhor equilíbrio entre erros de controle e mudanças
 de sinal de controle. Não é possível obter erros de controle muito pequenos e alterações de sinal de
 controle muito pequenas. Portanto, um equilíbrio sempre existirá.
+% TODO: (Brincalepe) Explicar melhor este parágrafo
 
 % =====================================================================================================
 % ============================================= Section ===============================================
@@ -68,13 +70,15 @@ Na \cref{fig:mhe_mpc} é possível observar o \acrshort{mhe} atuando sob um hori
 dados passados, e o \acrshort{mpc} atuando sob um horizonte de predição, predizendo os valores futuros.
 
 \begin{figure}
+    \caption{Ação do \acrlong{mhe} e do \acrlong{mpc}}
 	\begin{center}
 		\includegraphics[width=0.9\textwidth]{./5_images/fig_mhe_mpc.png} 
-		\caption{Ação do \acrlong{mhe} e do \acrlong{mpc}}
 		\label{fig:mhe_mpc}
-		\makebox[\width]{Fonte: \citeonline{Vukov2015a}}
 	\end{center}
+    \centering
+    \makebox[\width]{Fonte: \citeonline{Vukov2015a}}
 \end{figure}
+% TODO: Traduzir imagem
 
 Podemos descrever o \acrshort{mpc} através de um problema de otimização de forma análoga ao que foi feito
 na \cref{subsec:moving_horizon_estimation} para descrever o \acrshort{mhe}, porém, ao invés minimizarmos
@@ -132,7 +136,7 @@ Onde:
             \end{bmatrix}
         \end{equation}
 
-        Onde $du(j)_i$ é o incremento da variável de controle relativo à esta mesma variável no instante
+        Onde $du(j)_i$ é o incremento da variável de controle relativo a esta mesma variável no instante
         de tempo anterior:
 
         \begin{equation}
@@ -190,6 +194,7 @@ obtemos:
 O exemplo descrito nesta seção apresenta a simulação do modelo de uma planta didática de aquecimento de ar
 utilizado na University College of Southeast Norway, situada em Porsgrunn, Noruega. O modelo matemático
 desta planta é descrito na \cref{eq:heat_plant} abaixo.
+% TODO: (Brincalepe) Detalhar melhor a planta utilizada no experimento
 
 \begin{subequations}
     \label{eq:heat_plant}
@@ -209,29 +214,33 @@ Onde:
 	\item $u$ é o sinal de controle do aquecedor
 	\item $d$ é o distúrbio de entrada (adicionado ao sinal de controle)
 	\item ${\theta}_d$ é o atraso que representa o transporte de ar e a dinâmica do aquecedor
-	\item ${\theta}_t$ é o atraso referente a dinâmica do aquecedor
+	\item ${\theta}_t$ é o atraso referente à dinâmica do aquecedor
 \end{itemize}
 
 A \cref{fig:mpc_example} ilustra os dados obtidos através da execução do código-fonte \ref{lst:mpc_example}
 escrito em Python.
 
 \begin{figure}[h]
+    \caption{Simulação utilizando \acrlong{mpc}}
 	\begin{center}
 		\includegraphics[width=1\textwidth]{./5_images/fig_mpc_example.png} 
-		\caption{Simulação utilizando \acrlong{mpc}}
 		\label{fig:mpc_example}
-		\makebox[\width]{Fonte: Autor, adaptado de \citeonline{Haugen2018}}
 	\end{center}
+    \centering
+    \makebox[\width]{Fonte: Autor, adaptado de \citeonline{Haugen2018}}
 \end{figure}
+% TODO: (Brincalepe) Interpretar imagem
 
 \lstinputlisting[	
-	caption={[Exemplo de aplicação do \acrlong{mpc}]
-	Exemplo de aplicação do \acrlong{mpc} \\
-	Fonte: Autor, adaptado de \citeonline{Haugen2018}},
+	caption={Exemplo de aplicação do \acrlong{mpc}},
+    captionpos=t,
 	label={lst:mpc_example},
 	language=Python,
 	style=Python_lang]
-	{./4_Codes/mpc_example.py}
+    {./4_Codes/mpc_example.py}
+    \begin{center}
+        \makebox[\width]{Fonte: Autor, adaptado de \citeonline{Haugen2018}}
+    \end{center}
 
 % =====================================================================================================
 % ============================================= Section ===============================================
