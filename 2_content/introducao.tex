@@ -44,9 +44,22 @@ uma grande variedade de processos, o controle \acrshort{pid} aparece com menos f
 em sistemas não-lineares, como em plantas de controle de pH, por exemplo. Em casos como
 esse, outra técnica bastante utilizada na indústria (porém em proporções bem menores
 que o \acrshort{pid}) pode ser utilizada: o controle \acrshort{mpc} (\acrlong{mpc},
-do inglês \textit{Model Predictive Control}). Essa técnica consiste em predizer o
-comportamento futuro de um sistema utilizando para isso um modelo do mesmo. Mais
-detalhes sobre o \acrshort{mpc} serão apresentados no \cref{ch:mpc}.
+do inglês \textit{Model Predictive Control}). Uma introdução desta técnica é apresentada
+na seção a seguir, porém mais detalhes sobre ela serão apresentados no \cref{ch:mpc}.
+
+
+% =====================================================================================================
+% ============================================= Section ===============================================
+% =====================================================================================================
+\section{Introdução ao \acrshort{mpc}}
+\label{sec:intro_mpc}
+
+Para \citeonline{Seborg2011} o \acrlong{mpc} é considerada uma técnica de controle
+avançada para problemas de controle multivariáveis. Segundo ele, mesmo para um processo
+de multiplas entradas e multiplas saídas e ainda onde existem restrições a essas variáveis,
+é rasoável assumir que possuindo o modelo dinâmico do processo e as medições atuais do
+mesmo, pode-se predizer os valores de saída futuros, e então calcular as mudanças nos
+valores de entrada baseando-se tanto nas previsões quanto no valor medido.
 
 % =====================================================================================================
 % ============================================= Section ===============================================
