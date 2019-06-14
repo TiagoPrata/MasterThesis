@@ -147,6 +147,8 @@ Além disso os seguintes objetivos específicos também serão realizados:
             aplicações nas áreas de ciência de dados, aprendizagem de máquina,                      % Footnote
             identificação de sistemas, etc.}                                                        % Footnote
         ou similares.
+    \item Compilação de material teórico e experimental sobre \acrshort{mpc}
+        para estudantes de graduação e pós-graduação, de língua portuguesa
 \end{itemize}
 
 % =====================================================================================================
@@ -155,29 +157,27 @@ Além disso os seguintes objetivos específicos também serão realizados:
 \section{Motivação e justificativas}
 \label{sec:motivacao_e_justificativas}
 
-% TODO: (Brincalepe) Incluir citações
-% TODO: (Brincalepe) Paragrafo muito longo. Quebrar em pedaços
-Segundo \citeonline{Parkinson2018} o processo de determinar o melhor \textit{design}
+% (Brincalepe) Incluir citações                                 [ok]
+% (Brincalepe) Paragrafo muito longo. Quebrar em pedaços        [ok]
+Segundo \citeonline{Parkinson2018} o processo de determinar o melhor modelo
 para uma aplicação ou processo é chamado de otimização. Normalmente engenheiros
-costumam tentar implementar tais técnicas em seus processos visando aumentar a
-eficiência diminuindo os gastos, por exemplo projetando o menor trocador de calor
-que realize a transferência de calor desejada, uma ponte de menor custo para o local,
-ou mesmo maximizar o rendimento de um processo químico, porém, assim como nesses
-exemplos, as variáveis e limitantes do processo podem ser inúmeras, fazendo com que a
-tarefa de otimização se torne difícil caso o engenheiro utilize apenas uma combinação
-de experiência, conhecimento, opiniões, etc. Para esses casos, ferramentas
-computacionais de otimização são essenciais.
+costumam implementar tais técnicas em seus processos visando aumentar a
+eficiência diminuindo os gastos, porém, as variáveis e limitantes do processo
+podem ser inúmeras, fazendo com que a tarefa de otimização se torne difícil.
+Para casos assim, ferramentas computacionais de otimização são essenciais. \cite{Parkinson2018}
 
 Dá-se o nome de Otimização Dinâmica ao processo de otimização que é realizado
 dinamicamente ao longo do processo e, segundo \citeonline{Borrelli2017}, esta se
 tornou uma ferramenta padrão na tomada de decisões numa grande variedade de áreas.
 O controle \acrshort{mpc} é um modo de implementação da otimização dinâmica e a execução
-deste trabalho em torno dessa técnica se deve ao fato de que ao longo dos últimos 25 anos
-ela evoluiu para dominar a indústria de processos, onde tem sido utilizada em milhares
-de problemas \cite{Borrelli2017}, bem como no controle dos processos de fabricação de cimento,
-torres de destilação, plantas de PVC \cite{Camacho2007}, e também ao seu crescimento em outras
-indústrias, como por exemplo a descrita por \citeonline{Yakub2013} em seu estudo comparativo
-mostrando a utilização do \acrshort{mpc} no controle do sistema dinâmico de um automóvel.
+deste trabalho em torno dessa técnica se deve ao fato de que ao longo das últimas quase 4
+décadas \cite{Lee2011} ela evoluiu para dominar a indústria de processos, onde tem sido
+utilizada em milhares de problemas \cite{Borrelli2017}.
+Além de exemplos de utilização de técnica já apresentados na \cref{sec:intro_mpc}, é
+importante destacar também sua utilização no controle dos processos de fabricação de cimento,
+torres de destilação, plantas de PVC, como descreve \citeonline{Camacho2007}, e também 
+seu crescimento em outras indústrias, como a indústria automobilista, onde o \acrshort{mpc}
+é utilizado para o controle do sistema dinâmico de um automóvel. \cite{Yakub2013}.
 
 % =====================================================================================================
 % ============================================= Section ===============================================
@@ -185,11 +185,11 @@ mostrando a utilização do \acrshort{mpc} no controle do sistema dinâmico de u
 \section{Organização do trabalho}
 \label{sec:organizacao_do_trabalho}
 
-% TODO: (Brincalepe) Descrever este trecho como sendo um objetivo específico
-Este trabalho, além de visar abordar uma implementação prática de um controle \acrshort{mpc}
-também busca ser um ponto de partida teórico e experimental para estudantes de graduação ou
-pós-graduação, de língua portuguesa, que possuam algum conhecimento sobre teoria de controle,
-porém que ainda estejam iniciando suas pesquisas sobre otimização de processos e controle preditivo.
+% (Brincalepe) Descrever este trecho como sendo um objetivo específico        [ok]
+% Este trabalho, além de visar abordar uma implementação prática de um controle \acrshort{mpc}
+% também busca ser um ponto de partida teórico e experimental para estudantes de graduação ou
+% pós-graduação, de língua portuguesa, que possuam algum conhecimento sobre teoria de controle,
+% porém que ainda estejam iniciando suas pesquisas sobre otimização de processos e controle preditivo.
 
 A \cref{fig:estrutura_do_trabalho} indica um possível fluxo de leitura desde trabalho, sendo importante
 ressaltar que os \cref{ch:otimizacao,ch:controle_preditivo} servem de base para uma melhor

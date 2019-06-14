@@ -56,10 +56,10 @@ definem restrições na relação entre as variáveis de otimização, enquanto
 \ref{eq:min_limites} define as regiões limites destas mesmas variáveis.
 
 Existem diversos métodos para encontrar a solução ótima para um problema de otimização
-e a seção a seguir irá mostrar exemplos e métodos numéricos simples para exemplificar
-em maiores detalhes como um problema de minimização pode ser resolvido. No
+e a seção a seguir irá mostrar exemplos e métodos numéricos simples para exemplificar,
+em maiores detalhes, como um problema de minimização pode ser resolvido. No
 \cref{ch:mpc} será feito uso das minimizações para compreender como o \acrshort{mpc}
-calcula valores ótimos dadas determinadas restrições em um dado horizonte de controle,
+calcula valores ótimos, dadas determinadas restrições em um dado horizonte de controle,
 pois uma maior compreensão sobre problemas de minimização pode fazer grande diferença
 no entendimento do controle \acrshort{mpc} em si.
 
@@ -84,7 +84,7 @@ de dados definido) para verificar qual combinação minimiza a função objetivo
 testar todos os valores possíveis para $x_1$, $x_2$, $x_3$, $...$, $x_n$ com o
 objetivo de encontrar o \gls{xopt}, valor de $x$ que minimiza $f$.
 
-% TODO: (Brincalepe) Mover o código de exemplo para o Apêndice
+% (Brincalepe) Mover o código de exemplo para o Apêndice			[ok]
 No caso de um único $x$, um laço condicional simples poderia testar todos os valores da
 função objetivo. Para ilustrar essa ideia o código-fonte \ref{lst:grid_search_scalar}, em
 Python, mostra como a função $f(x)$ abaixo poderia ser computada, caso o intervalo de
@@ -100,19 +100,8 @@ Sendo que:
 
 O intervalo $N = 100$ indica que serão analisados 100 valores entre $2$ e $22$.
 
-\lstinputlisting[	
-	caption={Pesquisa em grade com número escalar},
-	captionpos=t,
-	label={lst:grid_search_scalar},
-	language=Python,
-	style=Python_lang]
-	{./4_Codes/grid_search_scalar.py}
-	\begin{center}
-		\makebox[\width]{Fonte: Autor, adaptado de \citeonline{Haugen2018}}
-	\end{center}
-
-A \cref{fig:grid_search_scalar} foi construída a partir do código acima, sendo
-destacado em vermelho, o valor de $x$ onde a $f(x)$ apresentava seu menor valor.
+A \cref{fig:grid_search_scalar} foi construída a partir do código-fonte \ref{lst:grid_search_scalar},
+sendo destacado em vermelho, o valor de $x$ onde a $f(x)$ apresentava seu menor valor.
 Repare que o gráfico apresenta dois vales distintos: um deles é o já mencionado
 destaque em vermelho, onde o valor $x$ é $18,76$ e outro onde $x$ vale
 aproximadamente $5,5$. O vale do gráfico onde o valor de $x$ produz o menor valor
@@ -337,7 +326,7 @@ o mínimo mais próximo, seja ele local ou global. As
 \cref{fig:steepest_descent_global_minimum,fig:steepest_descent_local_minimum}
 mostram mais detalhadamente esta diferença.
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \begin{minipage}{0.47\textwidth}
 		\caption{Método de descida mais íngrime convergindo para mínimo global}

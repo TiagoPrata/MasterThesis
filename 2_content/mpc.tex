@@ -1,14 +1,13 @@
 \chapter{Controle Preditivo Baseado em Modelo}
 \label{ch:mpc}
 
-O \acrshort{mpc} é uma técnica originária dos anos 70 que teve um crescimento considerável nas últimas
-décadas \cite{Camacho2007} e segundo \citeonline{Rossiter2003} uma das principais diferenças entre o
-\acrshort{mpc} e a maioria das leis de controle (como o \acrshort{pid}, por exemplo) é que a maioria
-delas não leva em consideração as ações futuras do controle, porém o \acrshort{mpc} sim, e para essas
-ações futuras sejam consideradas é necessário possuir um modelo do sistema que mostre as dependências
-das saídas e das atuais variáveis medidas e as entradas atuais e futuras. % TODO: Conferir traducao deste pedaco. Rossiter pag 2
+Segundo \citeonline{Rossiter2003} uma das principais diferenças entre o \acrshort{mpc} e outras
+técnicas de controle (como o \acrshort{pid}, por exemplo) é que a maioria delas não leva em consideração
+as ações futuras do controle, porém o \acrshort{mpc} sim, e para essas ações futuras sejam consideradas
+é necessário possuir um modelo do sistema que mostre as dependências das saídas e das atuais variáveis
+medidas e as entradas atuais e futuras. % TODO: Conferir traducao deste pedaco. Rossiter pag 2
 Este modelo não precisa ser linear, e nem tampouco ser extremamente fiel em descrever todas as interações
-físico-químicas do sistema. Na verdade, a regra básica do modelo, ainda segundo \citeonline{Rossiter2003}
+físico-químicas do sistema. Na verdade, ainda segundo \citeonline{Rossiter2003}, a regra básica do modelo 
 é que ele deve ser o mais simples possível, ou seja, deve ser o modelamento mínimo necessário para que
 possamos observar predições com o nível de precisão necessário.
 
@@ -49,10 +48,10 @@ para a técnica:
     
 \end{itemize}
 
-o MPC produz o sinal de controle que fornece o melhor equilíbrio entre erros de controle e mudanças
-de sinal de controle. Não é possível obter erros de controle muito pequenos e alterações de sinal de
-controle muito pequenas. Portanto, um equilíbrio sempre existirá.
-% TODO: (Brincalepe) Explicar melhor este parágrafo
+% (Brincalepe) Explicar melhor este parágrafo           [removido]
+% o MPC produz o sinal de controle que fornece o melhor equilíbrio entre erros de controle e mudanças
+% de sinal de controle. Não é possível obter erros de controle muito pequenos e alterações de sinal de
+% controle muito pequenas. Portanto, um equilíbrio sempre existirá.
 
 % =====================================================================================================
 % ============================================= Section ===============================================
