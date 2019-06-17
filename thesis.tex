@@ -37,6 +37,11 @@
 
 \usepackage{amsmath, amssymb}
 % \usepackage{pgf}
+\usepackage{pdfpages}
+
+% Cria comando para referência de anexos. https://github.com/abntex/abntex2/issues/76
+\newcommand{\crefanexo}[1]{\hyperref[#1]{anexo~\ref{#1}}}
+\newcommand{\Crefanexo}[1]{\hyperref[#1]{Anexo~\ref{#1}}}
 
 % CONFIGURAÇÕES DE PACOTES
 
@@ -245,7 +250,7 @@ de automação e controle.}
 
 
 % Anexos
-%\include{./3_posText/anexos}
+\include{./3_posText/anexos}
 
 
 % INDICE REMISSIVO

@@ -86,9 +86,9 @@ objetivo de encontrar o \gls{xopt}, valor de $x$ que minimiza $f$.
 
 % (Brincalepe) Mover o código de exemplo para o Apêndice			[ok]
 No caso de um único $x$, um laço condicional simples poderia testar todos os valores da
-função objetivo. Para ilustrar essa ideia o código-fonte \ref{lst:grid_search_scalar}, em
-Python, mostra como a função $f(x)$ abaixo poderia ser computada, caso o intervalo de
-teste de $x$ fosse igual 100, ou seja, $N = 100$.
+função objetivo. Para ilustrar essa ideia, no \cref{ch:codigos_extras} o
+código-fonte \ref{lst:grid_search_scalar}, em Python, mostra como a função $f(x)$ abaixo
+poderia ser computada, caso o intervalo de teste de $x$ fosse igual 100, ou seja, $N = 100$.
 
 \begin{equation}
 	\label{eq:grid_search_scalar}
@@ -203,8 +203,9 @@ Tal qual o método de pesquisa em grade, a maioria dos outros algoritmos de otim
 consiste em testar valores de $x$ e indicar qual deles retorna o menor $f(x)$,
 porém, diferentemente do método anterior, a técnica apresentada nesta seção não testa
 todos os valores possíveis de $x$, na realidade ela calcula o próximo valor de $x$ baseando-se
-na derivada da função custo calculada no ponto $x$. Exemplificando para um caso escalar
-podemos dizer que o próximo valor de $x$, isto é, $x_{k+1}$, será dado por:
+na derivada da função custo calculada no ponto $x$.
+
+Exemplificando para um caso escalar podemos dizer que o próximo valor de $x$, isto é, $x_{k+1}$, será dado por:
 
 \begin{subequations}
 	\begin{align}
@@ -243,13 +244,10 @@ ponto mínimo de $f'$.
 % TODO: Traduzir imagem
 
 Como indicado na \cref{eq:steepest_decent_xk1_a}, o cálculo de $x_{k+1}$ depende
-de $x_k$, ou seja, o valor do próximo $x$ calculado depende do $x$ anterior, e
-sendo assim uma dúvida comum vem à tona: "Como calcular $x_1$ sendo que não temos % TODO: (Brincalepe) Muito informal!
-o valor de $x_0$?". Para esse caso devemos estimar $x_0$, geralmente
-escolhendo um valor que esteja próximo da região ótima da função custo. De fato,
-a maior parte das funções de otimização requerem como argumento um valor de $x_0$
-estimado, pois é a partir dele que serão iniciadas as buscas até o ponto mínimo
-da função.
+de $x_k$, ou seja, o valor do próximo $x$ calculado depende do $x$ anterior. Para
+o cálculo de $x_1$ é necessário fazer uma estimativa de $x_0$. A maior parte das
+funções de otimização requerem como argumento um valor de $x_0$ estimado, pois é
+a partir dele que serão iniciadas as buscas até o ponto mínimo da função.
 
 As mesmas equações se aplicam para casos onde $\mathrm{x}$ é um vetor, com a diferença que
 ao invés de calcularmos a derivada sobre o ponto $\mathrm{x}_k$, calculamos o gradiente
@@ -264,17 +262,19 @@ do vetor $\mathrm{x}_k$, tal qual vemos na \cref{eq:steepest_decent_xk1_vectoria
 
 \noindent
 Sendo que: \\
-\[
-	\mathrm{x}_k = 					% TODO: Ajustar a esquerda
+% \[
+\begin{align*}
+	\mathrm{x}_k &= 					% TODO: Ajustar a esquerda
 	\begin{bmatrix}
 		x(1)_{k} \\
 		x(2)_{k} \\
 		\vdots \\
 		x(n)_{k}
-	\end{bmatrix}
-\]
-$\mathrm{K}$ = fator multiplicador do incremento \\
-$\nabla f(\mathrm{x}_k)$ = gradiente da função custo calculada em $\mathrm{x}_k$
+	\end{bmatrix} \\
+	% \]
+	\mathrm{K} &= \text{fator multiplicador do incremento} \\
+	\nabla f(\mathrm{x}_k) &= \text{gradiente da função custo calculada em } \mathrm{x}_k
+\end{align*}
 \newline
 
 Além de requerer um valor estimado para $x_0$, este método também apresenta um
@@ -319,7 +319,7 @@ para as equações descritas em \ref{eq:steepest_decent_vectorial_example}.
 Um problema conhecido deste método é o fato de ele poder não distinguir entre
 mínimos locais e mínimos globais fazendo com que o valor que é apontado como
 $f_{min}$ possa ser na verdade apenas um mínimo local. O valor de $x_0$
-estimado para a função tem impacto direto neste resultado, pois como este método
+estimado tem impacto direto neste resultado, pois como este método
 inicia o cálculo da derivada de $f(x)$ no ponto $x_0$, então as iterações seguintes
 dependerão exclusivamente da iteração anterior, fazendo assim uma convergência para
 o mínimo mais próximo, seja ele local ou global. As
@@ -346,7 +346,7 @@ mostram mais detalhadamente esta diferença.
 
 As \cref{fig:steepest_descent_global_minimum,fig:steepest_descent_local_minimum}
 apresentam a mesma função custo, porém na \cref{fig:steepest_descent_global_minimum}
-$x_0 = 12$, e as derivadas consecutivas a partir desde valor convergir para o
+$x_0 = 12$, e as derivadas consecutivas a partir desde valor convergem para o
 mínimo global; já na \cref{fig:steepest_descent_local_minimum} estimasse $x_0 = 10$
 resultando em um $f_{min}$ completamente diferente, convergindo para um mínimo local.
 Em ambas as figuras a linha verde indica o valor de $x_0$ e a linha vermelha indica
@@ -367,16 +367,28 @@ de restrição em conta, e estes são conhecidos como Otimizadores de Programaç
 Otimizadores \acrshort{nlp} são úteis quando há a necessidade de métodos de otimização
 que sejam mais robustos e mais flexíveis do que técnicas mais simples, como o método
 de busca de Newton, ou aqueles apresentados nas sessões anteriores deste trabalho e por
-isso muitos softwares como o MATLAB\textsuperscript{\tiny\textregistered} e o Python
-dispõem de ferramentas para cálculo de métodos \acrshort{nlp}. No
-MATLAB\textsuperscript{\tiny\textregistered} o \textit{MATLAB's Optimization Toolbox}
-dispõe a função \textit{fmincon} enquanto no Python podemos encontrar a função
-\textit{scipy.optimize.minimize} na biblioteca \textit{SciPy}. Estas funções citadas
-têm extensa documentação disponível e serão utilizadas no decorrer deste trabalho, porém
-não apresentaremos maiores detalhes sobre elas. Os autores \citeonline{Haugen2018},
-\citeonline{Ruggiero2000} detalham os procedimentos de cálculo para os métodos descritos
-aqui além de muitos outros.
-% TODO: (Brincalepe): Adicionar documentação sobre essas funções em um anexo
+isso muitos softwares como o \acrshort{matlab} e bibliotecas da
+linguagem Python dispõem de ferramentas para cálculo de métodos \acrshort{nlp}. No
+\acrshort{matlab} o \textit{Optimization Toolbox}\textsuperscript{TM}\footnote{
+	O \acrshort{matlab} \textit{Optimization Toolbox}\textsuperscript{TM} é um conjunto					% footnote
+	de ferramentas de otimização que provê funções para encontrar parâmetros que minimizem				% footnote
+	ou maximizem objetivos, satisfazendo as condições limites. Mais detalhes em							% footnote
+	\href{www.mathworks.com/products/optimization.html}{www.mathworks.com/products/optimization.html}	% footnote
+} possui a função \textit{fmincon} enquanto no Python podemos encontrar a função
+\textit{scipy.optimize.minimize} na biblioteca \textit{SciPy}\footnote{
+	A biblioteca \textit{SciPy} (do inglês \textit{SciPy Library}) faz parte do conjunto de				% footnote
+	soluções do programa \textit{SciPy}. A biblioteca \textit{SciPy} fornece uma interface				% footnote
+	de usuário amigável para cálculos de integração numérica, interpolação, otimização,					% footnote
+	algebra linear, estatística, entre outros. Mais detalhes em 										% footnote
+	\href{www.scipy.org/scipylib/index.html}{www.scipy.org/scipylib/index.html}							% footnote
+}.
+
+Os autores \citeonline{Haugen2018}, \citeonline{Ruggiero2000} apresentam em maiores detalhes
+os métodos descritos nesta seção, além de muitos outros.
+
+A documentação referente as funções fmincon e scipy.optimize.minimize encontram-se, respectivamente,
+nos \crefanexo{ch:fmincon} e \crefanexo{ch:scipy_optimize_minimize}.
+% (Brincalepe): Adicionar documentação sobre essas funções em um anexo			[ok]
 
 % =====================================================================================================
 % ============================================= Section ===============================================
@@ -431,13 +443,10 @@ que minimize a função custo, e o outro grupo destinado a validação, isto é,
 parâmetros encontrados durante a adaptação realmente é válido e preciso.
 
 Quando dispomos de dados previamente coletados do sistema é possível fazer uma \textit{estimação
-em batelada}\footnote{																					% Footnote
-	TODO % TODO: Adicionar nota sobre estimacao em batelada
-}, onde as fases de coleta e estimação acontecem em momentos distintos. Já a
-\textit{estimação recursiva}\footnote{																	% Footnote
-	TODO % TODO: Adicionar nota sobre estimacao recursiva
-} ocorre quando a coleta dos dados e a estimação dos parâmetros acontece
-ao mesmo tempo. A \cref{subsec:moving_horizon_estimation} descreve com mais detalhes a
+em batelada} (também conhecida como \textit{offline} \cite{Bolognani2009}), onde as fases de coleta e
+estimação acontecem em momentos distintos. Já a \textit{estimação recursiva} (ou \textit{online}
+\cite{Stadler2011}) ocorre quando a coleta dos dados e a estimação dos parâmetros acontece ao mesmo tempo.
+A \cref{subsec:moving_horizon_estimation} descreve com mais detalhes a
 \acrlong{mhe} (do inglês, \textit{Moving Horizon Estimation}, ou simplesmente \acrshort{mhe}), que,
 assim como o filtro de Kalman, pode ser utilizado como estimador de parâmetros recursivo.
 % TODO: (Brincalepe) Filtro de Kalman será detalhado?
