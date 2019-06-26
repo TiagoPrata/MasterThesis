@@ -126,7 +126,7 @@ podem tender para mínimos locais.
 	\makebox[\width]{Fonte: Autor, adaptado de \citeonline{Haugen2018}}
 \end{figure}
 
-Ainda neste método, casos onde há uma maior quantidade de $x$ ($x_1$, $x_2$, \dots)
+Ainda neste método, casos onde há uma maior quantidade de variáveis ($x_1$, $x_2$, \dots)
 deve-se utilizar laços aninhados para que a varredura de todas as possibilidades
 possa ser feita. 
 
@@ -454,10 +454,10 @@ assim como o filtro de Kalman, pode ser utilizado como estimador de parâmetros 
 % .....................................................................................................
 % ............................................ Subsection .............................................
 % .....................................................................................................
-\subsection{Moving Horizon Estimation}
+\subsection{\acrlong{mhe} (\acrshort{mhe})}
 \label{subsec:moving_horizon_estimation}
 
-O método conhecido como \acrlong{mhe} é um método estimador de parâmetros \textit{online}
+O método conhecido como \acrlong{mhe} é um método estimador recursivo de parâmetros
 que utiliza as medições atuais, anteriores e também as entradas do sistema sob um horizonte
 fixo de tempo para calcular o estado atual do sistema, assim como ilustrado na \cref{fig:mhe}.
 % TODO: (Brincalepe) Incluir citação
@@ -519,7 +519,7 @@ Onde:
 	
 	\item $\mathrm{y}$ é o vetor de saída com $m$ elementos.
 	
-	\item $\mathrm{g}$ é um vetor de $m$ funções lineares ou não-lineares de $x_k$, onde os pontos
+	\item $\mathrm{g}$ é um vetor de $m$ funções lineares ou não-lineares de $\mathrm{x}_k$, onde os pontos
 			também representam possíveis argumentos adicionais.
 
 	\item $\mathrm{v}_k$ representa o erro medido, e, assim como $\mathrm{w}_k$, não necessita
@@ -556,16 +556,16 @@ E com base na \cref{eq:mhe_main} este problema também pode ser descrito como:
 
 \begin{equation}
 	\label{eq:mhe_minimization2}
-	\min_{X} \sum_{i=k-N}^{k-1} \Vert w_i \Vert^2_{Q^{-1}} + 
-			\sum_{i=k-N}^{k} \Vert v_i \Vert^2_{R^{-1}}
+	\min_{X} \sum_{i=k-N}^{k-1} \Vert \mathrm{w}_i \Vert^2_{Q^{-1}} + 
+			\sum_{i=k-N}^{k} \Vert \mathrm{v}_i \Vert^2_{R^{-1}}
 \end{equation}
 
 Ou mesmo:
 
 \begin{equation}
 	\label{eq:mhe_minimization3}
-	\min_{X} \sum_{i=k-N}^{k-1} w^T_i Q^{-1} w_i + 
-			\sum_{i=k-N}^{k} v^T_i R^{-1} v_i
+	\min_{X} \sum_{i=k-N}^{k-1} \mathrm{w}^T_i Q^{-1} \mathrm{w}_i + 
+			\sum_{i=k-N}^{k} \mathrm{v}^T_i R^{-1} \mathrm{v}_i
 \end{equation}
 
 \noindent
