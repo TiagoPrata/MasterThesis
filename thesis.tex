@@ -39,6 +39,9 @@
 % \usepackage{pgf}
 \usepackage{pdfpages}
 
+% Pacote para fracoes diagonais
+\usepackage{xfrac}
+
 % Cria comando para referência de anexos. https://github.com/abntex/abntex2/issues/76
 \newcommand{\crefanexo}[1]{\hyperref[#1]{anexo~\ref{#1}}}
 \newcommand{\Crefanexo}[1]{\hyperref[#1]{Anexo~\ref{#1}}}
@@ -184,11 +187,10 @@ de automação e controle.}
 % \listofquadros*
 % \cleardoublepage
 
-% TODO: Reinserir lista de quadros quando houverem tabelas
 % % inserir lista de tabelas
-% \pdfbookmark[0]{\listtablename}{lot}
-% \listoftables*
-% \cleardoublepage
+\pdfbookmark[0]{\listtablename}{lot} 
+\listoftables*
+\cleardoublepage
 
 % inserir lista de algoritmos
 \pdfbookmark[0]{\lstlistlistingname}{lol}
