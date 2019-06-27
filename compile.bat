@@ -6,6 +6,8 @@ del "*.aux" /s /f /q
 del "*.bbl" /s /f /q
 del "*.blg" /s /f /q
 del "*.brf" /s /f /q
+del "*.fdb_latexmk" /s /f /q
+del "*.fls" /s /f /q
 del "*.glg" /s /f /q
 del "*.glo" /s /f /q
 del "*.gls" /s /f /q
@@ -21,6 +23,7 @@ del "*.lot" /s /f /q
 del "*.lol" /s /f /q
 del "*.sbl" /s /f /q
 del "*.simbolos" /s /f /q
+del "*.synctex.gz" /s /f /q
 del "*.toc" /s /f /q
 
 pdflatex thesis.tex
