@@ -1,3 +1,7 @@
+\newacronym{prbs}{PRBS}{\textit{Pseudo-Random Binary Signal}}
+\newacronym{arma}{ARMA}{\textit{Auto-Regressive Moving Average}}
+\newacronym{gbn}{GBN}{\textit{Generalized Binary Noise}}
+
 \chapter{Metodologia}
 \label{ch:metodologia}
 
@@ -25,6 +29,42 @@ As etapas para a identificação de um sistema, segundo \citeonline{Aguirre2015}
     \item Determinação da estrutura do modelos
     \item Estimação de parâmetros
     \item Validação do modelo
+\end{itemize}
+
+As seções a seguir detalham cada uma dessas etapas.
+
+% .....................................................................................................
+% ............................................ Subsection .............................................
+% .....................................................................................................
+\subsection{Testes dinâmicos e coleta de dados}
+\label{subsec:testes_dinamicos_e_coleta_de_dados}
+
+Esta etapa abrange os procedimentos necessários para geração do conjunto de dados que serão utilizados
+para a identificação do sistema. Algumas das atividades realizadas nessa etapa são: escolha das variáveis,
+definição dos sinais de excitação, definição do período de amostragem e a execução em si dos testes.
+\cite{Aguirre2015}
+
+\begin{itemize}
+    % TODO Corrigir apud
+    \item Período de amostragem: Duas regras práticas auxiliam na sua definição: usar um tempo
+    de amostragem de aproximadamente 1/10 da maior constante de tempo /apud{Gustavsson1975}{Ballin2008}; ou
+    10\% do tempo de acomodação de uma resposta degrau. \cite{Ballin2008}
+    
+    \item Sinais de excitação: A escolha dos sinais de entrada pode ter grande impacto nos dados coletados,
+    pois determinarão o ponto de operação do sistema e quais das suas características serão excitadas
+    durante o experimento \cite{Aguirre2015}.
+    Diversos tipos distintos de sinais podem ser utilizados. Entre os mais utilizados destacam-se:
+    impulsivo; degrau; \acrshort{prbs} - Sinal Binário Pseudo-Aleatório (do inglês, \acrlong{prbs});
+    \acrshort{arma} - Média Móvel Auto-Regressiva (do inglês, \acrlong{arma});
+    \acrshort{gbn} - Ruido Binário Generalizado (do inglês, \acrlong{gbn}); soma de senóides e etc. \cite{Aguirre2015}
+    
+    % TODO Corrigir apud
+    \item Duração do experimento: A duração do experimento, segundo /citeonline{Garcia2005}, deveria ser
+        a maior possível, uma vez que a variância das estimativas é proporcional ao inverso da duração do
+        experimento, porém sob o ponto de vista prático e experimental, a duração do experimento deveria ser
+        a menor possível para a obtenção de um modelo aceitável, pois ao longo do experimento o processo
+        estará sujeito a perturbações extras que podem impactar na operação da planta, na qualidade dos
+        produtos ou até na segurança do processo.
 \end{itemize}
 
 % =====================================================================================================
