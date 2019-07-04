@@ -1,6 +1,9 @@
 \newacronym{prbs}{PRBS}{\textit{Pseudo-Random Binary Signal}}
 \newacronym{arma}{ARMA}{\textit{Auto-Regressive Moving Average}}
 \newacronym{gbn}{GBN}{\textit{Generalized Binary Noise}}
+\newacronym{ar}{AR}{modelo autorregressivo}
+\newacronym{arx}{ARX}{modelo autorregressivo com entrada exógena}
+\newacronym{armax}{ARMAX}{modelo autorregressivo com média móvel e entrada exógena}
 
 \chapter{Metodologia}
 \label{ch:metodologia}
@@ -21,7 +24,9 @@ principais técnicas utilizadas na identificação de sistemas atualmente (méto
 subespaço de estados e método do erro de predição) tiveram suas bases estruturadas com os trabalhos
 de \apudonline{Ho1966}{Gevers2006} e de \apudonline{Astrom1965}{Gevers2006}.
 
-% TODO Confirmar se as etapas são as mesmas no livro atual do Aguirre
+De acordo com \apudonline{Dunia2008}{Pracek2012} a identificação do sistema permite que simulações
+sejam desenvolvidas de modo a garantir um melhor desempenho dos sistemas de controle projetados.
+
 As etapas para a identificação de um sistema, segundo \citeonline{Aguirre2015} são:
 \begin{itemize}
     \item Testes dinâmicos e coleta de dados
@@ -44,13 +49,13 @@ para a identificação do sistema. Algumas das atividades realizadas nessa etapa
 definição dos sinais de excitação, definição do período de amostragem e a execução em si dos testes.
 \cite{Aguirre2015}
 
+% TODO Revisar estes itens com as descricoes de Aguirre, p.478
 \begin{itemize}
-    % TODO Corrigir apud
-    \item Período de amostragem: Duas regras práticas auxiliam na sua definição: usar um tempo
-    de amostragem de aproximadamente 1/10 da maior constante de tempo /apud{Gustavsson1975}{Ballin2008}; ou
+    \item Período de amostragem: duas regras práticas auxiliam na sua definição: usar um tempo
+    de amostragem de aproximadamente 1/10 da maior constante de tempo \apud{Gustavsson1975}{Ballin2008}; ou
     10\% do tempo de acomodação de uma resposta degrau. \cite{Ballin2008}
     
-    \item Sinais de excitação: A escolha dos sinais de entrada pode ter grande impacto nos dados coletados,
+    \item Sinais de excitação: a escolha dos sinais de entrada pode ter grande impacto nos dados coletados,
     pois determinarão o ponto de operação do sistema e quais das suas características serão excitadas
     durante o experimento \cite{Aguirre2015}.
     Diversos tipos distintos de sinais podem ser utilizados. Entre os mais utilizados destacam-se:
@@ -58,14 +63,41 @@ definição dos sinais de excitação, definição do período de amostragem e a
     \acrshort{arma} - Média Móvel Auto-Regressiva (do inglês, \acrlong{arma});
     \acrshort{gbn} - Ruido Binário Generalizado (do inglês, \acrlong{gbn}); soma de senóides e etc. \cite{Aguirre2015}
     
-    % TODO Corrigir apud
-    \item Duração do experimento: A duração do experimento, segundo /citeonline{Garcia2005}, deveria ser
+    \item Duração do experimento: a duração do experimento, segundo \citeonline{Garcia2005}, deveria ser
         a maior possível, uma vez que a variância das estimativas é proporcional ao inverso da duração do
         experimento, porém sob o ponto de vista prático e experimental, a duração do experimento deveria ser
         a menor possível para a obtenção de um modelo aceitável, pois ao longo do experimento o processo
         estará sujeito a perturbações extras que podem impactar na operação da planta, na qualidade dos
         produtos ou até na segurança do processo.
 \end{itemize}
+
+% .....................................................................................................
+% ............................................ Subsection .............................................
+% .....................................................................................................
+\subsection{Escolha da representação matemática}
+\label{subsec:escolha_da_representacao_matematica}
+
+Existem diversas representações matemáticas distintas para modelos lineares, sendo que, segundo
+\citeonline{Aguirre2015}, a mais utilizada é a função de transferência, porém além desta também
+é importante salientar a relevância do modelo de espaço de estados (já mencionado nos capítulos
+anteriores), do modelo \acrshort{ar} (\acrlong{ar}), do modelo \acrshort{arx} (\acrlong{arx}) e
+do modelo \acrshort{armax} (\acrlong{armax}).
+
+\begin{citacao}
+    \text{[...]} quando se trata da modelagem obtida por meios fenomenológicos é comum que se adote a base de
+    tempo contínuo, em virtude de a maioria das leis da física serem expressas nesse tempo. Por sua vez,
+    quando se trata de identificação de sistemas por processos experimentais, trabalha-se com amostras
+    de dados coletados a cada intervalo de tempo, nesses casos usualmente adota-se o tempo discreto.
+    \apud{Garcia2005}{Favaro2012}
+\end{citacao}
+
+% .....................................................................................................
+% ............................................ Subsection .............................................
+% .....................................................................................................
+\subsection{Determinação da estrutura do modelos}
+\label{subsec:determinacao_da_estrutura_do_modelo}
+
+% TODO Continuar de Aguirre p.493
 
 % =====================================================================================================
 % ============================================= Section ===============================================
