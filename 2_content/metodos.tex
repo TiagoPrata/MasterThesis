@@ -8,8 +8,6 @@
 \chapter{Metodologia}
 \label{ch:metodologia}
 
-% TODO Intro ?
-
 % =====================================================================================================
 % ============================================= Section ===============================================
 % =====================================================================================================
@@ -49,19 +47,20 @@ para a identificação do sistema. Algumas das atividades realizadas nessa etapa
 definição dos sinais de excitação, definição do período de amostragem e a execução em si dos testes.
 \cite{Aguirre2015}
 
-% TODO Revisar estes itens com as descricoes de Aguirre, p.478
 \begin{itemize}
-    \item Período de amostragem: duas regras práticas auxiliam na sua definição: usar um tempo
-    de amostragem de aproximadamente 1/10 da maior constante de tempo \apud{Gustavsson1975}{Ballin2008}; ou
-    10\% do tempo de acomodação de uma resposta degrau. \cite{Ballin2008}
+    \item Período de amostragem: três regras práticas auxiliam na definição deste período: usar um tempo
+        de amostragem de aproximadamente 1/10 da maior constante de tempo \apud{Gustavsson1975}{Ballin2008};
+        10\% do tempo de acomodação de uma resposta degrau \cite{Ballin2008}; ou escolher um tempo de amostragem
+        de 5 a 10 vezes maior do que a maior frequência de interesse contida nos dados. \cite{Aguirre2015}.
     
     \item Sinais de excitação: a escolha dos sinais de entrada pode ter grande impacto nos dados coletados,
-    pois determinarão o ponto de operação do sistema e quais das suas características serão excitadas
-    durante o experimento \cite{Aguirre2015}.
-    Diversos tipos distintos de sinais podem ser utilizados. Entre os mais utilizados destacam-se:
-    impulsivo; degrau; \acrshort{prbs} - Sinal Binário Pseudo-Aleatório (do inglês, \acrlong{prbs});
-    \acrshort{arma} - Média Móvel Auto-Regressiva (do inglês, \acrlong{arma});
-    \acrshort{gbn} - Ruido Binário Generalizado (do inglês, \acrlong{gbn}); soma de senóides e etc. \cite{Aguirre2015}
+        pois determinarão o ponto de operação do sistema e quais das suas características serão excitadas
+        durante o experimento \cite{Aguirre2015}.
+        Diversos tipos distintos de sinais podem ser utilizados. Entre os mais utilizados destacam-se:
+        impulsivo; degrau; \acrshort{prbs} - Sinal Binário Pseudo-Aleatório (do inglês, \acrlong{prbs});
+        \acrshort{arma} - Média Móvel Auto-Regressiva (do inglês, \acrlong{arma});
+        \acrshort{gbn} - Ruido Binário Generalizado (do inglês, \acrlong{gbn}); soma de senóides e etc.
+        \cite{Aguirre2015}
     
     \item Duração do experimento: a duração do experimento, segundo \citeonline{Garcia2005}, deveria ser
         a maior possível, uma vez que a variância das estimativas é proporcional ao inverso da duração do
@@ -97,7 +96,39 @@ do modelo \acrshort{armax} (\acrlong{armax}).
 \subsection{Determinação da estrutura do modelos}
 \label{subsec:determinacao_da_estrutura_do_modelo}
 
-% TODO Continuar de Aguirre p.493
+Determinar a ordem de um modelo é um dos aspectos mais importantes na determinação de sua estrutura,
+uma vez que, caso sua ordem seja muito menor do que a ordem efetiva do sistema real, o modelo não
+refletirá a completamente sua complexidade estrutural. Analogamente, escolher um modelo que a ordem
+seja muito maior do que a necessária, provavelmente causará uma estimação de parâmetros mal condicionada.
+\cite{Aguirre2015}
+
+% .....................................................................................................
+% ............................................ Subsection .............................................
+% .....................................................................................................
+\subsection{Estimação de parâmetros}
+\label{subsec:estimacao_de_parametros}
+
+% TODO Corrigir citação
+A estimação de parâmetros, segundo /apudonline{Eykhoff1974}{Favaro2012} é a determinação experimental
+de valores de parâmetros que governam a dinâmica e/ou o comportamento não-linear, assumindo que a
+estrutura do modelo seja conhecida.
+
+Essa etapa começa com a escolha do algorítmo a ser utilizado \cite{Aguirre2015}. Dentre eles, os
+mais amplamente empregados na literatura são: método da análise de frequência; método da resposta
+transitória e método dos mínimos quadrados \cite{Favaro2012}.
+
+% .....................................................................................................
+% ............................................ Subsection .............................................
+% .....................................................................................................
+\subsection{Validação do modelo}
+\label{subsec:validacao_do_modelo}
+
+Em problemas de validação, a questão é tentar Determinar se um dado modelo é válido ou não e para isso,
+deve-se simulá-lo sem qualquer ajuste adicional e compará-lo a dados medidos em testes diferentes daquele
+usado no desenvolvimento da sintonia do mesmo. Ao se obter um conjunto de modelos, deve-se verificar se
+eles incorporaram as características de interesse do sistema original \cite{Aguirre2015}.
+
+\citeonline{Aguirre2015} em seu livro apresenta diversas ferramentas para auxiliar na validação dos modelos.
 
 % =====================================================================================================
 % ============================================= Section ===============================================
