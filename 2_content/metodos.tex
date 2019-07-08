@@ -136,12 +136,23 @@ eles incorporaram as características de interesse do sistema original \cite{Agu
 \section{Desenvolvimento do controlador}
 \label{sec:desenvolvimento_do_controlador}
 
-% TODO descrever
+Através das equações descritas nas seções \ref{subsec:tclab_modelo_siso}, \ref{subsec:tclab_modelo_mimo}
+e também do modelo experimental que será obtido da planta piloto, utilizaremos a representação de
+espaço de estados para a construção do modelo que irá compor os controladores.
 
-% =====================================================================================================
-% ============================================= Section ===============================================
-% =====================================================================================================
-\section{Análise de resultados}
-\label{sec:analise_de_resultados}
+Serão utilizadas duas abordagens principais:
 
-% TODO descrever
+\begin{itemize}
+    \item \textbf{Utilização apenas de linguagens de programação, sem o auxílio de ferramentas de desenvolvimento
+        \acrshort{mpc}}: esta abordagem tem como meta aplicar o controle \acrshort{mpc} através dos algorítmos
+        descritos nas obras de \citeonline{Wang2009}, \citeonline{Camacho2007}, \citeonline{Borrelli2017},
+        entre outros, com a finalidade de detalhar cada etapa dos cálculos realizados pelo controlador
+        visando cumprir os seguintes objetivos descritos na \ref{sec:objetivos}: estudo do algorítmo do
+        controle \acrshort{mpc}; comparação entre a implementação em duas ou mais plataformas e compilação
+        de material teórico e experimental sobre \acrshort{mpc}.
+    \item \textbf{Utilização de ferramentas de desenvolvimento \acrshort{mpc}}: esta abordagem visa utilizar
+        ferramentas consolidadas de mercado para o desenvolvimento de controlador \acrshort{mpc}, como o
+        \textit{Model Predictive Control Toolbox}, disponível no \acrshort{matlab} para poder realizar
+        a comparação entre o desempenho de um controlador \acrshort{mpc} em comparação a um controlador
+        \acrshort{pid}, como também foi proposto nos objetivos da seção \ref{sec:objetivos}.
+\end{itemize}
