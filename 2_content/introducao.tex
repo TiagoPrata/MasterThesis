@@ -6,6 +6,7 @@
 \newacronym{dmc}{DMC}{\textit{Dynamic Matrix Control}}
 \newacronym{gpc}{GPC}{\textit{Generalized Predictive Controle}}
 \newacronym{matlab}{MATLAB\textsuperscript{\tiny\textregistered}}{\textit{Matrix Laboratory}}
+\newacronym{str}{STR}{\textit{Self-Tuning Regulator}}
 
 \chapter{Introdução}
 \label{ch:introducao}
@@ -17,11 +18,12 @@
 %Porque não usar PID em alguns casos?				[ok - mais ou menos]
 %Conceito do MPC.									[ok]
 % (Brincalepe) Incluir histórico e maior detalhamento da importância do MPC atualmente      [ok]
-% TODO: (Brincalepe) Incluir citações
+% (Brincalepe) Incluir citações     [ok]
+% TODO Confirmar citações do Ogata
 O controle de processos tem fundamental importância no desenvolvimento industrial,
 sendo amplamente utilizado em praticamente todos os segmentos da indústria,
 contribuindo de maneira significativa para a maior velocidade na estabilização de sinais,
-aumento da qualidade de produtos, diminuição de riscos e redução de custos operacionais.
+aumento da qualidade de produtos, diminuição de riscos e redução de custos operacionais \cite{Ogata2010}.
 Seu objetivo, de forma simplificada, consiste em avaliar e corrigir desvios entre um
 valor desejado e o real valor medido na saída da planta para uma dada variável do
 processo (ou variáveis, nos casos de processos com múltiplas entradas e múltiplas
@@ -30,24 +32,24 @@ A aplicação correta de estratégias de controle acarreta numa operação efici
 planta, mantendo suas variáveis relevantes em condições próximas às desejadas.
 A sintonia bem-feita do controle auxilia também na otimização do processo,
 possibilitando que o sistema opere com menor variabilidade, maximizando a produção
-e minimizando a utilização de recursos. No \cref{ch:otimizacao} abordaremos mais
+e minimizando a utilização de recursos  \cite{Ogata2010}. No \cref{ch:otimizacao} abordaremos mais
 sobre otimização.
 Modelos matemáticos podem auxiliar a estratégia de controle uma vez que um modelo da
 planta ou processo pode ser utilizado para estabelecer a relação existente entre as
 variáveis manipuladas e variáveis controladas, assim podendo auxiliar na predição do
-comportamento dinâmico do sistema analisado. A modelagem matemática pode ser feita
+comportamento dinâmico do sistema analisado \cite{Garcia2013}. A modelagem matemática pode ser feita
 utilizando dados empíricos ou através da aplicação de relações físico-químicas.
 
-% TODO: (Brincalepe) Incluir citações
+% (Brincalepe) Incluir citações         [ok]
 A estratégia de controle predominante na indústria é o controle \acrshort{pid}
-(\acrlong{pid}) que, além de levar em consideração o efeito proporcional (P) do erro
+(\acrlong{pid}) \cite{Camacho2007} que, além de levar em consideração o efeito proporcional (P) do erro
 medido, também atua em desvios relativos aos efeitos integrais (I) e derivativos (D).
 Seu elevado número de aplicações deve-se a uma grande variedade de vantagens como:
 sua rápida implementação, facilidade de compreensão, disponibilidade em praticamente
 todas as plataformas industriais de controle e principalmente pelo fato de não requerer
-um modelo matemático do processo; porém apesar de poder ser aplicado com eficiência em
+um modelo matemático do processo \cite{Goncalves2012}; porém apesar de poder ser aplicado com eficiência em
 muitos processos, o controle \acrshort{pid} aparece com menos frequência
-em sistemas não-lineares, como em plantas de controle de pH, por exemplo. Em casos como
+em sistemas não-lineares, como em plantas de controle de pH, por exemplo \cite{Goncalves2012}. Em casos como
 esse, outra técnica bastante utilizada na indústria (porém em proporções bem menores
 que o \acrshort{pid}) pode ser utilizada: o controle \acrshort{mpc} (\acrlong{mpc},
 do inglês \textit{Model Predictive Control}). Uma introdução histórica desta técnica é apresentada
@@ -79,7 +81,9 @@ métodos para sintonia. Na mesma época, porém independente dos desenvolvimento
 de processos, surgia da comunidade de controle adaptativo o \acrshort{gpc} (Controle Preditivo
 Generalizado, do inglês \acrlong{gpc}), que possuia motivações bem diferentes do \acrshort{dmc}:
 o \acrshort{gpc} pretendia oferecer uma nova alternativa ao regulador de autoajuste\footnote{
-    \hl{TODO}: Adicionar descrição do 'self-tuning regulator'    % TODO Adicionar footnote para self-tuning regulator
+    O regulador de autoajuste (ou apenas \acrshort{str}, do inglês, \acrlong{str}) é uma técnica composta
+    por três partes, um estimador de parâmetros, um cálculo de projeto e um regulador com
+    parâmetros ajustáveis \cite{Astrom1985}.
 }, 
 principalmente visando superar seu problema de robustez. Por causa disso ele aplicava problemas de controle
 multivariável, porém carecia na inclusão de restrições, que era considerada uma característica
@@ -88,11 +92,11 @@ indispensável dos problemas de controle de processos.
 Ao longo dos anos 80 os algorítmos \acrshort{mpc} se espalharam comercialmente a o embasamento
 teórico da técnica começou a se consolidar. Nessa época muitas empresas (normalmente pequenas),
 que ofereciam comercialmente soluções utilizando controle \acrshort{mpc}, foram adquiridas por
-empresas maiores como a Aspen Tech e a Honeywell. No campo teórico aumentaram as discussões e
+empresas maiores como a Aspen Tech e a Honeywell \cite{Lee2011}. No campo teórico aumentaram as discussões e
 definições com relação a estabilidade, robustez e ao uso de modelos não-lineares. Além disso
 os pesquisadores notaram que a utilização de modelos de espaço de estado poderia trazer mais
 benefícios e juntamente com isso estabeleceram a forma padrão do algorítmo, demonstrada na
-\cref{eq:mpc_standard_form}. \cite{Lee2011} 
+\cref{eq:mpc_standard_form} \cite{Lee2011} .
 
 \begin{equation}
 	\label{eq:mpc_standard_form}
@@ -103,7 +107,7 @@ benefícios e juntamente com isso estabeleceram a forma padrão do algorítmo, d
             + \hat{x}^T(p)Q_t\hat{x}(p)
     \right\}
 \end{equation}
-\newline
+% \newline
 
 \noindent
 Sendo: 	\\
