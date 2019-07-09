@@ -136,7 +136,7 @@ eles incorporaram as características de interesse do sistema original \cite{Agu
 \section{Desenvolvimento do controlador}
 \label{sec:desenvolvimento_do_controlador}
 
-Através das equações descritas nas seções \ref{subsec:tclab_modelo_siso}, \ref{subsec:tclab_modelo_mimo}
+Através das \cref{eq:tclab_modelo_siso,eq:tclab_modelo_mimo_a,eq:tclab_modelo_mimo_b}
 e também do modelo experimental que será obtido da planta piloto, utilizaremos a representação de
 espaço de estados para a construção do modelo que irá compor os controladores.
 
@@ -145,9 +145,9 @@ Serão utilizadas duas abordagens principais:
 \begin{itemize}
     \item \textbf{Utilização apenas de linguagens de programação, sem o auxílio de ferramentas de desenvolvimento
         \acrshort{mpc}}: esta abordagem tem como meta aplicar o controle \acrshort{mpc} através dos algorítmos
-        descritos nas obras de \citeonline{Wang2009}, \citeonline{Camacho2007}, \citeonline{Borrelli2017},
+        descritos nas obras de \citeonline{Wang2009}, \citeonline{Rawlings2015}, \citeonline{Rossiter2003},
         entre outros, com a finalidade de detalhar cada etapa dos cálculos realizados pelo controlador
-        visando cumprir os seguintes objetivos descritos na \ref{sec:objetivos}: estudo do algorítmo do
+        visando cumprir os seguintes objetivos descritos na seção \ref{sec:objetivos}: estudo do algorítmo do
         controle \acrshort{mpc}; comparação entre a implementação em duas ou mais plataformas e compilação
         de material teórico e experimental sobre \acrshort{mpc}.
     \item \textbf{Utilização de ferramentas de desenvolvimento \acrshort{mpc}}: esta abordagem visa utilizar
