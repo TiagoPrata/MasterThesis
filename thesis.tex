@@ -16,18 +16,18 @@
 
 % Pacotes básicos 
 \usepackage{lmodern}			% Usa a fonte Latin Modern			
-\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
-\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
-\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage[T1]{fontenc}		% Seleção de códigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificação do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Identa o primeiro parágrafo de cada seção.
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{microtype} 			% para melhorias de justificação
 
-% Pacote de glossario
+% Pacote de glossário
 \usepackage{./9_Extras/styles/anbtex2-glossario}
 
 % Pacotes de citações
-\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibliografia
 \usepackage[alf,abnt-emphasize=bf]{abntex2cite}	% Citações padrão ABNT
 \input{./9_Extras/packagesConfig/backref}
 
@@ -39,7 +39,7 @@
 % \usepackage{pgf}
 \usepackage{pdfpages}
 
-% Pacote para fracoes diagonais
+% Pacote para frações diagonais
 \usepackage{xfrac}
 
 % Pacote para aprimoramento do caption
@@ -122,15 +122,15 @@ de automação e controle.}
 % Controle do espaçamento entre um parágrafo e outro:
 \setlength{\parskip}{0.2cm}  % tente também \onelineskip
 
-% compila o indice
+% compila o índice
 \makeindex
 
-% GLOSSARIO
+% GLOSSÁRIO
 \makeglossaries
 
 \input{./1_preText/glossarioItens}
 
-% Exemplo de configurações do glossairo
+% Exemplo de configurações do glossário
 \renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}  
 \glsseelist{#2}}
 
@@ -154,9 +154,9 @@ de automação e controle.}
 % Folha de rosto
 % (o * indica que haverá a ficha bibliográfica)
 \imprimirfolhaderosto
-% \imprimirfolhaderosto*	% TODO: Substituir por essa linha quando inserir Ficha Catalografica
+% \imprimirfolhaderosto*	% TODO: Substituir por essa linha quando inserir Ficha Catalográfica
 
-% Inserir a ficha bibliografica
+% Inserir a ficha bibliográfica
 %\include{./1_pretext/fichaCatalografica}
 
 % Inserir errata
@@ -209,7 +209,7 @@ de automação e controle.}
 
 % inserir lista de símbolos
 \imprimirlistadesimbolos 
-\setcounter{table}{0}	% Comando inserido para ajustar numeracao de tabelas
+\setcounter{table}{0}	% Comando inserido para ajustar numeração de tabelas
 
 % inserir o sumario
 \pdfbookmark[0]{\contentsname}{toc}
@@ -220,12 +220,12 @@ de automação e controle.}
 % ELEMENTOS TEXTUAIS
 \textual
 
-% PARTE APRESENTACAO
+% PARTE APRESENTAÇÃO
 \part{Apresentação}
 
 \include{./2_content/introducao}
 
-% PARTE REVISAO DE LITERATURA
+% PARTE REVISÃO DE LITERATURA
 \part{Revisão de literatura}
 
 \include{./2_content/otimizacao}
@@ -234,7 +234,7 @@ de automação e controle.}
 
 \include{./2_content/mpc}
 
-% PARTE MATERIAIS E METODOS
+% PARTE MATERIAIS E MÉTODOS
 \part{Materiais e métodos}
 
 \include{./2_content/materiais}
@@ -243,8 +243,8 @@ de automação e controle.}
 
 \include{./2_content/procedimentos}
 
-% PARTE RESULTADOS E DISCUSSAO
-% \part{Resultados e discussão}		% TODO Incluir novamente esta parte para o trab final
+% PARTE RESULTADOS E DISCUSSÃO
+% \part{Resultados e discussão}		% TODO Incluir novamente esta parte para a entrega final
 
 \include{./2_content/cronograma}
 
@@ -267,7 +267,7 @@ de automação e controle.}
 \include{./3_posText/anexos}
 
 
-% INDICE REMISSIVO
+% ÍNDICE REMISSIVO
 \phantompart
 \printindex
 

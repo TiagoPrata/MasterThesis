@@ -65,7 +65,7 @@ na seção a seguir e mais detalhes técnicos sobre ela serão apresentados no \
 Segundo \citeonline{Lee2011} em meados dos anos 50 as características essenciais do \acrshort{mpc}
 já podiam ser observadas nas primeiras instalações de supervisórios de controle computadorizados,
 porém, apesar de seus potenciais benefícios, esse tipo de controle não se difundiu muito
-devido aos esforços necessário para mantê-lo e ao seu alto valor, até que aproximadamente
+devido aos esforços necessários para mantê-lo e ao seu alto valor, até que aproximadamente
 na metade dos anos 70 os microprocessadores e sistemas de controle distribuídos se tornassem
 mais baratos e confiáveis. Não coincidentemente, por volta desta época começaram a aparecer na indústria
 e em seminários, publicações relatando a aplicação bem sucedida de controle baseado em modelo. \cite{Lee2011}
@@ -74,7 +74,7 @@ e em seminários, publicações relatando a aplicação bem sucedida de controle
 \acrlong{mhpc} (\acrshort{mhpc} - Controle Preditivo Heurístico de Modelo) e
 \acrlong{dmc} (\acrshort{dmc} - Controle Dinâmico de Matriz) mostrando grande sucesso prático,
 impulsionaram o uso delas e de técnicas similares em refinarias de todo o mundo ocidental.
-No geral os algorítmos por trás dessas técnicas apresentavam uma natureza heurística,
+No geral os algoritmos por trás dessas técnicas apresentavam uma natureza heurística,
 empregavam modelos baseados em resposta de domínio no tempo, eram completamente determinísticos
 sem nenhum modelo explícito dos distúrbios, e não possuíam garantias de estabilidade nem
 métodos para sintonia. Na mesma época, porém independente dos desenvolvimentos na indústria
@@ -89,13 +89,13 @@ principalmente visando superar seu problema de robustez. Por causa disso ele apl
 multivariável, porém carecia na inclusão de restrições, que era considerada uma característica
 indispensável dos problemas de controle de processos.
 
-Ao longo dos anos 80 os algorítmos \acrshort{mpc} se espalharam comercialmente a o embasamento
+Ao longo dos anos 80 os algoritmos \acrshort{mpc} se espalharam comercialmente a o embasamento
 teórico da técnica começou a se consolidar. Nessa época muitas empresas (normalmente pequenas),
 que ofereciam comercialmente soluções utilizando controle \acrshort{mpc}, foram adquiridas por
 empresas maiores como a Aspen Tech e a Honeywell \cite{Lee2011}. No campo teórico aumentaram as discussões e
-definições com relação a estabilidade, robustez e ao uso de modelos não-lineares. Além disso
+definições com relação à estabilidade, à robustez e ao uso de modelos não-lineares. Além disso
 os pesquisadores notaram que a utilização de modelos de espaço de estado poderia trazer mais
-benefícios e juntamente com isso estabeleceram a forma padrão do algorítmo, demonstrada na
+benefícios e juntamente com isso estabeleceram a forma padrão do algoritmo, demonstrada na
 \cref{eq:mpc_standard_form} \cite{Lee2011} .
 
 \begin{equation}
@@ -114,7 +114,7 @@ Sendo: 	\\
 $ \hat{x}(i+1) = A\hat{x}(i) + B\hat{u}, \quad \hat{x}(0) = x_0 $
 
 Ao longo das últimas décadas, desde o lançamento do \acrshort{dmc}, o \acrshort{mpc}
-tem sido alvo de muito estudo teórico e prático, e passou de uma aplicação indústrial
+tem sido alvo de muito estudo teórico e prático, e passou de uma aplicação industrial
 heurística para uma das técnicas de controle mais influentes da atualidade \cite{Lee2011}.
 Hoje podemos considerar o \acrshort{mpc}, segundo a definição de \citeonline{Seborg2011},
 uma técnica de controle avançada para problemas de controle multivariável. Sendo que,
@@ -124,11 +124,11 @@ atuais do mesmo, pode-se predizer os valores de saída futuros, e então calcula
 valores de entrada baseando-se tanto nas previsões quanto no valor medido.
 
 Após enormes avanços nas técnicas de resolução das equações aplicadas ao \acrshort{mpc},
-atualmente seu uso não se limita mais à sistemas onde o tempo de resposta seja relativamente
+atualmente seu uso não se limita mais a sistemas onde o tempo de resposta seja relativamente
 lento, podendo então ser utilizado em diversas aplicações que eram consideradas impraticáveis
 no passado. \citeonline{Lee2011} relata em seu artigo o uso do \acrshort{mpc} no controle
-de tração de veículos, motorização automotiva, amortecimento de sistemas massa-mola magnéticamente
-acionados, e muitos outros.
+de tração de veículos, motorização automotiva, amortecimento de sistemas massa-mola magneticamente
+acionados e muitos outros.
 
 
 % =====================================================================================================
@@ -142,7 +142,7 @@ aplicado a um sistema didático com restrições de atuação.
 
 Além disso os seguintes objetivos específicos também serão realizados:
 \begin{itemize}
-    \item Estudo do algorítmo do controle \acrshort{mpc}
+    \item Estudo do algoritmo do controle \acrshort{mpc}
     \item Avaliação o desempenho do controlador \acrshort{mpc} desenvolvido em
         comparação com um controlador \acrshort{pid}
     \item Comparação entre a implementação em duas ou mais plataformas,
@@ -172,7 +172,7 @@ Além disso os seguintes objetivos específicos também serão realizados:
 Segundo \citeonline{Parkinson2018} o processo de determinar o melhor modelo
 para uma aplicação ou processo é chamado de otimização. Normalmente engenheiros
 costumam implementar tais técnicas em seus processos visando aumentar a
-eficiência diminuindo os gastos, porém, as variáveis e limitantes do processo
+eficiência e diminuindo os gastos, porém, as variáveis e limitantes do processo
 podem ser inúmeras, fazendo com que a tarefa de otimização se torne difícil.
 Para casos assim, ferramentas computacionais de otimização são essenciais. \cite{Parkinson2018}
 

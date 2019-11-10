@@ -76,7 +76,7 @@ no entendimento do controle \acrshort{mpc} em si.
 \label{subsec:metodo_pesquisa_em_grade}
 
 O método apresentado nesta seção não é aplicável a praticamente nenhum problema real
-devido a sua ineficiência computacional, porém ele ajuda a ilustrar o objetivo de
+devido à sua ineficiência computacional, porém ele ajuda a ilustrar o objetivo de
 todo o método numérico voltado para minimização.
 
 Este método consiste em testar todos os valores de todas as variáveis (em um conjunto
@@ -386,9 +386,10 @@ linguagem Python dispõem de ferramentas para cálculo de métodos \acrshort{nlp
 Os autores \citeonline{Haugen2018}, \citeonline{Ruggiero2000} apresentam em maiores detalhes
 os métodos descritos nesta seção, além de muitos outros.
 
-A documentação referente as funções fmincon e scipy.optimize.minimize encontram-se, respectivamente,
+A documentação referente às funções fmincon e scipy.optimize.minimize encontram-se, respectivamente,
 no \crefanexo{ch:documentacao_de_funcoes}, seções \ref{sec:fmincon} e \ref{sec:scipy_optimize_minimize}.
 % (Brincalepe): Adicionar documentação sobre essas funções em um anexo			[ok]
+% TODO: Retirar este parágrafo, caso o apêndice com documentações seja removido.
 
 % =====================================================================================================
 % ============================================= Section ===============================================
@@ -406,7 +407,7 @@ Estimar parâmetros de um modelo pode ser uma das inúmeras aplicações dos mé
 Segundo \citeonline{Haugen2018} um problema de estimação de parâmetros pode ser formulado
 como mostrado na \cref{eq:parameter_estimation}, visando encontrar os parâmetros que
 apresentem menor diferença entre o sistema real e o modelo sendo avaliado.
-A comparação o sistema real e o virtual é feita através do acúmulo da diferença das saídas dos
+A comparação do sistema real com o virtual é feita através do acúmulo da diferença das saídas dos
 dois sistemas elevada ao quadrado ao longo de $N$ iterações.
 
 \begin{equation}
@@ -426,7 +427,7 @@ $ N $ = quantidade de amostras
 O diagrama de blocos apresentado na \cref{fig:parameter_estimation} apresenta de forma
 visual a comparação entre o sistema real e o modelo matemático.
 
-\begin{figure}
+\begin{figure}[h]
 	\caption{Diagrama de blocos do quadrado da diferença entre o sistema real e o modelo}
 	\begin{center}
 		\includegraphics[width=0.75\textwidth]{./5_images/fig_parameter_estimation.png} 
@@ -439,7 +440,7 @@ visual a comparação entre o sistema real e o modelo matemático.
 
 Para estimar os parâmetros $P$ de um dado modelo é necessário dividir os dados amostrais
 $N$ em dois grupos: um deles destinado a adaptação do modelo, ou seja, encontrar o vetor $P$
-que minimize a função custo, e o outro grupo destinado a validação, isto é, verificar se os
+que minimize a função custo, e o outro grupo destinado à validação, isto é, verificar se os
 parâmetros encontrados durante a adaptação realmente é válido e preciso.
 
 Quando dispomos de dados previamente coletados do sistema é possível fazer uma \textit{estimação
@@ -665,7 +666,7 @@ $L$ = carga
 	\end{align}
 \end{subequations}
 
-% TODO: (Brincalepe) Destacar alguma parte importante do código lst:mhe_example, movido pro apendice,
+% TODO: (Brincalepe) Destacar alguma parte importante do código lst:mhe_example, movido pro apêndice,
 % (cont.) ou fazer diagrama para detalha-lo
 	
 \begin{figure}[h]
