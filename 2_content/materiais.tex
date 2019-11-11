@@ -1,10 +1,17 @@
 \newacronym{tclab}{TCLab}{\textit{Temperature Control Lab}}
+\newacronym{tclabsp}{TCLabSP}{\textit{Temperature Control Lab Sao Paulo}}
 \newacronym{byu}{BYU}{\textit{Brigham Young University}}
 \newacronym{ncsu}{NCSU}{\textit{North Carolina State University}}
 \newacronym{si}{SI}{Sistema Internacional de Unidades}
 
 \chapter{Planta piloto}
 \label{ch:planta_piloto}
+
+% =====================================================================================================
+% ============================================= Section ===============================================
+% =====================================================================================================
+\section{TCLab}
+\label{sec:tclab}
 
 O sistema experimental usado para o projeto de ações de controle é uma mini planta piloto chamada \acrlong{tclab}
 (do inglês, Laboratório de Controle de Temperatura), ou apenas \acrshort{tclab}\footnote{                       % footnote
@@ -26,12 +33,67 @@ O \acrshort{tclab} possibilita fazer a programação do controle da mini planta 
 \begin{figure}[h]
 	\caption{Laboratório de Controle de Temperatura}
 	\begin{center}
-		\includegraphics[width=0.55\textwidth]{./5_images/tclab.png} 
+		\includegraphics[width=0.45\textwidth]{./5_images/tclab.png} 
 		\label{fig:tclab}
 	\end{center}
 	\centering
 	\makebox[\width]{Fonte: \citeonline{Hedengrena}} 
 \end{figure}
+
+% =====================================================================================================
+% ============================================= Section ===============================================
+% =====================================================================================================
+\section{Planta piloto - TCLabSP}
+\label{sec:planta_piloto}
+
+A planta piloto desenvolvida para esse projeto é chamada de \acrlong{tclabsp}, ou apenas \acrshort{tclabsp},
+e consiste em um envólucro em acrílico que foi construído com o intuito de minimizar interferências
+externas e de possibilitar um maior controle dos distúrbios, uma vez que ventiladores foram incluídos
+ao sistema, juntamente com o \acrshort{tclab} apresentado na \cref{sec:tclab}.
+
+\begin{figure}[h]
+    \centering
+	\caption{Visão geral da Planta Piloto - TCLabSP}
+    \begin{minipage}{0.47\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{./5_images/TCLabSP_1.png} 
+    \end{minipage}\hfill
+    \begin{minipage}{0.47\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{./5_images/TCLabSP_2.png} 
+	\end{minipage}
+	\label{fig:tclabsp}		      
+	Fonte: \citeonline{Prata2019}
+\end{figure}
+
+A \cref{fig:tclabsp} apresenta uma visão geral da \acrshort{tclabsp}, enquanto a \cref{fig:tclabsp_color}
+e a \cref{tab:componentes_tclabsp} detalham seus componentes principais.
+
+\begin{figure}[h]
+	\caption{Componentes principais do TCLabSP}
+	\begin{center}
+		\includegraphics[width=0.65\textwidth]{./5_images/TCLabSP_color_numbers.png} 
+		\label{fig:tclabsp_color}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: \citeonline{Prata2019}} 
+\end{figure}
+
+\begin{table}[h]
+	\centering
+	\caption{Componentes principais do TCLabSP}
+	\label{tab:componentes_tclabsp}
+	\begin{tabular}{cl} \toprule
+		{Item}			& {Descrição} 										\\ \midrule
+		1		 		& \acrshort{tclab}	 								\\
+		2				& \textit{Shield} para ligação dos ventiladores		\\
+		3				& Arduino Uno										\\
+		4				& Ventilador 1										\\
+		5				& Ventilador 2										\\
+		6				& Conector mini USB									\\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: \citeonline{Prata2019}}
+\end{table}
 
 % =====================================================================================================
 % ============================================= Section ===============================================
