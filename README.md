@@ -1,5 +1,10 @@
 # Master Thesis
 
+[![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
+[![using-matlab](https://img.shields.io/badge/Using-MATLAB-red)](https://www.mathworks.com)
+[![using-python](https://img.shields.io/badge/Using-Python-blue)](https://www.python.org)
+
+
 Este é o repositório contendo os arquivos da tese de mestrado em formato Latex.
 
 Abaixo estão algumas instruções gerar um PDF deste tese com base nos arquivos encontrados.
