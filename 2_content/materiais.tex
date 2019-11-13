@@ -13,21 +13,22 @@
 \section{TCLab}
 \label{sec:tclab}
 
-O sistema experimental usado para o projeto de ações de controle é uma mini planta piloto chamada \acrlong{tclab}
-(do inglês, Laboratório de Controle de Temperatura), ou apenas \acrshort{tclab}\footnote{                       % footnote
-    Maiores informações sobre o \acrshort{tclab} podem ser encontrados em \href{http://apmonitor.com/heat.htm}{http://apmonitor.com/heat.htm}.
-}. Esta planta foi desenvolvida na \acrlong{byu} (\acrshort{byu}) e apresentada pela primeira vez no
-\textit{2017 ASEE Summer School}, na \acrlong{ncsu} (\acrshort{ncsu}). Foi desenvolvida com o
-propósito de facilitar o acesso de estudantes a um laboratório de testes de controle.
+O equipamento utilizado para o projeto de ações de controle é um mini sistema chamado \acrlong{tclab}
+(do inglês, Laboratório de Controle de Temperatura) , ou apenas \acrshort{tclab}\footnote{                       % footnote
+	Maiores informações sobre o \acrshort{tclab} podem ser encontrados em
+	\href{http://apmonitor.com/heat.htm}{http://apmonitor.com/heat.htm}.
+}(\cref{fig:tclab}). Esse sistema foi desenvolvido na \acrlong{byu} (\acrshort{byu}) e apresentado
+pela primeira vez no \textit{2017 ASEE Summer School}, na \acrlong{ncsu} (\acrshort{ncsu}). Foi
+desenvolvido com o propósito de facilitar o acesso de estudantes a um laboratório de testes de controle.
 
-Esta mini planta é essencialmente um \textit{shield} para Arduino\footnote{
+Esse equipamento é essencialmente um \textit{shield} para Arduino\footnote{
     Arduino é uma plataforma de prototipagem eletrônica de hardware livre e de placa única, projetada com um    % footnote
     microcontrolador Atmel AVR com suporte de entrada/saída embutido.                                           % footnote
-} contendo 2 aquecedores e 2 sensores de temperatura, mostrado na \cref{fig:tclab}. A energia dos aquecedores é
+} contendo 2 aquecedores e 2 sensores de temperatura, mostrado na \cref{fig:tclab_description}. A energia dos aquecedores é
 transferida através de condução, convecção e radiação até os sensores de temperatura. Tanto o controle da
 potência dos aquecedores quanto as medições realizadas pelos sensores são efetuados através do Arduino.
 
-O \acrshort{tclab} possibilita fazer a programação do controle da mini planta utilizando linguagem Python,
+O \acrshort{tclab} permite que a programação de controle do sistema possa ser feito utilizando linguagem Python,
 \acrshort{matlab} ou Simulink.
 
 \begin{figure}[h]
@@ -39,6 +40,32 @@ O \acrshort{tclab} possibilita fazer a programação do controle da mini planta 
 	\centering
 	\makebox[\width]{Fonte: \citeonline{Hedengrena}} 
 \end{figure}
+
+\begin{figure}[h]
+	\caption{Componentes principais do TCLab}
+	\begin{center}
+		\includegraphics[width=0.45\textwidth]{./5_images/tclab_color_numbers.png} 
+		\label{fig:tclab_description}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: \citeonline{Prata2019}, adaptado de \citeonline{Hedengrena}} 
+\end{figure}
+
+\begin{table}[h]
+	\centering
+	\caption{Componentes principais do TCLab}
+	\label{tab:componentes_tclabsp}
+	\begin{tabular}{cl} \toprule
+		{Item}			& {Descrição} 									\\ \midrule
+		1		 		& Aquecedor 1 [H1]		 						\\
+		2				& Sensor de temperatura 1 [S1]					\\
+		3				& Aquecedor 2 [H2]								\\
+		4				& Sensor de temperatura 2 [S2]					\\
+		5				& Superfície entre dissipadores [2 $cm^2$]		\\
+		6				& Entrada para alimentação						\\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: \citeonline{Prata2019}}
+\end{table}
 
 % =====================================================================================================
 % ============================================= Section ===============================================
