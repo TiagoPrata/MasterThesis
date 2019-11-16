@@ -14,9 +14,6 @@
 \section{Modelagem experimental}
 \label{sec:modelagem_experimental}
 
-Além dos modelos teóricos descritos no capítulo anterior, neste projeto também será executada a identificação
-experimental do sistema.
-
 Segundo \citeonline{Gevers2006} a teoria de identificação de sistemas data da década de 60 e as duas
 principais técnicas utilizadas na identificação de sistemas atualmente (método de identificação por
 subespaço de estados e método do erro de predição) tiveram suas bases estruturadas com os trabalhos
@@ -47,11 +44,75 @@ para a identificação do sistema. Algumas das atividades realizadas nessa etapa
 definição dos sinais de excitação, definição do período de amostragem e a execução em si dos testes.
 \cite{Aguirre2015}
 
+% -----------------------------------------------------------------------------------------------------
+% ------------------------------------------- Subsubsection -------------------------------------------
+% -----------------------------------------------------------------------------------------------------
+\subsubsection{Período de amostragem}
+\label{subsubsec:periodo_de_amostragem}
+
+Segundo o teorema de Shannon, descrito por \citeonline{Aguirre2015}, "um sinal que não contenha componentes
+de frequência acima de $1/2T_s$ pode ser determinado unicamente a partir de amostras de tal sinal separadas
+por $T_s$", sendo $T_s$ o período de amostragem ou, como também é chamado, tempo de amostragem.
+
+Na prática, contudo, um período de amostragem apenas 2 vezes maior que a frequência de interesse, como exigido
+pelo teorema de Shannon, nem sempre é suficiente. Normalmente então escolhe-se uma frequência de amostragem
+entre 5 e 10 vezes maior do que a maior do que tal frequência desejada \cite{Aguirre2015}. Por outro lado, do
+ponto de vista numérico, se o intervalo de amostragem for muito curto, a estimação de parâmetros também
+poderá se tornar malcondicionada \cite{Aguirre2015}.
+
+Para a identificação da maior frequência de interesse do sistema analisado, alguns ensaios foram realizados
+excitando o Aquecedor 1 do \acrshort{tclabsp} em $50\%$ e aproximando a resposta em malha aberta dos
+Sensores de Temperatura 1 e 2 para um sistema de primeira ordem, a fim de obter o valor do tempo de subida
+($\tau$). Esse tempo de subida servirá de referência para o cálculo do período de amostragem.
+
+\begin{figure}[h]
+	\caption{Tempo de subida - Sensor de Temperatura 1}
+	\begin{center}
+		\includegraphics[width=0.85\textwidth]{./5_images/RiseTime-TempSensor1.png} 
+		\label{fig:rise_time_sensor1}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: \citeonline{Prata2019}} 
+\end{figure}
+
+\begin{figure}[h]
+	\caption{Tempo de subida - Sensor de Temperatura 1}
+	\begin{center}
+		\includegraphics[width=0.85\textwidth]{./5_images/RiseTime-TempSensor2.png} 
+		\label{fig:rise_time_sensor2}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: \citeonline{Prata2019}} 
+\end{figure}
+
+As \cref{fig:rise_time_sensor1,fig:rise_time_sensor2} mostram a resposta em malha aberta dos Sensores de
+Temperatura 1 e 2, respectivamente, a uma entrada degrau no Aquecedor 1. Este ensaio foi realizado com
+um período de amostragem de 0,5s, e com ele foi possível observar um tempo de subida $\tau_1 = 209s$ para
+o Sensor 1 e $\tau_2 = 306s$ para o Sensor 2.
+% TODO: Fazer mais ensaios com step 0 -> 50
+% TODO: Recortar as imagens para remover bordas brancas
+
+Seguindo a regra prática de \citeonline{Aguirre2015} onde $T_s$ deve ser entre 5 e 10 vezes maior que a
+maior frequência desejada, então temos que $20.9s > T_s > 41.8s$.
+
+Para os ensaios realizados neste trabalho, optou-se pela maior frequência de amostragem possível, como
+mostrado na \cref{eq:sampling_time}.
+
+\begin{equation}
+	\label{eq:sampling_time}
+	T_s = 20.9s
+\end{equation}
+
+Outra técnica também descrita por \citeonline{Aguirre2015} para a escolha da frequência de amostragem,
+apesar de não ter sido escolhida, também foi testada e é descrita em maiores detalhes no
+\cref{ch:sampling_time_using_autocorrelation}.
+
+% TODO: Criar 'subsubsections' com os dois itens restantes abaixo.
 \begin{itemize}
-    \item Período de amostragem: três regras práticas auxiliam na definição deste período: usar um tempo
-        de amostragem de aproximadamente 1/10 da maior constante de tempo \apud{Gustavsson1975}{Ballin2008};
-        10\% do tempo de acomodação de uma resposta degrau \cite{Ballin2008}; ou escolher uma frequência de amostragem
-        de 5 a 10 vezes maior do que a maior frequência de interesse contida nos dados. \cite{Aguirre2015}.
+    % \item Período de amostragem: três regras práticas auxiliam na definição deste período: usar um tempo
+    %     de amostragem de aproximadamente 1/10 da maior constante de tempo \apud{Gustavsson1975}{Ballin2008};
+    %     10\% do tempo de acomodação de uma resposta degrau \cite{Ballin2008}; ou escolher uma frequência de amostragem
+    %     de 5 a 10 vezes maior do que a maior frequência de interesse contida nos dados. \cite{Aguirre2015}.
     
     \item Sinais de excitação: a escolha dos sinais de entrada pode ter grande impacto nos dados coletados,
         pois determinarão o ponto de operação do sistema e quais das suas características serão excitadas
