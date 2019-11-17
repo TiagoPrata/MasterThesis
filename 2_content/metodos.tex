@@ -109,29 +109,83 @@ Outra técnica também descrita por \citeonline{Aguirre2015} para a escolha da f
 apesar de não ter sido escolhida, também foi testada e é descrita em maiores detalhes no
 \cref{ch:sampling_time_using_autocorrelation}.
 
-% TODO: Criar 'subsubsections' com os dois itens restantes abaixo.
-\begin{itemize}
-    % \item Período de amostragem: três regras práticas auxiliam na definição deste período: usar um tempo
-    %     de amostragem de aproximadamente 1/10 da maior constante de tempo \apud{Gustavsson1975}{Ballin2008};
-    %     10\% do tempo de acomodação de uma resposta degrau \cite{Ballin2008}; ou escolher uma frequência de amostragem
-    %     de 5 a 10 vezes maior do que a maior frequência de interesse contida nos dados. \cite{Aguirre2015}.
-    
-    \item Sinais de excitação: a escolha dos sinais de entrada pode ter grande impacto nos dados coletados,
-        pois determinarão o ponto de operação do sistema e quais das suas características serão excitadas
-        durante o experimento \cite{Aguirre2015}.
-        Diversos tipos distintos de sinais podem ser utilizados. Entre os mais utilizados destacam-se:
-        impulsivo; degrau; \acrshort{prbs} - Sinal Binário Pseudo-Aleatório (do inglês, \acrlong{prbs});
-        \acrshort{arma} - Média Móvel Auto-Regressiva (do inglês, \acrlong{arma});
-        \acrshort{gbn} - Ruido Binário Generalizado (do inglês, \acrlong{gbn}); soma de senóides e etc.
-        \cite{Aguirre2015}
-    
-    \item Duração do experimento: a duração do experimento, segundo \citeonline{Garcia2005}, deveria ser
-        a maior possível, uma vez que a variância das estimativas é proporcional ao inverso da duração do
-        experimento, porém sob o ponto de vista prático e experimental, a duração do experimento deveria ser
-        a menor possível para a obtenção de um modelo aceitável, pois ao longo do experimento o processo
-        estará sujeito a perturbações extras que podem impactar na operação da planta, na qualidade dos
-        produtos ou até na segurança do processo.
-\end{itemize}
+% -----------------------------------------------------------------------------------------------------
+% ------------------------------------------- Subsubsection -------------------------------------------
+% -----------------------------------------------------------------------------------------------------
+\subsubsection{Sinais de excitação}
+\label{subsubsec:sinais_de_excitacao}
+
+% \acrshort{arma} - Média Móvel Auto-Regressiva (do inglês, \acrlong{arma})
+A escolha dos sinais de entrada pode ter grande impacto nos dados coletados,
+pois determinarão o ponto de operação do sistema e quais das suas características serão excitadas
+durante o experimento \cite{Aguirre2015}.
+Diversos tipos distintos de sinais podem ser utilizados. Entre os mais comuns destacam-se:
+impulsivo; degrau; \acrshort{prbs} - Sinal Binário Pseudo-Aleatório (do inglês, \acrlong{prbs});
+\acrshort{gbn} - Ruido Binário Generalizado (do inglês, \acrlong{gbn}); soma de senóides e etc \cite{Aguirre2015}.
+Porém quando objetiva-se a identificação do sistema de onde os dados foram coletados, no geral
+os métodos de identificação exigem que os sinais de entrada tenham um espectro de frequência
+branco ou quase branco. Sinais aleatórios e pseudoaleatórios satisfazem essa condição \cite{Aguirre2015}.
+
+Sinais \acrshort{prbs} são comumente usados na identificação de sistemas lineares, porém para sistemas
+não-lineares tais sinais não são adequados, neste caso muitas vezes será desejável excitar o
+sistema numa larga faixa de amplitudes a fim de poder observar suas características estáticas e dinâmicas
+\cite{Aguirre2015}.
+
+\begin{citacao}
+    Características dinâmicas e estáticas que não forem excitadas não aparecerão nos dados. O que
+    não estiver nos dados não pode ser identificado. Tal princípio é utilizado, por exemplo,
+    quando um sistema é excitado em torno de um ponto de operação. Neste caso, como as não-linearidades
+    não foram excitadas no teste, é possível, pelo menos em princípio, ajustar um modelo linear
+    aos dados assim obtidos. \cite{Aguirre2015}
+\end{citacao}
+
+Segundo \citeonline{Aguirre2015} uma regra prática para a aplicação do sinal de excitação é,
+tendo-se definido o tempo de amostragem (já discutido na \cref{subsubsec:periodo_de_amostragem}),
+manter constante o valor escolhido aleatóriamente por um tempo, em torno de 3 a 5 intervalos de
+amostragem.
+
+Para a coleta dos sinais do \acrshort{tclabsp} foram aplicados tanto no Aquecedor 1 quanto no
+Aquecedor 2 sinais de entrada aleatórios, mantidos constantes por um período de $3T_s$ a $5T_s$
+(vide \cref{eq:sampling_time}). Contudo, antes dos sinais aleatórios serem aplicados aos
+aquecedores, um sinal constante de $50\%$ foi aplicado a cada um deles por $1500s$ com o intuito
+de estabilizá-los em um patamar onde as amplitudes dos sinais aleatórios aplicados tivessem
+maior liberdade. A \cref{fig:simulink_coleta} mostra o modelo \textit{Simulink} utilizado para
+a coleta dos dados e a \cref{fig:experiment_inputs} mostra os sinais de entrada aplicados nos
+Aquecedores 1 e 2.
+
+\begin{figure}[h]
+	\caption{Modelo \textit{Simulink} para coleta de dados}
+	\begin{center}
+		\includegraphics[width=0.85\textwidth]{./5_images/SimulinkColeta.png} 
+		\label{fig:simulink_coleta}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{figure}[h]
+	\caption{Sinais de entrada nos Aquecedores 1 e 2}
+	\begin{center}
+		\includegraphics[width=0.85\textwidth]{./5_images/inputs_H1H2.png} 
+		\label{fig:experiment_inputs}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+% -----------------------------------------------------------------------------------------------------
+% ------------------------------------------- Subsubsection -------------------------------------------
+% -----------------------------------------------------------------------------------------------------
+\subsubsection{Duração do experimento}
+\label{subsubsec:duracao_do_experimento}
+
+A duração do experimento, segundo \citeonline{Garcia2005}, deveria ser
+a maior possível, uma vez que a variância das estimativas é proporcional ao inverso da duração do
+experimento, porém sob o ponto de vista prático e experimental, a duração do experimento deveria ser
+a menor possível para a obtenção de um modelo aceitável, pois ao longo do experimento o processo
+estará sujeito a perturbações extras que podem impactar na operação da planta, na qualidade dos
+produtos ou até na segurança do processo.
+% TODO Finalizar
 
 % .....................................................................................................
 % ............................................ Subsection .............................................
