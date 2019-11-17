@@ -185,7 +185,18 @@ experimento, porém sob o ponto de vista prático e experimental, a duração do
 a menor possível para a obtenção de um modelo aceitável, pois ao longo do experimento o processo
 estará sujeito a perturbações extras que podem impactar na operação da planta, na qualidade dos
 produtos ou até na segurança do processo.
-% TODO Finalizar
+
+Cada um dos experimentos de coleta de dados do \acrshort{tclabsp} teve uma duração de $7800s$,
+sendo que os $1500s$ iniciais foram utilizados para a estabilização do processo e os demais ($6300s$)
+para as coletas. O critério utilizado para a determinação deste valor foi o de estimular a dinâmica
+da planta aproximadamente $60x$ para cada um dos experimentos. Sabendo que os sinais de excitação
+podem permanecer constantes por até $105s$ ($5T_s$), como mostrado na \cref{subsubsec:sinais_de_excitacao},
+então temos a \cref{eq:experiment_duration}:
+
+\begin{equation}
+	\label{eq:experiment_duration}
+	60 * 5T_s = \pmb{6}\pmb{3}\pmb{0}\pmb{0}\pmb{s}
+\end{equation}
 
 % .....................................................................................................
 % ............................................ Subsection .............................................
