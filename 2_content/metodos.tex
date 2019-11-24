@@ -1,9 +1,11 @@
 \newacronym{prbs}{PRBS}{\textit{Pseudo-Random Binary Signal}}
 \newacronym{arma}{ARMA}{\textit{Auto-Regressive Moving Average}}
 \newacronym{gbn}{GBN}{\textit{Generalized Binary Noise}}
-\newacronym{ar}{AR}{modelo autorregressivo}
-\newacronym{arx}{ARX}{modelo autorregressivo com entrada exógena}
-\newacronym{armax}{ARMAX}{modelo autorregressivo com média móvel e entrada exógena}
+\newacronym{ar}{AR}{Modelo autorregressivo}
+\newacronym{arx}{ARX}{Modelo autorregressivo com entrada exógena}
+\newacronym{armax}{ARMAX}{Modelo autorregressivo com média móvel e entrada exógena}
+\newacronym{aic}{AIC}{Critério de informação de Akaike}
+\newacronym{oe}{OE}{\textit{Output-Error}}
 
 \chapter{Metodologia}
 \label{ch:metodologia}
@@ -201,8 +203,19 @@ então temos a \cref{eq:experiment_duration}:
 % .....................................................................................................
 % ............................................ Subsection .............................................
 % .....................................................................................................
-\subsection{Escolha da representação matemática}
-\label{subsec:escolha_da_representacao_matematica}
+\subsection{Definição do modelo experimental}
+\label{subsec:definicao_modelo_experimental}
+
+Esta seção apresenta mais algumas características teóricas importantes na definição de um modelo
+que represente o sistema simulado e ao final dela, a \cref{subsubsec:modelo_experimental}
+mostra a aplicação prática dessas características utilizando o conjunto de ferramentas do \acrshort{matlab}
+para identificação de sistemas, o \textit{System Identification Toolbox\texttrademark}.
+
+% -----------------------------------------------------------------------------------------------------
+% ------------------------------------------- Subsubsection -------------------------------------------
+% -----------------------------------------------------------------------------------------------------
+\subsubsection{Escolha da representação matemática}
+\label{subsubsec:escolha_da_representacao_matematica}
 
 Existem diversas representações matemáticas distintas para modelos lineares, sendo que, segundo
 \citeonline{Aguirre2015}, a mais utilizada é a função de transferência, porém \citeonline{Wang2009}
@@ -219,11 +232,11 @@ o modelo \acrshort{armax} (\acrlong{armax}).
     \apud{Garcia2005}{Favaro2012}
 \end{citacao}
 
-% .....................................................................................................
-% ............................................ Subsection .............................................
-% .....................................................................................................
-\subsection{Determinação da estrutura do modelos}
-\label{subsec:determinacao_da_estrutura_do_modelo}
+% -----------------------------------------------------------------------------------------------------
+% ------------------------------------------- Subsubsection -------------------------------------------
+% -----------------------------------------------------------------------------------------------------
+\subsubsection{Determinação da estrutura do modelos}
+\label{subsubsec:determinacao_da_estrutura_do_modelo}
 
 Determinar a ordem de um modelo é um dos aspectos mais importantes na determinação de sua estrutura,
 uma vez que, caso sua ordem seja muito menor do que a ordem efetiva do sistema real, o modelo não
@@ -231,11 +244,37 @@ refletirá a completamente sua complexidade estrutural. Analogamente, escolher u
 seja muito maior do que a necessária, provavelmente causará uma estimação de parâmetros mal condicionada.
 \cite{Aguirre2015}
 
-% .....................................................................................................
-% ............................................ Subsection .............................................
-% .....................................................................................................
-\subsection{Estimação de parâmetros}
-\label{subsec:estimacao_de_parametros}
+Neste trabalho será utilizado o \textit{critério de informação de Akaike} \apud{Akaike1974}{Aguirre2015}
+(\acrshort{aic}), definido por:
+
+\begin{equation}
+	\label{eq:aic}
+	AIC(n_\theta) = N \ln \left[ \sigma_{erro}^2 (n_\theta) \right] + 2n_\theta
+\end{equation}
+
+\noindent
+Onde: 
+\begin{itemize}
+	\item $N$: é o número de dados
+	\item $\sigma_{erro}^2 (n_\theta)$: é a variância dos resíduos
+	\item $n_\theta = \mathrm{dim}[\hat{\theta}]$: é o número de parâmetros do modelo
+\end{itemize}
+
+Segundo \citeonline{Aguirre2015} a utilização deste critério na escolha da estrutura do modelo se justifica
+pois à medida que termos são incluídos no modelo, o número de graus de liberdade aumenta, permitindo
+um ajuste de dados mais exato. Resumidamente, a primeira parcela da equação quantifica a diminuição
+da variância dos resíduos resultante da inclusão de um termo, ao passo que a segunda parcela penaliza
+a inclusão de cada termo.
+
+O índice \acrshort{aic}($n_\theta$) normalmente atinge um mínimo para um determinado número de parâmetros
+no modelo $n_{\theta}^*$, e, ainda segunda \citeonline{Aguirre2015}, do ponto de vista do critério utilizado,
+esse número de parâmetros é ótimo.
+
+% -----------------------------------------------------------------------------------------------------
+% ------------------------------------------- Subsubsection -------------------------------------------
+% -----------------------------------------------------------------------------------------------------
+\subsubsection{Estimação de parâmetros}
+\label{subsubsec:estimacao_de_parametros}
 
 A estimação de parâmetros, segundo \apudonline{Eykhoff1974}{Favaro2012} é a determinação experimental
 de valores de parâmetros que governam a dinâmica e/ou o comportamento não-linear, assumindo que a
@@ -245,18 +284,97 @@ Essa etapa começa com a escolha do algoritmo a ser utilizado \cite{Aguirre2015}
 mais amplamente empregados na literatura são: método da análise de frequência; método da resposta
 transitória e método dos mínimos quadrados \cite{Favaro2012}.
 
-% .....................................................................................................
-% ............................................ Subsection .............................................
-% .....................................................................................................
-\subsection{Validação do modelo}
-\label{subsec:validacao_do_modelo}
+Como será visto na \cref{subsubsec:modelo_experimental}, neste trabalho diversas representações matemáticas
+distintas foram testadas, e para cada uma delas foi utilizada uma função do \acrshort{matlab} para 
+a estimação automática de parâmetros. A \cref{tab:param_est_functions} identifica as funções
+utilizadas em cada uma das representações distintas\footnote{
+    Documentações das funções disponíveis em:
+
+    $\mathtt{tfest}$ - \url{https://www.mathworks.com/help/ident/ref/tfest.html}
+
+    $\mathtt{ssest}$ - \url{https://www.mathworks.com/help/ident/ref/ssest.html}
+
+    $\mathtt{arx}$ - \url{https://www.mathworks.com/help/ident/ref/arx.html}
+
+    $\mathtt{armax}$ - \url{https://www.mathworks.com/help/ident/ref/armax.html}
+
+    $\mathtt{oe}$ - \url{https://www.mathworks.com/help/ident/ref/oe.html}
+
+    $\mathtt{bj}$ - \url{https://www.mathworks.com/help/ident/ref/bj.html}
+
+    $\mathtt{nlarx}$ - \url{https://www.mathworks.com/help/ident/ref/nlarx.html}
+}.
+
+\begin{table}[h]
+	\centering
+	\caption{Funções para a estimação de parâmetros}
+	\label{tab:param_est_functions}
+	\begin{tabular}{ll} \toprule
+		{Representação matemática}		                                & {Função}				                    \\ \midrule
+		Função de transferência		                                    & $\mathtt{tfest}$                          \\
+		Espaço de estados   		                                    & $\mathtt{ssest}$                          \\
+		\acrshort{arx}		                                            & $\mathtt{arx}$                            \\
+		\acrshort{armax}		                                        & $\mathtt{armax}$                          \\
+		Erro de saída (\acrshort{oe}, do inglês \acrlong{oe})		    & $\mathtt{oe}$                             \\
+		Box-Jenkins             	                                    & $\mathtt{bj}$                             \\
+		\acrshort{arx} não-linear (NLARX)                               & $\mathtt{nlarx}$                          \\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+% -----------------------------------------------------------------------------------------------------
+% ------------------------------------------- Subsubsection -------------------------------------------
+% -----------------------------------------------------------------------------------------------------
+\subsubsection{Validação do modelo}
+\label{subsubsec:validacao_do_modelo}
 
 Em problemas de validação, a questão é tentar determinar se um dado modelo é válido ou não e para isso,
 deve-se simulá-lo sem qualquer ajuste adicional e compará-lo a dados medidos em testes diferentes daquele
-usado no desenvolvimento da sintonia do mesmo. Ao se obter um conjunto de modelos, deve-se verificar se
-eles incorporaram as características de interesse do sistema original \cite{Aguirre2015}.
+usado no desenvolvimento da sintonia do mesmo. A motivação para tal cuidado deve-se ao fato de desejar-se
+saber o quão geral é o modelo. Portanto, esta divisão entre os dados de treinamento e de validação refere-se
+à \textit{capacidade de generalização do modelo} \cite{Aguirre2015}.
 
-\citeonline{Aguirre2015} em seu livro apresenta diversas ferramentas para auxiliar na validação dos modelos.
+A proporção entre dados de treinamento e validação utilizada neste trabalho é de 60\% para dados de treinamento
+e 40\% para validação. Para realizar a comparação entre o modelo obtido e os dados de validação, utilizou-se
+a função \texttt{compare} no \acrshort{matlab}.
+
+Esta função \texttt{compare} avalia o quanto o modelo obtido se encaixa aos dados de validação calculando
+o erro do quadrado médio da raiz normalizada, assim como descrito na \cref{eq:nrmse} a seguir:
+
+\begin{equation}
+	\label{eq:nrmse}
+	\mathrm{fit} = 100 \left( 1 - \frac{ \| y - \hat{y} \| }{ \| y - \mathrm{média}(y) \| } \right)
+\end{equation}
+
+\noindent
+Onde: 
+\begin{itemize}
+	\item $y$: são os dados de validação
+	\item $\hat{y}$: são os dados do modelo
+\end{itemize}
+
+Também neste trabalho aplica-se o teste de \textit{análise de resíduos} dos modelos estudados e a motivação
+para tal pode ser melhor compreendida nas palavras de \citeonline{Aguirre2015} a seguir:
+
+\begin{citacao}
+    \text{[...]} Do ponto de vista da validação de modelos, a motivação de se verificar quão são aleatórios
+    os resíduos pode ser entendida lembrando que os resíduos são a parte dos dados que o modelo não
+    consegue explicar. Exigir que o modelo explique os dados em todos os seus detalhes é, no mínimo,
+    ingênuo. Mas quanto dos dados precisa ser explicado? O modelo deve explicar \textit{tudo que for
+    explicável nos dados}. Se isso ocorrer, então os resíduos conterão apenas aquilo que não é explicável e,
+    portanto, serão brancos. Assim, se os resíduos forem brancos, não há informação útil neles, ou seja,
+    o modelo explicou tudo que era possível explicar. \text{[...]} 
+\end{citacao}
+
+Para tal teste utiliza-se a função \texttt{resid} no \acrshort{matlab}.
+
+% -----------------------------------------------------------------------------------------------------
+% ------------------------------------------- Subsubsection -------------------------------------------
+% -----------------------------------------------------------------------------------------------------
+\subsubsection{Modelo experimental}
+\label{subsubsec:modelo_experimental}
+
+
 
 % =====================================================================================================
 % ============================================= Section ===============================================
