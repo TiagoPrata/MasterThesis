@@ -2,6 +2,9 @@
 \renewcommand{\lstlistingname}{Código-fonte} 
 \newlistof{lstlistoflistings}{lol}{\lstlistlistingname}
 
+% Pacote alternativo para linguagem Matlab
+% \usepackage{matlab-prettifier}
+
 % Configuracoes gerais
 %\lstset{ 
 %  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
@@ -56,4 +59,10 @@
   language=Python,
   morekeywords={as},
   emph={import,return},
+}
+
+% Ajustes para linguagem Python
+\lstdefinestyle{Matlab_lang}{
+  language=Matlab,
+  inputencoding=ansinew,
 }
