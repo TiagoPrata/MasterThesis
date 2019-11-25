@@ -43,7 +43,7 @@ As seções a seguir detalham cada uma dessas etapas.
 
 Esta etapa abrange os procedimentos necessários para geração do conjunto de dados que serão utilizados
 para a identificação do sistema. Algumas das atividades realizadas nessa etapa são: escolha das variáveis,
-definição dos sinais de excitação, definição do período de amostragem e a execução em si dos testes.
+definição dos sinais de excitação, definição do período de amostragem e execução de testes.
 \cite{Aguirre2015}
 
 % -----------------------------------------------------------------------------------------------------
@@ -267,7 +267,7 @@ da variância dos resíduos resultante da inclusão de um termo, ao passo que a 
 a inclusão de cada termo.
 
 O índice \acrshort{aic}($n_\theta$) normalmente atinge um mínimo para um determinado número de parâmetros
-no modelo $n_{\theta}^*$, e, ainda segunda \citeonline{Aguirre2015}, do ponto de vista do critério utilizado,
+no modelo $n_{\theta}^*$, e, ainda segundo \citeonline{Aguirre2015}, do ponto de vista do critério utilizado,
 esse número de parâmetros é ótimo.
 
 % -----------------------------------------------------------------------------------------------------
@@ -371,9 +371,150 @@ Para tal teste utiliza-se a função \texttt{resid} no \acrshort{matlab}.
 % -----------------------------------------------------------------------------------------------------
 % ------------------------------------------- Subsubsection -------------------------------------------
 % -----------------------------------------------------------------------------------------------------
-\subsubsection{Modelo experimental}
+\subsubsection{Modelos experimentais}
 \label{subsubsec:modelo_experimental}
 
+Esta seção apresenta maiores detalhes práticos dos procedimentos descritos nas 
+\crefrange{subsubsec:escolha_da_representacao_matematica}{subsubsec:validacao_do_modelo} e os
+\textit{scripts} de \acrshort{matlab} utilizados para a obtenção dos resultados também serão
+apresentados e discutidos ao longo do texto.
+
+Após as coletas de dados descritas das
+\crefrange{subsec:testes_dinamicos_e_coleta_de_dados}{subsubsec:duracao_do_experimento}
+preparou-se então no \acrshort{matlab} um objeto do tipo \texttt{iddata} contendo os dados dos aquecedores
+e dos sensores de temperatura do \acrshort{tclabsp}.
+Esses dados foram divididos em 2 grupos: identificação e validação, como já visto na \cref{subsubsec:validacao_do_modelo}.
+As entradas e saídas do sistema, subdivididas nesses 2 grupos, foram criadas a partir do código-fonte
+\ref{lst:tclabsp-model-iddata} e podem ser observadas na \cref{fig:tclabsp-model-IOs}.
+
+\begin{figure}[h]
+	\caption{Entradas e saídas coletadas em ensaios no \acrshort{tclabsp}}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-model-IOs.png} 
+		\label{fig:tclabsp-model-IOs}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+Na \cref{fig:tclabsp-model-IOs} é possível observar 3 conjuntos de dados distintos, indicados pelas cores 
+azul, vermelho e laranja. Os dados em \textbf{azul} foram descartados, pois representam o período de 
+estabilização do sistema em 50\% dos aquecedores. Os dados em \textbf{vermelho} e \textbf{laranja} representam
+os dados de identificação e validação, respectivamente.
+
+\lstinputlisting[	
+	caption={Criação dos conjuntos de identificação e validação para o sistema \acrshort{tclabsp}},
+	captionpos=t,
+    label={lst:tclabsp-model-iddata},
+    firstline=1,
+    lastline=55,
+    language=Matlab,
+	style=Matlab_lang]
+	{D:/Repos/TCLabSP/Simulink (MATLAB R2016a)/02-ModeloExperimental/RunMe.m}
+	\begin{center}
+		\makebox[\width]{Fonte: Autor}
+    \end{center}
+% TODO: Substituir endereço do arquivo
+
+Com o intuito fazer diversos testes e de avaliar muitos modelos diferentes, utilizou-se um
+\textit{script} para a criação automática de modelos experimentais baseados nos dados mostrados
+na \cref{fig:tclabsp-model-IOs}. O código-fonte de tal \textit{script} pode ser visto no
+\cref{sec:tclabsp-models-creation} e os modelos criados a partir dele são descritos na 
+\cref{tab:tclabsp-models-description}.
+
+\begin{table}[h]
+	\centering
+	\caption{Modelos experimentais do \acrshort{tclabsp}}
+	\label{tab:tclabsp-models-description}
+	\begin{tabular}{ll} \toprule
+		{Representação matemática}		                                & {Quantidade}          \\ \midrule
+		Função de transferência		                                    & $10.000$              \\
+		Espaço de estados   		                                    & $10$                  \\
+		\acrshort{arx}		                                            & $80$                  \\
+		\acrshort{armax}		                                        & $320$                 \\
+		Erro de saída (\acrshort{oe}, do inglês \acrlong{oe})		    & $80$                  \\
+		Box-Jenkins             	                                    & $1.280$               \\
+		\acrshort{arx} não-linear (NLARX)                               & $26.244$              \\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+\paragraph*{\textbf{Modelos experimentais de função de transferência}}
+\label{par:modelos_experimentais_tf}
+
+Os modelos experimentais criados na forma de função de transferência foram obtidos a partir de diversas combinações
+entre a quantidade de pólos e zeros nos subsistemas existentes entre os Sensores 1 e 2, e entre os Aquecedores 1 e 2.
+Essas combinações são descridas na \cref{tab:tclabsp-models-tf}.
+
+\begin{table}[h]
+	\centering
+	\caption{Modelos experimentais - Função de transferência}
+	\label{tab:tclabsp-models-tf}
+	\begin{tabular}{l|l|l|}
+        \cline{2-3}
+                                                & \textbf{Aquecedor 1}                                                      & \textbf{Aquecedor 2}                                                      \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Sensor 1}} & \begin{tabular}[c]{@{}l@{}}pólos: de 2 a 5\\ zeros: de 1 a 4\end{tabular} & \begin{tabular}[c]{@{}l@{}}pólos: de 2 a 5\\ zeros: de 1 a 4\end{tabular} \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Sensor 2}} & \begin{tabular}[c]{@{}l@{}}pólos: de 2 a 5\\ zeros: de 1 a 4\end{tabular} & \begin{tabular}[c]{@{}l@{}}pólos: de 2 a 5\\ zeros: de 1 a 4\end{tabular} \\ \hline
+    \end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+Para cada uma das combinações possíveis descritas na \cref{tab:tclabsp-models-tf} foi criado um modelo utilizando o
+conjunto de dados de identificação. Esses modelos foram testados com o conjunto de dados de validação através da \cref{eq:nrmse}
+e o resultado destes testes, juntamente com o critério de \acrshort{aic}, podem ser observados na \cref{fig:tclabsp-models-tf}.
+
+\begin{figure}[h]
+	\caption{Modelos experimentais de função de transferência}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-TF.png} 
+		\label{fig:tclabsp-models-tf}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+Cada um dos pontos presentes na \cref{fig:tclabsp-models-tf} representam um modelo experimental diferente, sendo que as cores
+mais claras indicam aqueles com menor erro quando comparados ao conjunto de dados de validação.
+
+A fim de escolher o melhor modelo de função de transferência frente aos 10000 gerados, os 10 primeiros modelos com menor 
+valor segundo o critério de \acrshort{aic} foram submetidos à análise de resíduos (vide \cref{subsubsec:validacao_do_modelo}) e
+dentre eles o que mostrou menor valor na análise resídual foi o modelo descrito na \cref{tab:tclabsp-model-tf}.
+O teste deste modelo junto aos dados de validação e sua análise de resíduos podem ser visualizadas nas
+\cref{fig:tclabsp-models-tf-compare,fig:tclabsp-models-tf-resid}.
+
+\begin{table}[h]
+	\centering
+	\caption{Melhor modelo experimental - Função de transferência}
+	\label{tab:tclabsp-model-tf}
+	\begin{tabular}{c|c} \toprule
+		{Entradas e saídas}		                                            & {Função de transferência}                                                                                                                                 \\ \midrule
+        \begin{tabular}[c]{@{}l@{}}Aquecedor 1\\Sensor 1\end{tabular}		& $\frac{ 0.1248 z^{-1} - 0.01046 z^{-2} - 0.1142 z^{-3} }{ 1 - 0.8092 z^{-1} - 1.03 z^{-2} + 0.7405 z^{-3} + 0.1342 z^{-4} - 0.03503 z^{-5} }$             \\ \midrule
+		\begin{tabular}[c]{@{}l@{}}Aquecedor 1\\Sensor 2\end{tabular}  		& $\frac{ 0.007869 z^{-1} - 0.007693 z^{-2} }{ 1 - 1.985 z^{-1} + 0.2452 z^{-2} + 1.659 z^{-3} - 1.083 z^{-4} + 0.1637 z^{-5} }$                            \\ \midrule
+		\begin{tabular}[c]{@{}l@{}}Aquecedor 2\\Sensor 1\end{tabular}		& $\frac{ 0.00452 z^{-1}+ 0.005953 z^{-2} }{ 1 - 0.2164 z^{-1} - 1.301 z^{-2} + 0.2197 z^{-3} + 0.4412 z^{-4} - 0.08218 z^{-5} }$                           \\ \midrule
+		\begin{tabular}[c]{@{}l@{}}Aquecedor 2\\Sensor 2\end{tabular}       & $\frac{ 0.06374 z^{-1} - 0.04266 z^{-2} }{ 1 - 1.504 z^{-1} + 0.4851 z^{-2} + 0.2172 z^{-3} - 0.2665 z^{-4} + 0.12 z^{-5} }$                              \\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+\begin{figure}[h]
+	\caption{Modelo: função de transferência - Teste de validação}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-TF-compare.png} 
+		\label{fig:tclabsp-models-tf-compare}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{figure}[h]
+	\caption{Modelo: função de transferência - Análise de resíduos}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-TF-resid.png} 
+		\label{fig:tclabsp-models-tf-resid}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
 
 
 % =====================================================================================================
