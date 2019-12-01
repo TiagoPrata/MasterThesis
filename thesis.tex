@@ -48,6 +48,14 @@
 % Pacote para highlight
 \usepackage{soul}
 
+% Configurando matrizes com colunas
+\usepackage{etoolbox}
+\let\bbordermatrix\bordermatrix
+\patchcmd{\bbordermatrix}{8.75}{4.75}{}{}
+\patchcmd{\bbordermatrix}{\left(}{\left[}{}{}
+\patchcmd{\bbordermatrix}{\right)}{\right]}{}{}
+\definecolor{matrixtitle}{gray}{0.65}
+
 % Cria comando para referência de anexos. https://github.com/abntex/abntex2/issues/76
 \newcommand{\crefanexo}[1]{\hyperref[#1]{anexo~\ref{#1}}}
 \newcommand{\Crefanexo}[1]{\hyperref[#1]{Anexo~\ref{#1}}}

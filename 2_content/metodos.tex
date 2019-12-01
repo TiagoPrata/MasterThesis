@@ -418,9 +418,9 @@ os dados de identificação e validação, respectivamente.
 
 Com o intuito fazer diversos testes e de avaliar muitos modelos diferentes, utilizou-se um
 \textit{script} para a criação automática de modelos experimentais baseados nos dados mostrados
-na \cref{fig:tclabsp-model-IOs}. O código-fonte de tal \textit{script} pode ser visto no
-\cref{sec:tclabsp-models-creation} e os modelos criados a partir dele são descritos na 
-\cref{tab:tclabsp-models-description}.
+na \cref{fig:tclabsp-model-IOs}. Este \textit{script} utiliza as funções descritas na \cref{tab:param_est_functions}
+e seu código-fonte pode ser visto no \cref{sec:tclabsp-models-creation}. 
+A \cref{tab:tclabsp-models-description} apresenta a quantidade de modelos que foram gerados a partir dele.
 
 \begin{table}[h]
 	\centering
@@ -439,6 +439,9 @@ na \cref{fig:tclabsp-model-IOs}. O código-fonte de tal \textit{script} pode ser
 	\caption*{Fonte: Autor}
 \end{table}
 
+% _____________________________________________________________________________________________________
+% ___________________________________________ Paragraph _______________________________________________
+% _____________________________________________________________________________________________________
 \paragraph*{\textbf{Modelos experimentais de função de transferência}}
 \label{par:modelos_experimentais_tf}
 
@@ -516,6 +519,89 @@ O teste deste modelo junto aos dados de validação e sua análise de resíduos 
 	\makebox[\width]{Fonte: Autor} 
 \end{figure}
 
+% _____________________________________________________________________________________________________
+% ___________________________________________ Paragraph _______________________________________________
+% _____________________________________________________________________________________________________
+\paragraph*{\textbf{Modelos experimentais de espaço de estados}}
+\label{par:modelos_experimentais_ss}
+
+Para a escolha do modelo experimental em espaço de estados foram testados 10 modelos de ordens distintas,
+entre as ordens 1 e 10, e gráfico mostrando a comparação destes modelos frente ao critério de \acrshort{aic}
+e aos dados de validação dos sensores 1 e 2 pode ser observado na \cref{fig:tclabsp-models-ss}.
+
+\begin{figure}[h]
+	\caption{Modelos experimentais de espeço de estados}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-SS.png} 
+		\label{fig:tclabsp-models-ss}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+Dentre todos os testados, o modelo de ordem 3 apresentou o menor valor no critério de \acrshort{aic} e foi
+selecionado. O formato e as matrizes deste modelo podem ser vistos na \cref{eq:tclabsp-model-ss}
+e o gráfico de teste junto aos dados de validação na \cref{fig:tclabsp-models-ss-compare}.
+
+\begin{equation}
+	\label{eq:tclabsp-model-ss}
+	\begin{aligned}
+		x(t + T_s) &= Ax(t) + Bu(t) + Ke(t)	\\
+		y(t) &= Cx(t) + Du(t) + e(t)		\\
+	\end{aligned}
+\end{equation}
+
+\begin{equation*}
+	\begin{aligned}
+		A &= \bbordermatrix{
+											&	\textcolor{matrixtitle}{x_1}	&	\textcolor{matrixtitle}{x_2}	&	\textcolor{matrixtitle}{x_3}	\cr
+			\textcolor{matrixtitle}{x_1}	&	0.9099							&	-0.02543						&	-0.02673	 					\cr
+			\textcolor{matrixtitle}{x_2}	&	-0.06169						&	0.8193							&	-0.01098	 					\cr
+			\textcolor{matrixtitle}{x_3}	&	-0.03506						&	0.108							&	0.9884		 					\cr
+		}
+		, \\
+		C &= \bbordermatrix{
+												&	\textcolor{matrixtitle}{x_1}	&	\textcolor{matrixtitle}{x_2}	&	\textcolor{matrixtitle}{x_3}	\cr
+			\textcolor{matrixtitle}{Sensor_1}	&	180.1							&	8.69							&	1.814							\cr
+			\textcolor{matrixtitle}{Sensor_2}	&	159.2							&	-40.71							&	1.665							\cr
+		}
+		,
+	\end{aligned}
+	\begin{aligned}
+		B &= \bbordermatrix{
+											&	\textcolor{matrixtitle}{Aquecedor_1}	&	\textcolor{matrixtitle}{Aquecedor_2}	\cr
+			\textcolor{matrixtitle}{x_1}	&	0.0005512								&	7.033 \times 10^{-5}					\cr
+			\textcolor{matrixtitle}{x_2}	&	0.002047								&	-0.001209								\cr
+			\textcolor{matrixtitle}{x_3}	&	-0.0009257								&	0.0009081								\cr
+		}
+		, \\
+		D &= \bbordermatrix{
+												&	\textcolor{matrixtitle}{Aquecedor_1}	&	\textcolor{matrixtitle}{Aquecedor_2}	\cr
+			\textcolor{matrixtitle}{Sensor_1}	&	0           							&	0										\cr
+			\textcolor{matrixtitle}{Sensor_2}	&	0           							&	0										\cr
+		}
+		,
+	\end{aligned}
+\end{equation*}
+
+\begin{equation*}
+	K = \bbordermatrix{
+										&	\textcolor{matrixtitle}{Sensor_1}	&	\textcolor{matrixtitle}{Sensor_2}	\cr
+		\textcolor{matrixtitle}{x_1}	&	0.000946							&	0.0008267							\cr
+		\textcolor{matrixtitle}{x_2}	&	0.0006276							&	0.001956							\cr
+		\textcolor{matrixtitle}{x_3}	&	-0.008009							&	0.003641							\cr
+	}
+\end{equation*}
+
+\begin{figure}[h]
+	\caption{Modelo: espaço de estados - Teste de validação}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-SS-compare.png} 
+		\label{fig:tclabsp-models-ss-compare}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
 
 % =====================================================================================================
 % ============================================= Section ===============================================
