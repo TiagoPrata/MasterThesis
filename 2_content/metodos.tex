@@ -642,7 +642,7 @@ números de zeros ($n_b$) e de tempo morto ($n_k$). As combinações utilizadas 
 \end{table}
 
 A partir de todos os modelos possíveis gerados a partir das combinações dos parâmetros da \cref{tab:tclabsp-models-arx},
-selecionou-se então os 10 modelos com menor valor segundo o critério de \acrshort{aic} e deste foi então
+selecionaram-se os 10 modelos com menor valor segundo o critério de \acrshort{aic} e a partir destes foi então
 selecionado o modelo com menor valor residual.
 O gráfico mostrando a distribuição dos modelos gerados em comparação ao critério de \acrshort{aic} pode ser
 visto na \cref{fig:tclabsp-models-arx} e o modelo \acrshort{arx} escolhido, seu gráfico comparativo aos dados validação
@@ -710,6 +710,124 @@ e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-arx}, na \cr
 	\begin{center}
 		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-ARX-resid.png} 
 		\label{fig:tclabsp-models-arx-resid}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+% _____________________________________________________________________________________________________
+% ___________________________________________ Paragraph _______________________________________________
+% _____________________________________________________________________________________________________
+\paragraph*{\textbf{Modelos experimentais ARMAX}}
+\label{par:modelos_experimentais_armax}
+
+De forma análoga ao procedimento realizado para a obtenção dos modelos \acrshort{arx}, os modelos
+\acrshort{armax} também foram criados a partir de combinações de diferentes números de pólos ($n_a$),
+números de zeros mais 1 ($n_b$), número de coeficientes C ($n_c$) e de tempo morto ($n_k$).
+As combinações utilizadas podem ser vistas na \cref{tab:tclabsp-models-armax}.
+
+\begin{table}[h]
+	\centering
+	\caption{Modelos experimentais - ARMAX}
+	\label{tab:tclabsp-models-armax}
+	\begin{tabular}{c|c} \toprule
+		{Parâmetro}		&	{Valores utilizados nas combinações}									\\ \midrule
+		$n_a$			&
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
+		$n_b$			&
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
+		$n_c$			&
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
+		$n_k$			&
+							$ \begin{bmatrix}	0	&	0	\\	0	&	0	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+A partir de todos os modelos possíveis gerados a partir das combinações dos parâmetros da \cref{tab:tclabsp-models-armax},
+selecionaram-se os 10 modelos com menor valor segundo o critério de \acrshort{aic} e a partir destes foi então
+selecionado o modelo com menor valor residual.
+O gráfico mostrando a distribuição dos modelos gerados em comparação ao critério de \acrshort{aic} pode ser
+visto na \cref{fig:tclabsp-models-armax} e o modelo \acrshort{armax} escolhido, seu gráfico comparativo aos dados validação
+e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-armax}, na \cref{fig:tclabsp-models-armax-compare} e na
+\cref{fig:tclabsp-models-armax-resid}, respectivamente.
+
+\begin{figure}[h]
+	\caption{Modelos experimentais ARMAX}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-ARMAX.png} 
+		\label{fig:tclabsp-models-armax}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{table}[h]
+	\centering
+	\caption{Melhor modelo experimental - ARMAX}
+	\label{tab:tclabsp-model-armax}
+	\begin{tabular}{c|c} \toprule
+		{Saída}			&	{Parâmetros}									\\ \midrule
+		$Sensor_1$			&
+								$ 
+									\begin{aligned}
+										\text{Formato:}																		\\
+										A(z)y_1(t) &= - A_i(z)y_i(t) + B(z)u(t) + C(z)e_1(t)								\\
+										\text{Onde:}																		\\
+										A(z) &= 1 - 2.065 z^{-1} + 1.21 z^{-2} - 0.0912 z^{-3} - 0.0506 z^{-4}       		\\
+										A_2(z) &= -0.01859 z^{-1} - 0.05489 z^{-2} + 0.115 z^{-3} - 0.04455 z^{-4}   		\\ 
+										B1(z) &= 0.03843 + 0.01122 z^{-1} - 0.04769 z^{-2}                        		 	\\
+										B2(z) &= 0.004763 - 0.006549 z^{-1} + 0.0007073 z^{-2}                    		 	\\
+										C(z) &= 1 - 2.037 z^{-1} + 1.252 z^{-2} - 0.1622 z^{-3} - 0.05266 z^{-4}    
+									\end{aligned}
+								$	
+							\\ \midrule
+		$Sensor_2$			&
+								$ 
+									\begin{aligned}
+										\text{Formato:}																		\\
+										A(z)y_2(t) &= - A_i(z)y_i(t) + B(z)u(t) + C(z)e_2(t)								\\
+										\text{Onde:}																		\\
+										A(z) &= 1 - 2.586 z^{-1} + 2.547 z^{-2} - 1.166 z^{-3} + 0.2195 z^{-4}          	\\
+										A_1(z) &= 0.02167 z^{-1} - 0.2072 z^{-2} + 0.2423 z^{-3} - 0.07087 z^{-4}   		\\
+										B1(z) &= -0.0004278 + 0.007959 z^{-1} - 0.0159 z^{-2}                 			 	\\
+										B2(z) &= 0.02851 - 0.02749 z^{-1} + 0.004346 z^{-2}                  				\\
+										C(z) &= 1 - 2.487 z^{-1} + 2.379 z^{-2} - 1.086 z^{-3} + 0.2112 z^{-4}     			
+									\end{aligned}
+								$
+							\\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+\begin{figure}[h]
+	\caption{Modelo: ARMAX - Teste de validação}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-ARMAX-compare.png} 
+		\label{fig:tclabsp-models-armax-compare}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{figure}[h]
+	\caption{Modelo: ARMAX - Análise de resíduos}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-ARMAX-resid.png} 
+		\label{fig:tclabsp-models-armax-resid}
 	\end{center}
 	\centering
 	\makebox[\width]{Fonte: Autor} 
