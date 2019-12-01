@@ -910,7 +910,7 @@ e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-oe}, na \cre
 								$ 
 									\begin{aligned}
 										\text{Formato:}																	\\
-										y_2(t) &= \frac{B(z)}{F(z)}u(t) + e_1(t)										\\
+										y_2(t) &= \frac{B(z)}{F(z)}u(t) + e_2(t)										\\
 										\text{Onde:}																	\\
 										B1(z) &= 0.003972 - 0.009146 z^{-1} + 0.01457 z^{-2} - 0.009311 z^{-3}    		\\
 										B2(z) &= 0.02613 + 0.04639 z^{-1} + 0.03748 z^{-2} + 0.02104 z^{-3}       		\\
@@ -938,6 +938,131 @@ e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-oe}, na \cre
 	\begin{center}
 		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-OE-resid.png} 
 		\label{fig:tclabsp-models-oe-resid}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+% _____________________________________________________________________________________________________
+% ___________________________________________ Paragraph _______________________________________________
+% _____________________________________________________________________________________________________
+\paragraph*{\textbf{Modelos experimentais Box-Jenkins}}
+\label{par:modelos_experimentais_bj}
+
+Os modelos \acrshort{bj} foram criados a partir de combinações de diferentes ordens do polinômio B+1 ($n_b$),
+ordens do polinômio C+1 ($n_c$), ordens do polinômio D+1 ($n_d$), ordens do polinômio F+1 ($n_f$)
+e do tempo morto ($n_k$). As combinações utilizadas podem ser vistas na
+\cref{tab:tclabsp-models-bj}.
+
+\begin{table}[h]
+	\centering
+	\caption{Modelos experimentais - BJ}
+	\label{tab:tclabsp-models-bj}
+	\begin{tabular}{c|c} \toprule
+		{Parâmetro}		&	{Valores utilizados nas combinações}									\\ \midrule
+		$n_b$			&
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
+		$n_c$			&
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
+		$n_d$			&
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
+		$n_f$			&
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
+		$n_k$			&
+							$ \begin{bmatrix}	0	&	0	\\	0	&	0	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+A partir de todos os modelos possíveis gerados a partir das combinações dos parâmetros da \cref{tab:tclabsp-models-bj},
+selecionaram-se os 10 modelos com menor valor segundo o critério de \acrshort{aic} e a partir destes foi então
+selecionado o modelo com menor valor residual.
+O gráfico mostrando a distribuição dos modelos gerados em comparação ao critério de \acrshort{aic} pode ser
+visto na \cref{fig:tclabsp-models-bj} e o modelo \acrshort{bj} escolhido, seu gráfico comparativo aos dados validação
+e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-bj}, na \cref{fig:tclabsp-models-bj-compare} e na
+\cref{fig:tclabsp-models-bj-resid}, respectivamente.
+
+\begin{figure}[h]
+	\caption{Modelos experimentais BJ}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-BJ.png} 
+		\label{fig:tclabsp-models-bj}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{table}[h]
+	\centering
+	\caption{Melhor modelo experimental - BJ}
+	\label{tab:tclabsp-model-bj}
+	\begin{tabular}{c|c} \toprule
+		{Saída}			&	{Parâmetros}									\\ \midrule
+		$Sensor_1$			&
+								$ 
+									\begin{aligned}
+										\text{Formato:}														\\
+										y_1(t) &= \frac{B(z)}{F(z)}u(t) + \frac{C(z)}{D(z)}e_1(t)			\\
+										\text{Onde:}														\\
+										B1(z) &= 0.0378 + 0.04587 z^{-1} - 0.002368 z^{-2}          		\\
+										B2(z) &= 0.005381 - 0.005655 z^{-1} + 0.004255 z^{-2}    			\\		  
+										C(z) &= 1 - 0.7435 z^{-1}                           				\\  
+										D(z) &= 1 - z^{-1}                               					\\
+										F1(z) &= 1 - 1.18 z^{-1} + 0.2775 z^{-2}         					\\
+										F2(z) &= 1 - 1.657 z^{-1} + 0.6763 z^{-2}  
+									\end{aligned}
+								$	
+							\\ \midrule
+		$Sensor_2$			&
+								$ 
+									\begin{aligned}
+										\text{Formato:}														\\
+										y_2(t) &= \frac{B(z)}{F(z)}u(t) + \frac{C(z)}{D(z)}e_2(t)			\\
+										\text{Onde:}														\\
+										B1(z) &= 0.000291 + 0.001995 z^{-1} + 0.002964 z^{-2}        		\\
+										B2(z) &= 0.02837 + 0.01865 z^{-1} + 0.01077 z^-2          			\\
+										C(z) &= 1 - 0.888 z^{-1}                                 			\\
+										D(z) &= 1 - z^{-1}                                     				\\
+										F1(z) &= 1 - 1.689 z^{-1} + 0.7107 z^{-2}              				\\
+										F2(z) &= 1 - 0.9859 z^{-1} + 0.09669 z^{-2}    			
+									\end{aligned}
+								$
+							\\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+\begin{figure}[h]
+	\caption{Modelo: BJ - Teste de validação}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-BJ-compare.png} 
+		\label{fig:tclabsp-models-bj-compare}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{figure}[h]
+	\caption{Modelo: BJ - Análise de resíduos}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-BJ-resid.png} 
+		\label{fig:tclabsp-models-bj-resid}
 	\end{center}
 	\centering
 	\makebox[\width]{Fonte: Autor} 
