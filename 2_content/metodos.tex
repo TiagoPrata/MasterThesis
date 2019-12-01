@@ -833,6 +833,116 @@ e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-armax}, na \
 	\makebox[\width]{Fonte: Autor} 
 \end{figure}
 
+% _____________________________________________________________________________________________________
+% ___________________________________________ Paragraph _______________________________________________
+% _____________________________________________________________________________________________________
+\paragraph*{\textbf{Modelos experimentais OE}}
+\label{par:modelos_experimentais_oe}
+
+Os modelos \acrshort{oe} foram criados a partir de combinações de diferentes ordens do polinômio B+1 ($n_b$),
+ordens do polinômio F ($n_f$) e de tempo morto ($n_k$). As combinações utilizadas podem ser vistas na
+\cref{tab:tclabsp-models-oe}.
+
+\begin{table}[h]
+	\centering
+	\caption{Modelos experimentais - OE}
+	\label{tab:tclabsp-models-oe}
+	\begin{tabular}{c|c} \toprule
+		{Parâmetro}		&	{Valores utilizados nas combinações}									\\ \midrule
+		$n_b$			&
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
+		$n_f$			&
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
+		$n_k$			&
+							$ \begin{bmatrix}	0	&	0	\\	0	&	0	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+A partir de todos os modelos possíveis gerados a partir das combinações dos parâmetros da \cref{tab:tclabsp-models-oe},
+selecionaram-se os 10 modelos com menor valor segundo o critério de \acrshort{aic} e a partir destes foi então
+selecionado o modelo com menor valor residual.
+O gráfico mostrando a distribuição dos modelos gerados em comparação ao critério de \acrshort{aic} pode ser
+visto na \cref{fig:tclabsp-models-oe} e o modelo \acrshort{oe} escolhido, seu gráfico comparativo aos dados validação
+e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-oe}, na \cref{fig:tclabsp-models-oe-compare} e na
+\cref{fig:tclabsp-models-oe-resid}, respectivamente.
+
+\begin{figure}[h]
+	\caption{Modelos experimentais OE}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-OE.png} 
+		\label{fig:tclabsp-models-oe}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{table}[h]
+	\centering
+	\caption{Melhor modelo experimental - OE}
+	\label{tab:tclabsp-model-oe}
+	\begin{tabular}{c|c} \toprule
+		{Saída}			&	{Parâmetros}									\\ \midrule
+		$Sensor_1$			&
+								$ 
+									\begin{aligned}
+										\text{Formato:}																	\\
+										y_1(t) &= \frac{B(z)}{F(z)}u(t) + e_1(t)										\\
+										\text{Onde:}																	\\
+										B1(z) &= 0.04087 + 0.03768 z^{-1} - 0.04261 z^{-2} - 0.03345 z^{-3}    			\\
+										B2(z) &= 0.00337 - 0.006235 z^{-1} + 0.01075 z^{-2} - 0.007678 z^{-3}  			\\
+										F1(z) &= 1 - 1.348 z^{-1} - 0.2736 z^{-2} + 0.7902 z^{-3} - 0.1655 z^{-4}		\\
+										F2(z) &= 1 - 1.764 z^{-1} + 0.3168 z^{-2} + 0.741 z^{-3} - 0.2937 z^{-4}   
+									\end{aligned}
+								$	
+							\\ \midrule
+		$Sensor_2$			&
+								$ 
+									\begin{aligned}
+										\text{Formato:}																	\\
+										y_2(t) &= \frac{B(z)}{F(z)}u(t) + e_1(t)										\\
+										\text{Onde:}																	\\
+										B1(z) &= 0.003972 - 0.009146 z^{-1} + 0.01457 z^{-2} - 0.009311 z^{-3}    		\\
+										B2(z) &= 0.02613 + 0.04639 z^{-1} + 0.03748 z^{-2} + 0.02104 z^{-3}       		\\
+										F1(z) &= 1 - 2.303 z^{-1} + 1.399 z^{-2} + 0.1446 z^{-3} - 0.2406 z^{-4}    	\\
+										F2(z) &= 1 + 0.01233 z^{-1} - 0.5849 z^{-2} - 0.1919 z^{-3} + 0.03233 z^{-4}  	
+									\end{aligned}
+								$
+							\\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+\begin{figure}[h]
+	\caption{Modelo: OE - Teste de validação}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-OE-compare.png} 
+		\label{fig:tclabsp-models-oe-compare}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{figure}[h]
+	\caption{Modelo: OE - Análise de resíduos}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-OE-resid.png} 
+		\label{fig:tclabsp-models-oe-resid}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
 % =====================================================================================================
 % ============================================= Section ===============================================
 % =====================================================================================================
