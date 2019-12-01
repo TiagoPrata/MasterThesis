@@ -605,6 +605,116 @@ e o gráfico de teste junto aos dados de validação na \cref{fig:tclabsp-models
 	\makebox[\width]{Fonte: Autor} 
 \end{figure}
 
+% _____________________________________________________________________________________________________
+% ___________________________________________ Paragraph _______________________________________________
+% _____________________________________________________________________________________________________
+\paragraph*{\textbf{Modelos experimentais ARX}}
+\label{par:modelos_experimentais_arx}
+
+Os modelos \acrshort{arx} foram criados a partir de combinações de diferentes números de pólos ($n_a$),
+números de zeros ($n_b$) e de tempo morto ($n_k$). As combinações utilizadas podem ser vistas na
+\cref{tab:tclabsp-models-arx}.
+
+\begin{table}[h]
+	\centering
+	\caption{Modelos experimentais - ARX}
+	\label{tab:tclabsp-models-arx}
+	\begin{tabular}{c|c} \toprule
+		{Parâmetro}		&	{Valores utilizados nas combinações}									\\ \midrule
+		$n_a$			&
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
+		$n_b$			&
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
+		$n_k$			&
+							$ \begin{bmatrix}	0	&	0	\\	0	&	0	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
+							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+A partir de todos os modelos possíveis gerados a partir das combinações dos parâmetros da \cref{tab:tclabsp-models-arx},
+selecionou-se então os 10 modelos com menor valor segundo o critério de \acrshort{aic} e deste foi então
+selecionado o modelo com menor valor residual.
+O gráfico mostrando a distribuição dos modelos gerados em comparação ao critério de \acrshort{aic} pode ser
+visto na \cref{fig:tclabsp-models-arx} e o modelo \acrshort{arx} escolhido, seu gráfico comparativo aos dados validação
+e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-arx}, na \cref{fig:tclabsp-models-arx-compare} e na
+\cref{fig:tclabsp-models-arx-resid}, respectivamente.
+
+\begin{figure}[h]
+	\caption{Modelos experimentais ARX}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-ARX.png} 
+		\label{fig:tclabsp-models-arx}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{table}[h]
+	\centering
+	\caption{Melhor modelo experimental - ARX}
+	\label{tab:tclabsp-model-arx}
+	\begin{tabular}{c|c} \toprule
+		{Saída}			&	{Parâmetros}									\\ \midrule
+		$Sensor_1$			&
+								$ 
+									\begin{aligned}
+										\text{Formato:}																	\\
+										A(z)y_1(t) &= - A_i(z)y_i(t) + B(z)u(t) + e_1(t)								\\
+										\text{Onde:}																	\\
+										A(z) &= 1 - 1.053 z^{-1} - 0.2885 z^{-2} + 0.4807 z^{-3} - 0.0593 z^{-4}		\\
+										A_2(z) &= -0.1701 z^{-1} - 0.06197 z^{-2} + 0.1552 z^{-3} + 0.003291 z^{-4}		\\ 	 
+										B1(z) &= 0.03937 + 0.04884 z^{-1} - 0.01257 z^{-2} - 0.02444 z^{-3}				\\	 
+										B2(z) &= 0.005292 - 0.006813 z^{-1} - 0.005269 z^{-2} - 0.01209 z^{-3}   
+									\end{aligned}
+								$	
+							\\ \midrule
+		$Sensor_2$			&
+								$ 
+									\begin{aligned}
+										\text{Formato:}																	\\
+										A(z)y_2(t) &= - A_i(z)y_i(t) + B(z)u(t) + e_2(t)									\\
+										\text{Onde:}																	\\
+										A(z) &= 1 - 0.4421 z^{-1} - 0.3168 z^{-2} + 0.02046 z^{-3} - 0.02842 z^{-4}      \\ 
+										A_1(z) &= -0.7006 z^{-1} + 0.02119 z^{-2} + 0.6253 z^{-3} - 0.1524 z^{-4}     	\\ 
+										B1(z) &= 0.001822 - 0.02448 z^{-1} - 0.05453 z^{-2} - 0.03861 z^{-3}        	 	\\
+										B2(z) &= 0.02737 + 0.03038 z^{-1} + 0.02127 z^{-2} + 0.01153 z^{-3}    			
+									\end{aligned}
+								$
+							\\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+\begin{figure}[h]
+	\caption{Modelo: ARX - Teste de validação}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-ARX-compare.png} 
+		\label{fig:tclabsp-models-arx-compare}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{figure}[h]
+	\caption{Modelo: ARX - Análise de resíduos}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-ARX-resid.png} 
+		\label{fig:tclabsp-models-arx-resid}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
 % =====================================================================================================
 % ============================================= Section ===============================================
 % =====================================================================================================
