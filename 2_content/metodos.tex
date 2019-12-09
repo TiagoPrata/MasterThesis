@@ -731,19 +731,14 @@ As combinações utilizadas podem ser vistas na \cref{tab:tclabsp-models-armax}.
 		$n_b$			&
 							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
 							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,	\\ \midrule
 		$n_c$			&
 							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
 							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
 							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
 							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
 		$n_k$			&
-							$ \begin{bmatrix}	0	&	0	\\	0	&	0	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \bottomrule
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $		\\ \bottomrule
 	\end{tabular}
 	\caption*{Fonte: Autor}
 \end{table}
@@ -775,28 +770,28 @@ e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-armax}, na \
 		$Sensor_1$			&
 								$ 
 									\begin{aligned}
-										\text{Formato:}																		\\
-										A(z)y_1(t) &= - A_i(z)y_i(t) + B(z)u(t) + C(z)e_1(t)								\\
-										\text{Onde:}																		\\
-										A(z) &= 1 - 2.065 z^{-1} + 1.21 z^{-2} - 0.0912 z^{-3} - 0.0506 z^{-4}       		\\
-										A_2(z) &= -0.01859 z^{-1} - 0.05489 z^{-2} + 0.115 z^{-3} - 0.04455 z^{-4}   		\\ 
-										B1(z) &= 0.03843 + 0.01122 z^{-1} - 0.04769 z^{-2}                        		 	\\
-										B2(z) &= 0.004763 - 0.006549 z^{-1} + 0.0007073 z^{-2}                    		 	\\
-										C(z) &= 1 - 2.037 z^{-1} + 1.252 z^{-2} - 0.1622 z^{-3} - 0.05266 z^{-4}    
+										\text{Formato:}													\\
+										A(z)y_1(t) &= - A_i(z)y_i(t) + B(z)u(t) + C(z)e_1(t)			\\
+										\text{Onde:}													\\
+										A(z) &= 1 - 1.804 z^{-1} + 0.8137 z^{-2}      					\\
+										A_2(z) &= -0.09524 z^{-1} + 0.08503 z^{-2}  					\\							
+										B1(z) &= 0.1164 z^{-1} - 0.1108 z^{-2}     						\\				
+										B2(z) &= 0.004773 z^{-1} - 0.008481 z^{-2} 						\\				
+										C(z) &= 1 - 1.683 z^{-1} + 0.6901 z^{-2}    
 									\end{aligned}
 								$	
 							\\ \midrule
 		$Sensor_2$			&
 								$ 
 									\begin{aligned}
-										\text{Formato:}																		\\
-										A(z)y_2(t) &= - A_i(z)y_i(t) + B(z)u(t) + C(z)e_2(t)								\\
-										\text{Onde:}																		\\
-										A(z) &= 1 - 2.586 z^{-1} + 2.547 z^{-2} - 1.166 z^{-3} + 0.2195 z^{-4}          	\\
-										A_1(z) &= 0.02167 z^{-1} - 0.2072 z^{-2} + 0.2423 z^{-3} - 0.07087 z^{-4}   		\\
-										B1(z) &= -0.0004278 + 0.007959 z^{-1} - 0.0159 z^{-2}                 			 	\\
-										B2(z) &= 0.02851 - 0.02749 z^{-1} + 0.004346 z^{-2}                  				\\
-										C(z) &= 1 - 2.487 z^{-1} + 2.379 z^{-2} - 1.086 z^{-3} + 0.2112 z^{-4}     			
+										\text{Formato:}													\\
+										A(z)y_2(t) &= - A_i(z)y_i(t) + B(z)u(t) + C(z)e_2(t)			\\
+										\text{Onde:}													\\
+										A(z) &= 1 - 1.72 z^{-1} + 0.7437 z^{-2}       					\\
+										A_1(z) &= -0.1496 z^{-1} + 0.1278 z^{-2}   						\\				
+										B1(z) &= 0.003022 z^{-1} - 0.01553 z^{-2} 						\\				
+										B2(z) &= 0.06256 z^{-1} - 0.05434 z^{-2}  						\\				
+										C(z) &= 1 - 1.67 z^{-1} + 0.6744 z^{-2}     			
 									\end{aligned}
 								$
 							\\ \bottomrule
