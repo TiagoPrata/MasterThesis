@@ -846,17 +846,13 @@ ordens do polinômio F ($n_f$) e de tempo morto ($n_k$). As combinações utiliz
 							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
 							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
 		$n_k$			&
-							$ \begin{bmatrix}	0	&	0	\\	0	&	0	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \bottomrule
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $		\\ \bottomrule
 	\end{tabular}
 	\caption*{Fonte: Autor}
 \end{table}
 
-A partir de todos os modelos possíveis gerados a partir das combinações dos parâmetros da \cref{tab:tclabsp-models-oe},
-selecionaram-se os 10 modelos com menor valor segundo o critério de \acrshort{aic} e a partir destes foi então
+A partir de todos os modelos gerados a partir das combinações dos parâmetros da \cref{tab:tclabsp-models-oe},
+ordenaram-se os modelos com menor valor segundo o critério de \acrshort{aic} e a partir destes foi então
 selecionado o modelo com menor valor residual.
 O gráfico mostrando a distribuição dos modelos gerados em comparação ao critério de \acrshort{aic} pode ser
 visto na \cref{fig:tclabsp-models-oe} e o modelo \acrshort{oe} escolhido, seu gráfico comparativo aos dados validação
@@ -882,26 +878,26 @@ e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-oe}, na \cre
 		$Sensor_1$			&
 								$ 
 									\begin{aligned}
-										\text{Formato:}																	\\
-										y_1(t) &= \frac{B(z)}{F(z)}u(t) + e_1(t)										\\
-										\text{Onde:}																	\\
-										B1(z) &= 0.04087 + 0.03768 z^{-1} - 0.04261 z^{-2} - 0.03345 z^{-3}    			\\
-										B2(z) &= 0.00337 - 0.006235 z^{-1} + 0.01075 z^{-2} - 0.007678 z^{-3}  			\\
-										F1(z) &= 1 - 1.348 z^{-1} - 0.2736 z^{-2} + 0.7902 z^{-3} - 0.1655 z^{-4}		\\
-										F2(z) &= 1 - 1.764 z^{-1} + 0.3168 z^{-2} + 0.741 z^{-3} - 0.2937 z^{-4}   
+										\text{Formato:}														\\
+										y_1(t) &= \frac{B(z)}{F(z)}u(t) + e_1(t)							\\
+										\text{Onde:}														\\
+										B1(z) &= 0.08894 z^{-1} + 0.04175 z^{-2} - 0.09187 z^{-3}   		\\
+										B2(z) &= 0.008258 z^{-1} + 0.001846 z^{-2} - 0.01011 z^{-3} 		\\
+										F1(z) &= 1 - 0.912 z^{-1} - 0.5633 z^{-2} + 0.5215 z^{-3}  			\\
+										F2(z) &= 1 - 0.9537 z^{-1} - 0.9783 z^{-2} + 0.932 z^{-3}    
 									\end{aligned}
 								$	
 							\\ \midrule
 		$Sensor_2$			&
 								$ 
 									\begin{aligned}
-										\text{Formato:}																	\\
-										y_2(t) &= \frac{B(z)}{F(z)}u(t) + e_2(t)										\\
-										\text{Onde:}																	\\
-										B1(z) &= 0.003972 - 0.009146 z^{-1} + 0.01457 z^{-2} - 0.009311 z^{-3}    		\\
-										B2(z) &= 0.02613 + 0.04639 z^{-1} + 0.03748 z^{-2} + 0.02104 z^{-3}       		\\
-										F1(z) &= 1 - 2.303 z^{-1} + 1.399 z^{-2} + 0.1446 z^{-3} - 0.2406 z^{-4}    	\\
-										F2(z) &= 1 + 0.01233 z^{-1} - 0.5849 z^{-2} - 0.1919 z^{-3} + 0.03233 z^{-4}  	
+										\text{Formato:}														\\
+										y_2(t) &= \frac{B(z)}{F(z)}u(t) + e_2(t)							\\
+										\text{Onde:}														\\
+										B1(z) &= -0.005385 z^{-1} + 0.02174 z^{-2} - 0.01629 z^{-3}    		\\
+										B2(z) &= 0.06252 z^{-1} - 0.08437 z^{-2} + 0.0602 z^{-3}			\\
+										F1(z) &= 1 - 2.394 z^{-1} + 1.824 z^{-2} - 0.4304 z^{-3} 			\\
+										F2(z) &= 1 - 2.217 z^{-1} + 2.138 z^{-2} - 0.8374 z^{-3}  	
 									\end{aligned}
 								$
 							\\ \bottomrule
