@@ -963,11 +963,7 @@ e do tempo morto ($n_k$). As combinações utilizadas podem ser vistas na
 							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
 							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
 		$n_k$			&
-							$ \begin{bmatrix}	0	&	0	\\	0	&	0	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \bottomrule
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $		\\ \bottomrule
 	\end{tabular}
 	\caption*{Fonte: Autor}
 \end{table}
@@ -1002,12 +998,12 @@ e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-bj}, na \cre
 										\text{Formato:}														\\
 										y_1(t) &= \frac{B(z)}{F(z)}u(t) + \frac{C(z)}{D(z)}e_1(t)			\\
 										\text{Onde:}														\\
-										B1(z) &= 0.0378 + 0.04587 z^{-1} - 0.002368 z^{-2}          		\\
-										B2(z) &= 0.005381 - 0.005655 z^{-1} + 0.004255 z^{-2}    			\\		  
-										C(z) &= 1 - 0.7435 z^{-1}                           				\\  
-										D(z) &= 1 - z^{-1}                               					\\
-										F1(z) &= 1 - 1.18 z^{-1} + 0.2775 z^{-2}         					\\
-										F2(z) &= 1 - 1.657 z^{-1} + 0.6763 z^{-2}  
+										B1(z) &= 0.1123 z^{-1} - 0.07415 z^{-2} 							\\
+										B2(z) &= 0.007474 z^{-1} - 0.005786 z^{-2}  						\\		
+										C(z) &= 1 - 0.7216 z^{-1} - 0.1974 z^{-2}  							\\	
+										D(z) &= 1 - z^{-1}  												\\	
+										F1(z) &= 1 - 1.531 z^{-1} + 0.5793 z^{-2}  							\\	
+										F2(z) &= 1 - 1.866 z^{-1} + 0.8761 z^{-2}  
 									\end{aligned}
 								$	
 							\\ \midrule
@@ -1017,12 +1013,12 @@ e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-bj}, na \cre
 										\text{Formato:}														\\
 										y_2(t) &= \frac{B(z)}{F(z)}u(t) + \frac{C(z)}{D(z)}e_2(t)			\\
 										\text{Onde:}														\\
-										B1(z) &= 0.000291 + 0.001995 z^{-1} + 0.002964 z^{-2}        		\\
-										B2(z) &= 0.02837 + 0.01865 z^{-1} + 0.01077 z^-2          			\\
-										C(z) &= 1 - 0.888 z^{-1}                                 			\\
-										D(z) &= 1 - z^{-1}                                     				\\
-										F1(z) &= 1 - 1.689 z^{-1} + 0.7107 z^{-2}              				\\
-										F2(z) &= 1 - 0.9859 z^{-1} + 0.09669 z^{-2}    			
+										B1(z) &= 0.00393 z^{-1} + 0.001759 z^{-2} 							\\
+										B2(z) &= 0.06455 z^{-1} - 0.02444 z^{-2}  							\\	
+										C(z) &= 1 - 0.8508 z^{-1} - 0.09047 z^{-2} 							\\	
+										D(z) &= 1 - z^{-1}  												\\	
+										F1(z) &= 1 - 1.678 z^{-1} + 0.6984 z^{-2} 							\\	
+										F2(z) &= 1 - 1.218 z^{-1} + 0.3003 z^{-2}    			
 									\end{aligned}
 								$
 							\\ \bottomrule
