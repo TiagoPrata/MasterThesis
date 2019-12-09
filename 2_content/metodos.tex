@@ -432,11 +432,10 @@ A \cref{tab:tclabsp-models-description} apresenta a quantidade de modelos que fo
 		{Representação matemática}		                                & {Quantidade}          \\ \midrule
 		Função de transferência		                                    & $10.000$              \\
 		Espaço de estados   		                                    & $10$                  \\
-		\acrshort{arx}		                                            & $80$                  \\
-		\acrshort{armax}		                                        & $320$                 \\
-		\acrshort{oe}													& $80$                  \\
-		\acrshort{bj}                                   				& $1.280$               \\
-		\acrshort{nlarx}                    							& $26.244$              \\ \bottomrule
+		\acrshort{arx}		                                            & $9$                   \\
+		\acrshort{armax}		                                        & $36$                  \\
+		\acrshort{oe}													& $10$                  \\
+		\acrshort{bj}                                   				& $160$                 \\ \bottomrule
 	\end{tabular}
 	\caption*{Fonte: Autor}
 \end{table}
@@ -629,21 +628,13 @@ números de zeros ($n_b$) e de tempo morto ($n_k$). As combinações utilizadas 
 		$n_b$			&
 							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
 							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \midrule
+							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	 	\\ \midrule
 		$n_k$			&
-							$ \begin{bmatrix}	0	&	0	\\	0	&	0	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	2	&	2	\\	2	&	2	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	3	&	3	\\	3	&	3	\\	\end{bmatrix} $	,		
-							$ \begin{bmatrix}	4	&	4	\\	4	&	4	\\	\end{bmatrix} $		\\ \bottomrule
+							$ \begin{bmatrix}	1	&	1	\\	1	&	1	\\	\end{bmatrix} $		\\ \bottomrule
 	\end{tabular}
 	\caption*{Fonte: Autor}
 \end{table}
 
-A partir de todos os modelos possíveis gerados a partir das combinações dos parâmetros da \cref{tab:tclabsp-models-arx},
-selecionaram-se os 10 modelos com menor valor segundo o critério de \acrshort{aic} e a partir destes foi então
-selecionado o modelo com menor valor residual.
 O gráfico mostrando a distribuição dos modelos gerados em comparação ao critério de \acrshort{aic} pode ser
 visto na \cref{fig:tclabsp-models-arx} e o modelo \acrshort{arx} escolhido, seu gráfico comparativo aos dados validação
 e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-arx}, na \cref{fig:tclabsp-models-arx-compare} e na
@@ -671,10 +662,10 @@ e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-arx}, na \cr
 										\text{Formato:}																	\\
 										A(z)y_1(t) &= - A_i(z)y_i(t) + B(z)u(t) + e_1(t)								\\
 										\text{Onde:}																	\\
-										A(z) &= 1 - 1.053 z^{-1} - 0.2885 z^{-2} + 0.4807 z^{-3} - 0.0593 z^{-4}		\\
-										A_2(z) &= -0.1701 z^{-1} - 0.06197 z^{-2} + 0.1552 z^{-3} + 0.003291 z^{-4}		\\ 	 
-										B1(z) &= 0.03937 + 0.04884 z^{-1} - 0.01257 z^{-2} - 0.02444 z^{-3}				\\	 
-										B2(z) &= 0.005292 - 0.006813 z^{-1} - 0.005269 z^{-2} - 0.01209 z^{-3}   
+										A(z) = 1 - 1.308 z^{-1} + 0.1507 z^{-2} + 0.3109 z^{-3} - 0.07434 z^{-4}       	\\  
+										A_2(z) = -0.2768 z^{-1} + 0.03432 z^{-2} + 0.1842 z^{-3} - 0.02748 z^{-4}      	\\  
+										B1(z) = 0.07487 z^{-1} - 0.02 z^{-2} - 0.01542 z^{-3}                      		\\
+										B2(z) = -0.00504 z^{-1} - 0.006801 z^{-2} - 0.01316 z^{-3}    
 									\end{aligned}
 								$	
 							\\ \midrule
@@ -682,12 +673,12 @@ e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-arx}, na \cr
 								$ 
 									\begin{aligned}
 										\text{Formato:}																	\\
-										A(z)y_2(t) &= - A_i(z)y_i(t) + B(z)u(t) + e_2(t)									\\
+										A(z)y_2(t) &= - A_i(z)y_i(t) + B(z)u(t) + e_2(t)								\\
 										\text{Onde:}																	\\
-										A(z) &= 1 - 0.4421 z^{-1} - 0.3168 z^{-2} + 0.02046 z^{-3} - 0.02842 z^{-4}      \\ 
-										A_1(z) &= -0.7006 z^{-1} + 0.02119 z^{-2} + 0.6253 z^{-3} - 0.1524 z^{-4}     	\\ 
-										B1(z) &= 0.001822 - 0.02448 z^{-1} - 0.05453 z^{-2} - 0.03861 z^{-3}        	 	\\
-										B2(z) &= 0.02737 + 0.03038 z^{-1} + 0.02127 z^{-2} + 0.01153 z^{-3}    			
+										A(z) = 1 - 0.4098 z^{-1} - 0.2493 z^{-2} + 0.0703 z^{-3} - 0.1442 z^{-4}    	\\   
+										A_1(z) = -0.9008 z^{-1} + 0.257 z^{-2} + 0.5452 z^{-3} - 0.1428 z^{-4}  		\\
+										B1(z) = -0.02857 z^{-1} - 0.06333 z^{-2} - 0.03838 z^{-3}          				\\
+										B2(z) = 0.05223 z^{-1} + 0.025 z^{-2} + 0.01699 z^{-3} 		
 									\end{aligned}
 								$
 							\\ \bottomrule
