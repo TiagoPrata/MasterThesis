@@ -203,7 +203,7 @@ então temos a \cref{eq:experiment_duration}:
 \label{sec:definicao_modelo_experimental}
 
 Esta seção apresenta mais algumas características teóricas importantes na definição de um modelo
-que represente o sistema simulado e ao final dela, a \cref{subsec:modelo_experimental}
+que represente o sistema simulado e ao final dela, a \cref{sec:modelo_experimental}
 mostra a aplicação prática dessas características utilizando o conjunto de ferramentas do \acrshort{matlab}
 para identificação de sistemas, o \textit{System Identification Toolbox\texttrademark}.
 
@@ -280,7 +280,7 @@ Essa etapa começa com a escolha do algoritmo a ser utilizado \cite{Aguirre2015}
 mais amplamente empregados na literatura são: método da análise de frequência; método da resposta
 transitória e método dos mínimos quadrados \cite{Favaro2012}.
 
-Como será visto na \cref{subsec:modelo_experimental}, neste trabalho diversas representações matemáticas
+Como será visto na \cref{sec:modelo_experimental}, neste trabalho diversas representações matemáticas
 distintas foram testadas, e para cada uma delas foi utilizada uma função do \acrshort{matlab} para 
 a estimação automática de parâmetros. A \cref{tab:param_est_functions} identifica as funções
 utilizadas em cada uma das representações distintas\footnote{
@@ -362,10 +362,10 @@ para tal pode ser melhor compreendida nas palavras de \citeonline{Aguirre2015} a
 Para tal teste utiliza-se a função \texttt{resid} no \acrshort{matlab}.
 
 % -----------------------------------------------------------------------------------------------------
-% ------------------------------------------- Subsection -------------------------------------------
+% ------------------------------------------- Section -------------------------------------------
 % -----------------------------------------------------------------------------------------------------
-\subsection{Modelos experimentais}
-\label{subsec:modelo_experimental}
+\section{Modelos experimentais}
+\label{sec:modelo_experimental}
 
 Esta seção apresenta maiores detalhes práticos dos procedimentos descritos nas 
 \crefrange{subsec:escolha_da_representacao_matematica}{subsec:validacao_do_modelo} e os
@@ -873,6 +873,45 @@ e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-bj}, na \cre
 									\end{aligned}
 								$
 							\\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+% -----------------------------------------------------------------------------------------------------
+% ------------------------------------------- Subsubsection -------------------------------------------
+% -----------------------------------------------------------------------------------------------------
+\subsection{Comparativo}
+\label{subsec:modelos_experimentais_comparativo}
+
+Comparando todos os modelos experimentais escolhidos nos diferentes formatos é possível verificar que,
+apesar de grandes diferenças em comparação ao modelo teórico da \cref{eq:tclab_modelo_teorico}, os
+modelos experimentais apresentaram em geral resultados satisfatórios quando submetidos a testes de validação.
+Um gráfico comparativo com todos os modelos experimentais escolhidos pode ser observado na 
+\cref{fig:comparativo_modelos_experimentais} enquanto a \cref{tab:modelos_experimentais_fit} consolida os valores de aproximação aos dados de
+validação para cada um deles. 
+
+\begin{figure}[h]
+	\caption{Comparativo dos modelos experimentais}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/tclabsp-models-ALL-compare.png} 
+		\label{fig:comparativo_modelos_experimentais}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{table}[h]
+	\centering
+	\caption{Qualidade dos modelos experimentais}
+	\label{tab:modelos_experimentais_fit}
+	\begin{tabular}{c|cc} \toprule
+		{Modelo}		                            &	{\textit{Fit} Sensor 1}	    &	{\textit{Fit} Sensor 2}			\\ \midrule
+		TF (\cref{tab:tclabsp-model-tf})			&   $94.44\%$                   &   $88.58\%$                       \\
+		SS (\cref{eq:tclabsp-model-ss})			    &   $92.80\%$                   &   $85.76\%$                       \\
+		ARX	(\cref{tab:tclabsp-model-arx})		    &   $67.52\%$                   &   $54.64\%$                       \\
+		ARMAX (\cref{tab:tclabsp-model-armax})		&   $93.57\%$                   &   $88.15\%$                       \\
+		OE (\cref{tab:tclabsp-model-oe})			&   $92.01\%$                   &   $87.88\%$                       \\
+		BJ (\cref{tab:tclabsp-model-bj})			&   $93.46\%$                   &   $88.51\%$                       \\ \bottomrule
 	\end{tabular}
 	\caption*{Fonte: Autor}
 \end{table}
