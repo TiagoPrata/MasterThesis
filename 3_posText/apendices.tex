@@ -88,7 +88,7 @@
 \lstinputlisting[	
 	caption={Calcula tempo de subida de primeira ordem do TCLabSP},
 	captionpos=t,
-	label={lst:mpc_example},
+	label={lst:rise_time},
 	language=Matlab,
 	style=Matlab_lang]
 	{./4_Codes/rise_time/calc_rise_time.m}
@@ -99,7 +99,7 @@
 \lstinputlisting[	
 	caption={Função auxiliar: Combina experimentos do TCLabSP},
 	captionpos=t,
-	label={lst:mpc_example},
+	label={lst:combina_exp},
 	language=Matlab,
 	style=Matlab_lang]
 	{./4_Codes/rise_time/combinar_experimentos.m}
@@ -110,7 +110,7 @@
 \lstinputlisting[	
 	caption={Função auxiliar: Calcula média de uma região},
 	captionpos=t,
-	label={lst:mpc_example},
+	label={lst:media_regiao},
 	language=Matlab,
 	style=Matlab_lang]
 	{./4_Codes/rise_time/media_regiao.m}
@@ -121,10 +121,57 @@
 \lstinputlisting[	
 	caption={Plota tempo de subida},
 	captionpos=t,
-	label={lst:mpc_example},
+	label={lst:plot_rise_time},
 	language=Matlab,
 	style=Matlab_lang]
 	{./4_Codes/rise_time/plot_rise_time.m}
+	\begin{center}
+		\makebox[\width]{Fonte: Autor}
+	\end{center}
+
+\section{Encontrar Delta amostral utilizando autocovariância}
+\label{sec:tclabsp_find_delta}
+
+\lstinputlisting[	
+	caption={Encontra o Delta e o Ts},
+	captionpos=t,
+	label={lst:calc_delta},
+	language=Matlab,
+	style=Matlab_lang]
+	{./4_Codes/find_delta/calc_delta_and_Ts.m}
+	\begin{center}
+		\makebox[\width]{Fonte: Autor}
+	\end{center}
+
+\lstinputlisting[	
+	caption={Função auxiliar: Encontra Delta},
+	captionpos=t,
+	label={lst:find_delta},
+	language=Matlab,
+	style=Matlab_lang]
+	{./4_Codes/find_delta/find_delta.m}
+	\begin{center}
+		\makebox[\width]{Fonte: Autor}
+	\end{center}
+
+\lstinputlisting[	
+	caption={Função auxiliar: Calcula autocovariância},
+	captionpos=t,
+	label={lst:autocorr_min},
+	language=Matlab,
+	style=Matlab_lang]
+	{./4_Codes/find_delta/autocorr_min.m}
+	\begin{center}
+		\makebox[\width]{Fonte: Autor}
+	\end{center}
+
+\lstinputlisting[	
+	caption={Plota autocovariância},
+	captionpos=t,
+	label={lst:plot_autocorr},
+	language=Matlab,
+	style=Matlab_lang]
+	{./4_Codes/find_delta/plot_autocorr.m}
 	\begin{center}
 		\makebox[\width]{Fonte: Autor}
 	\end{center}
@@ -248,7 +295,7 @@ pode ver vista na \cref{tab:delta_action}
 \end{table}
 
 Através de um algoritmo\footnote{
-	Indicar algoritmo utilizado			% TODO Indicar algoritmo utilizado
+	\textit{Scripts} utilizados no \cref{sec:tclabsp_find_delta}.
 } foi possível testar diferentes valores de $\Delta$ a fim de encontrar
 aquele que primeiro satisfizesse a \cref{eq:tau_m}, e por meio deste algoritmo encontrou-se
 os valores de $\Delta$ e de $T_s$ (tempo de amostragem) indicados da \cref{eq:delta_and_ts}.
