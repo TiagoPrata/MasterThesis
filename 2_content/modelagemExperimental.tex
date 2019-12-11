@@ -8,6 +8,8 @@
 \newacronym{oe}{OE}{\textit{Output-Error}}
 \newacronym{bj}{BJ}{Box-Jenkins}
 \newacronym{nlarx}{NLARX}{ARX não-linear}
+\newacronym{tf}{TF}{Função de transferência}
+\newacronym{ss}{SS}{Espaço de estados}
 
 \chapter{Modelagem experimental}
 \label{ch:modelagem_experimental}
@@ -76,7 +78,7 @@ Sensores de Temperatura 1 e 2 para um sistema de primeira ordem, a fim de obter 
 \end{figure}
 
 \begin{figure}[h]
-	\caption{Tempo de subida - Sensor de Temperatura 1}
+	\caption{Tempo de subida - Sensor de Temperatura 2}
 	\begin{center}
 		\includegraphics[width=0.95\textwidth]{./5_images/RiseTime-TempSensor2.png} 
 		\label{fig:rise_time_sensor2}
@@ -884,11 +886,13 @@ e sua análise residual podem ser vistos na \cref{tab:tclabsp-model-bj}, na \cre
 \label{subsec:modelos_experimentais_comparativo}
 
 Comparando todos os modelos experimentais escolhidos nos diferentes formatos é possível verificar que,
-apesar de grandes diferenças em comparação ao modelo teórico da \cref{eq:tclab_modelo_teorico}, os
-modelos experimentais apresentaram em geral resultados satisfatórios quando submetidos a testes de validação.
+apesar de grandes diferenças estruturais em comparação ao modelo teórico da \cref{eq:tclab_modelo_teorico}, os
+modelos experimentais apresentaram em geral resultados satisfatórios quando submetidos a testes de validação,
+com exceção apenas do modelo \acrshort{arx} que teve um desempenho médio aproximadamente $30\%$ inferior
+aos demais modelos avaliados.
 Um gráfico comparativo com todos os modelos experimentais escolhidos pode ser observado na 
-\cref{fig:comparativo_modelos_experimentais} enquanto a \cref{tab:modelos_experimentais_fit} consolida os valores de aproximação aos dados de
-validação para cada um deles. 
+\cref{fig:comparativo_modelos_experimentais} e na \cref{tab:modelos_experimentais_fit} é apresentada uma
+consolidação dos valores de aproximação aos dados de validação para cada um dos modelos. 
 
 \begin{figure}[h]
 	\caption{Comparativo dos modelos experimentais}
@@ -905,13 +909,13 @@ validação para cada um deles.
 	\caption{Qualidade dos modelos experimentais}
 	\label{tab:modelos_experimentais_fit}
 	\begin{tabular}{c|cc} \toprule
-		{Modelo}		                            &	{\textit{Fit} Sensor 1}	    &	{\textit{Fit} Sensor 2}			\\ \midrule
-		TF (\cref{tab:tclabsp-model-tf})			&   $94.44\%$                   &   $88.58\%$                       \\
-		SS (\cref{eq:tclabsp-model-ss})			    &   $92.80\%$                   &   $85.76\%$                       \\
-		ARX	(\cref{tab:tclabsp-model-arx})		    &   $67.52\%$                   &   $54.64\%$                       \\
-		ARMAX (\cref{tab:tclabsp-model-armax})		&   $93.57\%$                   &   $88.15\%$                       \\
-		OE (\cref{tab:tclabsp-model-oe})			&   $92.01\%$                   &   $87.88\%$                       \\
-		BJ (\cref{tab:tclabsp-model-bj})			&   $93.46\%$                   &   $88.51\%$                       \\ \bottomrule
+		{Modelo}		                            			&	{\textit{Fit} Sensor 1}	    &	{\textit{Fit} Sensor 2}			\\ \midrule
+		\acrshort{tf} (\cref{tab:tclabsp-model-tf})				&   $94.44\%$                   &   $88.58\%$                       \\
+		\acrshort{bj} (\cref{tab:tclabsp-model-bj})				&   $93.46\%$                   &   $88.51\%$                       \\ 
+		\acrshort{armax} (\cref{tab:tclabsp-model-armax})		&   $93.57\%$                   &   $88.15\%$                       \\
+		\acrshort{oe} (\cref{tab:tclabsp-model-oe})				&   $92.01\%$                   &   $87.88\%$                       \\
+		\acrshort{ss} (\cref{eq:tclabsp-model-ss})			    &   $92.80\%$                   &   $85.76\%$                       \\
+		\acrshort{arx}	(\cref{tab:tclabsp-model-arx})		    &   $67.52\%$                   &   $54.64\%$                       \\ \bottomrule
 	\end{tabular}
 	\caption*{Fonte: Autor}
 \end{table}
