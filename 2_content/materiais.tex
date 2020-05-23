@@ -447,3 +447,67 @@ Assim temos:
 		\end{bmatrix}
 	\end{aligned}
 \end{equation}
+
+
+% .....................................................................................................
+% ............................................ Subsection .............................................
+% .....................................................................................................
+\subsection{Verificação do modelo teórico}
+\label{subsec:verificacao_do_modelo_teorico}
+
+Para a verificação do modelo teórico obtido na \cref{eq:tclab_modelo_teorico} criou-se o ambiente de
+teste indicado na \cref{fig:ModeloTeorico_e_TCLabSP_Simulink} onde tanto o sistema real quanto o modelo
+teórico eram excitados pelo mesmo sinal de entrada.
+
+As motivações e o detalhamento dos sinais de excitação utilizados neste experimento são melhores abordados
+posteriormente na \cref{subsec:sinais_de_excitacao} - \nameref{subsec:sinais_de_excitacao}.
+
+\begin{figure}[h]
+	\caption{Diagrama do ambiente de testes do modelo teórico}
+	\begin{center}
+		\includegraphics[width=0.95\textwidth]{./5_images/ModeloTeorico_e_TCLabSP_Simulink.png} 
+		\label{fig:ModeloTeorico_e_TCLabSP_Simulink}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+A comparação entre as respostas do sistema real e do modelo teórico, quando excitados pelos mesmos sinais
+de entrada, podem ser verificados nas \cref{fig:ModeloTeorico_e_TCLabSP_y1} e \cref{fig:ModeloTeorico_e_TCLabSP_y2},
+respectivamente.
+
+Para expressar numericamente quanto este modelo obtido se aproximou da planta real durante os experimentos,
+será utilizada a \cref{eq:nrmse} que também será apresentada com mais detalhes no \cref{ch:modelagem_experimental}.
+A \cref{tab:ModeloTeorico_e_TCLabSP_results} apresenta esses valores.
+
+\begin{table}[h]
+	\centering
+	\caption{Resultado numérico da comparação entre o modelo teórico e a planta real}
+	\label{tab:ModeloTeorico_e_TCLabSP_results}
+	\begin{tabular}{ll} \toprule
+		{Saída}								& {fit}					\\ \midrule
+		Sensor de temperatura 1				& $87.05\%$				\\
+		Sensor de temperatura 2				& $67.32\%$				\\ \bottomrule
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+\begin{figure}[h]
+	\caption{Respostas real e modelada do Sensor de Temperatura 1}
+	\begin{center}
+		\includegraphics[width=0.95\textwidth]{./5_images/ModeloTeorico_e_TCLabSP_y1.png} 
+		\label{fig:ModeloTeorico_e_TCLabSP_y1}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: \citeonline{Prata2019}} 
+\end{figure}
+
+\begin{figure}[h]
+	\caption{Respostas real e modelada do Sensor de Temperatura 2}
+	\begin{center}
+		\includegraphics[width=0.95\textwidth]{./5_images/ModeloTeorico_e_TCLabSP_y2.png} 
+		\label{fig:ModeloTeorico_e_TCLabSP_y2}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: \citeonline{Prata2019}} 
+\end{figure}
