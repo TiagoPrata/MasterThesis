@@ -157,3 +157,19 @@ Onde:
 \subsection{Horizonte de controle}
 \label{subsec:horizonte_de_controle}
 
+O horizonte de controle, representado por $M_i$, são os valores da variável manipulada que o controlador
+calcula a cada instante de tempo, ou seja, $u_i(k), \cdots, u_i(k+M_i-1)$. O incremento deste horizonte
+aumenta também a agressividade, a habilidade para estabilizar plantas instáveis e o custo computacional,
+porém diminui a robustez do sistema de controle \cite{Alhajeri2020}.
+
+Segundo o levantamento de \citeonline{Alhajeri2020}, diferentes estudos apontaram que o ajuste recomendado
+para o horizonte de controle seria o indicado na \cref{eq:horizonte_de_controle}, pois não foi observada
+nenhuma melhoria expressiva da performance do controle em malha fechada com valores superiores a este.
+
+\begin{equation}
+	\label{eq:horizonte_de_controle}
+	\begin{aligned}
+		M_i \leqslant 2,			\\
+		i = 1, \cdots, n_u
+	\end{aligned}
+\end{equation}
