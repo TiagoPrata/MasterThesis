@@ -173,3 +173,43 @@ nenhuma melhoria expressiva da performance do controle em malha fechada com valo
 		i = 1, \cdots, n_u
 	\end{aligned}
 \end{equation}
+
+% .....................................................................................................
+% ............................................ Subsection .............................................
+% .....................................................................................................
+\subsection{Matrizes de peso}
+\label{subsec:matrizes_de_peso}
+
+Além dos horizontes de predição e de controle, as matrizes de peso $Q$, $R$ e $\Delta$ também são parâmetros
+que necessitam ser ajustados para aprimorar a sintonia do controlador \acrshort{mpc}.
+
+A matriz $Q$ configura a penalidade nos erros das saídas. Os elementos dessa matriz penalizam o desvio 
+das saídas em comparação a suas trajetórias de referência. Eles refletem o custo relativo das variáveis 
+controladas desviando de suas trajetórias de referência e, portanto, dos seus \textit{set-points}
+\cite{Alhajeri2020}.
+
+As matrizes $R$ e $\Delta$ descrevem a penalidade na taxa de variação das entradas e na magnitude das mesmas, 
+respectivamente. O valor relativo dos elementos de $\Delta$ são um indicativo do custo relativo das 
+entradas manipuladas \cite{Alhajeri2020}.
+
+Segundo \citeonline{Alhajeri2020}, normalmente assume-se que $\Delta = 0$, a menos que uma diretriz de 
+sintonia diferente seja mencionada. Já para as matrizes $Q$ e $R$, muitos estudos indicam que
+$Q = I$ e $R = \rho I$, onde $\rho$ é um escalar também conhecido como \textit{fator de supressão de movimento}.
+Esta abordagem, de encontrar um valor para $\rho$ ao invés de encontrar as matrizes de peso, ao mesmo tempo que
+simplifica a tarefa de sintonizar o controlador \acrshort{mpc}, retira certa flexibilidade do controle e
+limita o grau de qualidade que o \acrshort{mpc} pode prover.
+
+Um dos estudos apresentados por \citeonline{Alhajeri2020} sugere a utilização de $\rho = 0.01$ para um controle
+\acrshort{mpc} sem restrições e $\rho = 0.1$ para um controle com restrições. Dessa forma as matrizes utilizadas
+neste tralhado são indicadas na \cref{eq:matrizes_de_peso}.
+
+\begin{equation}
+	\label{eq:matrizes_de_peso}
+	\begin{aligned}
+		\Delta &= 0																\\
+		Q &= I																	\\
+		R &= \rho I,															\\
+		\text{sendo: } \rho &= 0.01 \text{ (\acrshort{mpc} sem restrições)}		\\
+		\rho &= 0.1 \text{ (\acrshort{mpc} com restrições)}
+	\end{aligned}
+\end{equation}
