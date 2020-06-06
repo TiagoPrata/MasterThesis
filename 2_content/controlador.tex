@@ -213,3 +213,31 @@ neste tralhado são indicadas na \cref{eq:matrizes_de_peso}.
 		\rho &= 0.1 \text{ (\acrshort{mpc} com restrições)}
 	\end{aligned}
 \end{equation}
+
+% .....................................................................................................
+% ............................................ Subsection .............................................
+% .....................................................................................................
+\subsection{Desenvolvimento do controlador no MATLAB}
+\label{subsec:desenvolvimento_do_controlador_no_matlab}
+
+Utilizando as
+\cref{eq:horizonte_de_predicao_lim_inf_no_delay,eq:horizonte_de_predicao_lim_sup_no_delay,eq:horizonte_de_controle,eq:matrizes_de_peso},
+foi possível desenvolver um \textit{script} no \acrshort{matlab} para a criação de um controlador \acrshort{mpc}
+distinto para cada um dos modelos experimentais listados na \cref{tab:modelos_experimentais_fit}, e também
+para o modelo teórico apresentado na \cref{eq:tclab_modelo_teorico}. Este \textit{script} pode ser visualizado
+no código-fonte \ref{lst:criacao_dos_controladores_mpc}.
+
+\lstinputlisting[	
+	caption={Criação dos controladores MPC},
+	captionpos=t,
+	label={lst:criacao_dos_controladores_mpc},
+	language=Matlab,
+	style=Matlab_lang]
+	{./4_Codes/create_mpc/create_controllers_01.m}
+	\begin{center}
+		\makebox[\width]{Fonte: Autor}
+	\end{center}
+
+A aplicação de cada um dos controladores \acrshort{mpc} criados, bem como suas comparações com o controlador
+\acrshort{pid} e discussões a respeito de sua sintonia e utilização, encontram-se na \cref{part:resultados_e_discussao}
+a seguir.
