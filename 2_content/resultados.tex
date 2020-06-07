@@ -1,5 +1,5 @@
-\chapter{Resultados}
-\label{ch:resultados}
+\chapter{Simulações}
+\label{ch:simulacoes}
 
 Para a aplicação dos controladores \acrshort{mpc} criados nos capítulos anteriores, foi desenvolvido um
 ambiente \textit{Simulink} (\cref{fig:simulinkusingmpc}) onde cada um dos diferentes controladores obtidos
@@ -120,3 +120,87 @@ comparando-os com os sinais de referência (\textit{set-points}).
 	\end{tabular}
 	\caption*{Fonte: Autor}
 \end{table}
+
+\chapter{Resultados e conclusões}
+\label{ch:resultados}
+
+A partir da \cref{tab:resultados_mpc_e_pid} é possível observar que dentre todos os controladores analisados,
+o controlador \acrshort{mpc} criado a partir do modelo em espaço de estados e obtido por abordagem teórica
+foi o aquele que mostrou melhor controle da planta estudada. Mesmo quando comparado com o controlador 
+\acrshort{pid} de referência, o controle \acrshort{mpc} em questão mostrou uma maior velocidade para a estabilização
+dos seus múltiplos sinais de saída. Contudo, vale ressaltar que este controlador \acrshort{pid} 
+foi apenas sintonizado utilizando a função de \textit{auto-tunning} disponível no \acrshort{matlab}.
+Um controlador \acrshort{pid} melhor parametrizado poderia ter uma performance muito mais próxima das 
+performances obtidas nos controladores \acrshort{mpc}, pois segundo \citeonline{Shaaban2013} e
+\citeonline{Taysom2017} a diferença na performance destes dois controles é muito pequena quando
+a planta possui pouco ou nenhum atraso (como a planta utilizada neste estudo), porém quando os atrasos
+na planta aumentam, a resposta do controlador \acrshort{pid} se degrada rapidamente.
+
+Ainda comparando os controladores \acrshort{mpc} e \acrshort{pid}, além das performances de ambos poderem ser
+diferenciadas devido ao atraso do sistema, \citeonline{Taysom2017} também aponta em seu estudo que os
+controladores \acrshort{mpc} geralmente apresentam uma melhor resposta para sistemas \acrshort{mimo},
+além de serem mais efetivos em sistemas onde os distúrbios podem ser modelados, uma vez que o
+\acrshort{mpc} consegue utilizar o modelo do processo e o modelo do distúrbio conjuntamente para um 
+controle mais assertivo. Em contrapartida os controladores \acrshort{pid} são relativamente mais
+fáceis de sintonizar e muito mais fáceis de se implementar, além de possuírem resposta similar ao \acrshort{mpc}
+em uma grande variedade de aplicações \cite{Taysom2017}.
+
+Outro ponto de destaque para os controladores \acrshort{mpc} é a possibilidade da configuração de
+restrições de atuação, algo que é impossível de se fazer utilizando um controle \acrshort{pid}.
+No caso do uso de restrições, o controlador \acrshort{mpc} impede que a(s) saída(s) da planta controlada
+ultrapassem limites indesejados, fazendo com que o \acrshort{mpc} seja uma opção de controle muito
+interessante quando se deseja maximizar ou minimizar valores de produção sem que algumas variáveis
+do processo atinjam ou ultrapassem limites indesejados.
+
+Observa-se através das \crefrange{fig:resultadosmpc-exptf}{fig:resultadosmpc-exparx} que mesmo utilizando
+uma metodologia consolidada academicamente para a criação do controle \acrshort{mpc} através de modelos
+experimentais, a resposta em malha fechada pode não ser satisfatória. Nestas figuras é possível 
+observar uma oscilação indesejada nas saídas da planta, além de erro estacionário em alguns casos.
+Todavia, ferramentas como o \textit{MPC design} do \acrshort{matlab} podem auxiliar no desenvolvimento
+de um controle \acrshort{mpc} através de um modelo experimental que ao ser empiricamente sintonizado
+pode apresentar uma resposta satisfatória em malha fechada. A \cref{fig:resultadosmpcmanual-exptf}
+apresenta o gráfico em malha fechada de um controlador \acrshort{mpc} utilizando o mesmo modelo experimental em
+função de transferência apresentado no capítulo anterior, porém desta vez sintonizado empiricamente utilizando
+a ferramenta \textit{MPC Design}. A \cref{tab:resultados_mpc_e_pid_e_manual} inclui este novo modelo 
+na tabela já apresentada anteriormente e revela que, apesar de uma sintonia empírica, este controlador
+apresenta uma aproximação do \textit{set-point} bem superior em comparação aos controladores baseados em 
+modelos experimentais que já havíam sido apresentados neste trabalho.
+
+\begin{figure}[!h]
+	\caption{Resposta do controlador MPC criado empiricamente a partir do modelo experimental (função de transferência)}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/ResultadosMPCManual-ExpTF.eps} 
+		\label{fig:resultadosmpcmanual-exptf}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{table}[!h]
+	\centering
+	\caption{Qualidade do controlador \acrshort{mpc} sintonizado empiricamente}
+	\label{tab:resultados_mpc_e_pid_e_manual}
+	\begin{tabular}{l|cc|c} \toprule
+		{Modelo utilizado no controlador}              			            &	{\textit{Fit} Sensor 1}	    &	{\textit{Fit} Sensor 2}     & {\textit{Fit} médio}			    \\ \midrule
+		MPC Teórico \acrshort{ss} (\cref{eq:tclab_modelo_teorico})	        &   $45.84\%$                   &   $44.07\%$                   &   $44.95\%$                       \\ 
+		\textbf{MPC Experimental \acrshort{tf} (empírico)}                  &   $\mathbf{46.46\%}$          &   $\mathbf{40.68\%}$          &   $\mathbf{43.57\%}$              \\ 
+		MPC Experimental \acrshort{oe} (\cref{tab:tclabsp-model-oe})	    &   $44.35\%$                   &   $40.57\%$                   &   $42.46\%$                       \\ 
+		MPC Experimental \acrshort{armax} (\cref{tab:tclabsp-model-armax})	&   $39.92\%$                   &   $42.50\%$                   &   $41.21\%$                       \\ 
+		MPC Experimental \acrshort{tf} (\cref{tab:tclabsp-model-tf})		&   $40.25\%$                   &   $34.55\%$                   &   $37.40\%$                       \\ 
+		MPC Experimental \acrshort{ss} (\cref{eq:tclabsp-model-ss})			&   $38.55\%$                   &   $33.57\%$                   &   $36.06\%$                       \\ 
+		MPC Experimental \acrshort{arx}	(\cref{tab:tclabsp-model-arx})		&   $43.71\%$                   &   $27.33\%$                   &   $35.52\%$                       \\ 
+		PID (\cref{tab:pid_values})	                                        &   $40.13\%$                   &   $26.44\%$                   &   $33.28\%$                       \\ \bottomrule 
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+Nota-se também neste controlador\footnote{
+    Parâmetros encontrados empiricamente e ajustados para este controlador: Tempo de amostragem ($t_s$) = 2s; Horizonte de predição = 120;
+    Horizonte de Controle = 16; $\Delta$ = 0; R = 0,4393; Q = 0,2276.
+} apresentado na \cref{fig:resultadosmpcmanual-exptf} uma maior estabilidade
+das variáveis manipuladas, apesar de um \textit{overshoot} maior que os demais controles.
+
+De forma geral é possível afirmar que os objetivos deste trabalho foram alcançados com êxito, uma vez que foi
+possível desenvolver e implementar um controle \acrshort{mpc} na planta desejada, comparar este controle 
+com um controle \acrshort{pid} convencional e ainda documentar todas as etapas de forma que essas possa ser reproduzidas
+por outros estudantes que estejam pesquisando sobre o \acrlong{mpc}.
