@@ -5,7 +5,7 @@ Segundo \citeonline{Rossiter2003} uma das principais diferenças entre o \acrsho
 técnicas de controle (como o \acrshort{pid}, por exemplo) é que a maioria delas não leva em consideração
 as ações futuras do controle, porém o \acrshort{mpc} sim, e para essas ações futuras sejam consideradas
 é necessário possuir um modelo do sistema que mostre as dependências das saídas e das atuais variáveis
-medidas e as entradas atuais e futuras. % TODO: Conferir tradução deste pedaço. Rossiter pag 2
+medidas e as entradas atuais e futuras.
 Este modelo não precisa ser linear, e nem tampouco ser extremamente fiel em descrever todas as interações
 físico-químicas do sistema. Na verdade, ainda segundo \citeonline{Rossiter2003}, a regra básica do modelo 
 é que ele deve ser o mais simples possível, ou seja, deve ser o modelamento mínimo necessário para que
@@ -75,9 +75,8 @@ dados passados, e o \acrshort{mpc} atuando sob um horizonte de predição, predi
 		\label{fig:mhe_mpc}
 	\end{center}
     \centering
-    \makebox[\width]{Fonte: \citeonline{Vukov2015a}}
+    \makebox[\width]{Fonte: Autor, adaptado de \citeonline{Vukov2015a}}
 \end{figure}
-% TODO: Traduzir imagem
 
 Podemos descrever o \acrshort{mpc} através de um problema de otimização de forma análoga ao que foi feito
 na \cref{subsec:moving_horizon_estimation} para descrever o \acrshort{mhe}, porém, ao invés de minimizarmos
