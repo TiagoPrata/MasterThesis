@@ -2,8 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-# TODO: Inserir comentarios
-
 x1_min = 0
 x1_max = 2
 N_x1 = 100
@@ -44,7 +42,6 @@ print(f_min)
 print(x1_opt)
 print(x2_opt)
 
-# TODO: Fazer plot para imagem 3d
 # fig = plt.figure()
 # ax = Axes3D(fig)
 # x, y = np.meshgrid(x1_array, x2_array)
