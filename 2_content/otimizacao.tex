@@ -634,10 +634,10 @@ erros de medição) e o modelo (minimizando os erros de modelo) para calcular o 
 \label{subsubsec:mhe_example}
 
 A \cref{fig:mhe_example} mostra o gráfico de uma simulação executada através do código-fonte \ref{lst:mhe_example}
-exemplificando a aplicação da técnica \acrlong{mhe} para o modelo simplificado da velocidade de um motor de corrente
+exemplificando a aplicação da técnica \acrlong{mhe} para o modelo simplificado da velocidade de um equipamento de corrente
 contínua.
 
-O modelo dinâmico do motor é apresentado na \cref{eq:motor_dynamics} e sua representação no espaço de estados
+O modelo dinâmico deste equipamento é apresentado na \cref{eq:motor_dynamics} e sua representação no espaço de estados
 na \cref{eq:motor_dynamics_ss}, sendo que esta é a representação utilizada no código-fonte \ref{lst:mhe_example}.
 
 \begin{equation}
@@ -674,4 +674,12 @@ $L$ = carga
 	\centering
 	\makebox[\width]{Fonte: Autor, adaptado de \citeonline{Haugen2018}}
 \end{figure}
-% TODO: (Brincalepe) Interpretar imagem. Adicione comentários aos resultados da Figura 10.
+
+% (Brincalepe) Interpretar imagem. Adicione comentários aos resultados da Figura 10.			[ok]
+
+A \cref{fig:mhe_example} apresenta a aproximação do valor dos estados estimados através do \acrshort{mhe}
+em comparação com o sinal simulado do equipamento. É possível observar um baixo erro relativo para todos
+os estados estimados, mesmo quando um degrau na entrada é aplicado. Vale ressaltar porém que a estimativa
+dos estados começa a ser calculada apenas quando o primeiro horizonte de predição é preenchido, nesta figura
+observamos isso no instante $t=5$. Além disso, outro destaque pode ser feito para o atraso indesejado 
+observado no estado $x_3$, indicando que o modelo pode ser aprimorado caso seja necessário.
