@@ -190,10 +190,11 @@ obtemos:
 O exemplo descrito nesta seção apresenta a simulação do modelo de uma planta didática de aquecimento de ar
 utilizado na \textit{University College of Southeast Norway}, situada em Porsgrunn, Noruega.
 Vale salientar que esta não é a planta objeto de estudo deste trabalho, sendo este apenas um exemplo
-bibliográfico de aplicação de \acrshort{mpc} em planta didática, cujo modelo modelo matemático está indicado na
-\cref{eq:heat_plant} e seu detalhamento construtivo pode ser melhor compreendido na \cref{fig:mpc_example_plant}.
-% TODO: (Brincalepe) Detalhar melhor a planta utilizada no experimento. Acho que seria interessante detalhar a planta citada em 4.1.1
-% TODO: (Brincalepe) A descrição que citei acima no item 3, pode ser feita com detalhes em 5.1. Acrescente um diagrama elétrico do sistema.
+bibliográfico de aplicação de \acrshort{mpc} em planta didática, onde é realizado um controle de temperatura
+em túnel de vento, cujo modelo modelo matemático está indicado na \cref{eq:heat_plant} e seu detalhamento
+construtivo pode ser melhor compreendido na \cref{fig:mpc_example_plant}.
+% (Brincalepe) Detalhar melhor a planta utilizada no experimento. Acho que seria interessante detalhar a planta citada em 4.1.1
+% (Brincalepe)[não realizado] A descrição que citei acima no item 3, pode ser feita com detalhes em 5.1. Acrescente um diagrama elétrico do sistema.
 % O Brincalepe deve estar achando que a plantas do descrevendo o MPC do Haugen é a mesma do APMonitor
 
 \begin{subequations}
@@ -239,6 +240,14 @@ no \cref{ch:codigos_extras}, escrito em Python.
     \centering
     \makebox[\width]{Fonte: Autor, adaptado de \citeonline{Haugen2018}}
 \end{figure}
-% TODO: (Brincalepe) Interpretar imagem
 
-% TODO: (Brincalepe) Inserir diagrama para descrever o código lst:mpc_example movido para o apendice
+% (Brincalepe) Interpretar imagem
+% (Brincalepe) Inserir diagrama para descrever o código lst:mpc_example movido para o apendice
+
+Mais detalhes sobre o funcionamento do \acrshort{mpc} serão abordados nos próximos capítulos,
+porém, utilizando a \cref{fig:mpc_example_plant}, já é possível observar algumas de suas características.
+No primeiro gráfico, onde são correlacionados os sinais de \textit{set-point} (SP), de estimativa do modelo (est) e
+de simulação (sim), notasse que o sinal de simulação aproxima-se rapidamente do \textit{set-point}, independentemente 
+de a variação deste ser através de um degrau, rampa ou senoidal. Ainda neste gráfico, nota-se também que
+os sinais \textit{sim} e \textit{est} começam a ser computados apenas por volta do segundo 10, pois antes disso não há
+dados suficientes no horizonte selecionado para executar tal cálculo.
