@@ -1,3 +1,8 @@
+\newacronym{iae}{IAE}{\textit{Integral Absolute Error}}
+\newacronym{ise}{ISE}{\textit{Integral Square Error}}
+\newacronym{itae}{ITAE}{\textit{Integral Time Absolute Error}}
+\newacronym{itse}{ITSE}{\textit{Integral Time Square Error}}
+
 \chapter{Simulações}
 \label{ch:simulacoes}
 
@@ -27,12 +32,8 @@ sinais coletados para atenuar possíveis erros pontuais de cada experimento.
 \end{figure}
 
 As \crefrange{fig:resultadosmpc-teoss}{fig:resultadosmpc-exparx} apresentam os gráficos de resposta em malha fechada
-para cada um dos experimentos aplicando os modelos obtidos.
-
-Para fins comparativos, a \cref{fig:resultadospid} apresenta o gráfico de resposta do controlador
-\acrshort{pid} apresentado na \cref{sec:controlador_pid} e a \cref{tab:resultados_mpc_e_pid}
-apresenta os valores de \textit{fit} (\cref{eq:nrmse}) dos controladores \acrshort{mpc} e \acrshort{pid} 
-comparando-os com os sinais de referência (\textit{set-points}).
+para cada um dos experimentos aplicando os modelos obtidos. Para fins comparativos, a \cref{fig:resultadospid}
+apresenta o gráfico de resposta do controlador \acrshort{pid} apresentado na \cref{sec:controlador_pid}.
 
 \begin{figure}[!h]
 	\caption{Resposta do controlador MPC criado a partir do modelo teórico}
@@ -94,6 +95,8 @@ comparando-os com os sinais de referência (\textit{set-points}).
 	\makebox[\width]{Fonte: Autor} 
 \end{figure}
 
+\clearpage
+
 \begin{figure}[!h]
 	\caption{Resposta do controlador PID auto-sintonizado}
 	\begin{center}
@@ -104,27 +107,137 @@ comparando-os com os sinais de referência (\textit{set-points}).
 	\makebox[\width]{Fonte: Autor} 
 \end{figure}
 
+Nas \crefrange{tab:resultados_mpc_e_pid_iae}{tab:resultados_mpc_e_pid_itse} é possível observar diferentes indicadores
+de performance para cada um dos modelos testados.
+
+Os indicadores utilizados são:
+
+\begin{itemize}
+	\item \acrshort{iae}: Integral absoluta do erro (do inglês \acrlong{iae})
+		\begin{align}
+			IAE = \int_{0}^{\infty} \mid e \mid dt			\label{eq:iae}
+		\end{align}
+	\item \acrshort{ise}: Integral quadrada do erro (do inglês \acrlong{ise})
+		\begin{align}
+			ISE = \int_{0}^{\infty} e^{2} dt				\label{eq:ise}
+		\end{align}
+	\item \acrshort{itae}: Integral absoluta do erro no tempo (do inglês \acrlong{itae})
+		\begin{align}
+			ITAE = \int_{0}^{\infty} t \mid e \mid dt		\label{eq:itae}
+		\end{align}
+	\item \acrshort{itse}: Integral quadrada do erro no tempo (do inglês \acrlong{itse})
+		\begin{align}
+			ITSE &= \int_{0}^{\infty} t \cdot e^{2} dt		\label{eq:itse}
+		\end{align}
+\end{itemize}
+
+% \clearpage
+
+As tabelas de performance apresentam o cálculo dos indicadores para cada um dos sensores de saída da planta
+piloto, bem como uma coluna com a média entre ambos os sensores e uma última coluna com a média normalizada
+(calculada a partir da equação \cref{eq:normalization}).
+
+\begin{equation}
+	\label{eq:normalization}
+	x_{normalizado} = \frac{x - x_{min}}{x_{max} - x_{min}}
+\end{equation}
+
 \begin{table}[!h]
 	\centering
-	\caption{Qualidade dos controladores \acrshort{mpc} e \acrshort{pid}}
-	\label{tab:resultados_mpc_e_pid}
-	\begin{tabular}{l|cc|c} \toprule
-		{Modelo utilizado no controlador}              			            &	{\textit{Fit} Sensor 1}	    &	{\textit{Fit} Sensor 2}     & {\textit{Fit} médio}			    \\ \midrule
-		MPC Teórico \acrshort{ss} (\cref{eq:tclab_modelo_teorico})	        &   $45.84\%$                   &   $44.07\%$                   &   $44.95\%$                       \\ 
-		MPC Experimental \acrshort{oe} (\cref{tab:tclabsp-model-oe})	    &   $44.35\%$                   &   $40.57\%$                   &   $42.46\%$                       \\ 
-		MPC Experimental \acrshort{armax} (\cref{tab:tclabsp-model-armax})	&   $39.92\%$                   &   $42.50\%$                   &   $41.21\%$                       \\ 
-		MPC Experimental \acrshort{tf} (\cref{tab:tclabsp-model-tf})		&   $40.25\%$                   &   $34.55\%$                   &   $37.40\%$                       \\ 
-		MPC Experimental \acrshort{ss} (\cref{eq:tclabsp-model-ss})			&   $38.55\%$                   &   $33.57\%$                   &   $36.06\%$                       \\ 
-		MPC Experimental \acrshort{arx}	(\cref{tab:tclabsp-model-arx})		&   $43.71\%$                   &   $27.33\%$                   &   $35.52\%$                       \\ 
-		PID (\cref{tab:pid_values})	                                        &   $40.13\%$                   &   $26.44\%$                   &   $33.28\%$                       \\ \bottomrule 
+	\caption{Performance dos controladores \acrshort{mpc} e \acrshort{pid} - IAE}
+	\label{tab:resultados_mpc_e_pid_iae}
+	\begin{tabular}{l|cc|c|c} \toprule
+		{Modelo utilizado no controlador}              			            &	\begin{tabular}[c]{@{}c@{}}Sensor 1\\(x$10^3$)\end{tabular}		&	\begin{tabular}[c]{@{}c@{}}Sensor 2\\(x$10^3$)\end{tabular}     		& \begin{tabular}[c]{@{}c@{}}Média\\(x$10^3$)\end{tabular}		& 	\begin{tabular}[c]{@{}c@{}}Média\\normalizada\end{tabular}		\\ \midrule
+		MPC Teórico \acrshort{ss} (\cref{eq:tclab_modelo_teorico})	        &   $38.07$           												&   $27.94$          														&   $33.00$														&   $0.000$             											\\ 
+		MPC Experimental \acrshort{oe} (\cref{tab:tclabsp-model-oe})	    &   $45.53$           												&   $42.16$          														&   $43.85$														&   $0.318$             											\\ 
+		MPC Experimental \acrshort{armax} (\cref{tab:tclabsp-model-armax})	&   $58.16$           												&   $37.27$          														&   $47.72$														&   $0.432$             											\\ 
+		MPC Experimental \acrshort{tf} (\cref{tab:tclabsp-model-tf})		&   $56.90$           												&   $55.08$          														&   $55.99$														&   $0.674$             											\\ 
+		PID (\cref{tab:pid_values})	                                        &   $53.90$           												&   $59.10$          														&   $56.50$														&   $0.690$             											\\ 
+		MPC Experimental \acrshort{arx}	(\cref{tab:tclabsp-model-arx})		&   $59.13$           												&   $63.35$          														&   $61.24$														&   $0.829$             											\\ 
+		MPC Experimental \acrshort{ss} (\cref{eq:tclabsp-model-ss})			&   $75.99$           												&   $58.12$          														&   $67.06$														&   $1.000$             											\\ \bottomrule 
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}   
+
+\begin{table}[!h]
+	\centering
+	\caption{Performance dos controladores \acrshort{mpc} e \acrshort{pid} - ISE}
+	\label{tab:resultados_mpc_e_pid_ise}
+	\begin{tabular}{l|cc|c|c} \toprule
+		{Modelo utilizado no controlador}              			            &	\begin{tabular}[c]{@{}c@{}}Sensor 1\\(x$10^4$)\end{tabular}		&	\begin{tabular}[c]{@{}c@{}}Sensor 2\\(x$10^4$)\end{tabular}     		& \begin{tabular}[c]{@{}c@{}}Média\\(x$10^4$)\end{tabular}			& 	\begin{tabular}[c]{@{}c@{}}Média\\normalizada\end{tabular}		\\ \midrule
+		MPC Teórico \acrshort{ss} (\cref{eq:tclab_modelo_teorico})	        &   $62.95$           												&   $29.03$          														&   $45.99$															&   $0.000$															\\ 
+		MPC Experimental \acrshort{oe} (\cref{tab:tclabsp-model-oe})	    &   $66.46$           												&   $32.78$          														&   $49.62$															&   $0.207$             											\\ 
+		MPC Experimental \acrshort{armax} (\cref{tab:tclabsp-model-armax})	&   $77.46$           												&   $30.68$          														&   $54.07$															&   $0.462$             											\\ 
+		MPC Experimental \acrshort{tf} (\cref{tab:tclabsp-model-tf})		&   $76.61$           												&   $39.75$          														&   $58.18$															&   $0.698$             											\\ 
+		MPC Experimental \acrshort{arx}	(\cref{tab:tclabsp-model-arx})		&   $67.98$           												&   $49.01$          														&   $58.50$															&   $0.716$             											\\ 
+		MPC Experimental \acrshort{ss} (\cref{eq:tclabsp-model-ss})			&   $81.04$           												&   $40.95$          														&   $61.00$															&   $0.859$             											\\ 
+		PID (\cref{tab:pid_values})	                                        &   $76.83$           												&   $50.06$          														&   $63.45$															&   $1.000$             											\\ \bottomrule 
 	\end{tabular}
 	\caption*{Fonte: Autor}
 \end{table}
 
+\begin{table}[!h]
+	\centering
+	\caption{Performance dos controladores \acrshort{mpc} e \acrshort{pid} - ITAE}
+	\label{tab:resultados_mpc_e_pid_itae}
+	\begin{tabular}{l|cc|c|c} \toprule
+		{Modelo utilizado no controlador}              			            &	\begin{tabular}[c]{@{}c@{}}Sensor 1\\(x$10^6$)\end{tabular}		&	\begin{tabular}[c]{@{}c@{}}Sensor 2\\(x$10^6$)\end{tabular}     		& \begin{tabular}[c]{@{}c@{}}Média\\(x$10^6$)\end{tabular}			& 	\begin{tabular}[c]{@{}c@{}}Média\\normalizada\end{tabular}		\\ \midrule
+		MPC Teórico \acrshort{ss} (\cref{eq:tclab_modelo_teorico})	        &   $60.99$           												&   $38.11$          														&   $49.55$ 														&   $0.000$            												\\ 
+		MPC Experimental \acrshort{oe} (\cref{tab:tclabsp-model-oe})	    &   $73.78$           												&   $61.69$          														&   $67.74$ 														&   $0.269$            												\\ 
+		MPC Experimental \acrshort{armax} (\cref{tab:tclabsp-model-armax})	&   $91.79$           												&   $57.31$          														&   $74.55$ 														&   $0.370$            												\\ 
+		PID (\cref{tab:pid_values})	                                        &   $84.97$           												&   $88.90$          														&   $86.94$ 														&   $0.554$            												\\ 
+		MPC Experimental \acrshort{tf} (\cref{tab:tclabsp-model-tf})		&   $90.39$           												&   $84.58$          														&   $87.49$ 														&   $0.562$            												\\ 
+		MPC Experimental \acrshort{arx}	(\cref{tab:tclabsp-model-arx})		&   $105.79$           												&   $113.15$          														&   $109.47$														&   $0.887$             											\\ 
+		MPC Experimental \acrshort{ss} (\cref{eq:tclabsp-model-ss})			&   $136.28$           												&   $97.80$          														&   $117.04$														&   $1.000$             											\\ \bottomrule 
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+\begin{table}[!h]
+	\centering
+	\caption{Performance dos controladores \acrshort{mpc} e \acrshort{pid} - ITSE}
+	\label{tab:resultados_mpc_e_pid_itse}
+	\begin{tabular}{l|cc|c|c} \toprule
+		{Modelo utilizado no controlador}              			            &	\begin{tabular}[c]{@{}c@{}}Sensor 1\\(x$10^7$)\end{tabular}		&	\begin{tabular}[c]{@{}c@{}}Sensor 2\\(x$10^7$)\end{tabular}     		& \begin{tabular}[c]{@{}c@{}}Média\\(x$10^7$)\end{tabular}		& 	\begin{tabular}[c]{@{}c@{}}Média\\normalizada\end{tabular}		\\ \midrule
+		MPC Teórico \acrshort{ss} (\cref{eq:tclab_modelo_teorico})	        &   $74.01$           												&   $26.80$          														&   $50.41$														&   $0.000$             											\\ 
+		MPC Experimental \acrshort{oe} (\cref{tab:tclabsp-model-oe})	    &   $83.09$           												&   $33.31$          														&   $58.20$														&   $0.241$             											\\ 
+		MPC Experimental \acrshort{armax} (\cref{tab:tclabsp-model-armax})	&   $96.70$           												&   $30.77$          														&   $63.74$														&   $0.413$             											\\ 
+		MPC Experimental \acrshort{tf} (\cref{tab:tclabsp-model-tf})		&   $96.51$           												&   $45.02$          														&   $70.76$														&   $0.631$             											\\ 
+		PID (\cref{tab:pid_values})	                                        &   $92.25$           												&   $55.69$          														&   $73.97$														&   $0.730$             											\\ 
+		MPC Experimental \acrshort{ss} (\cref{eq:tclabsp-model-ss})			&   $114.29$           												&   $50.85$          														&   $82.57$														&   $0.997$             											\\ 
+		MPC Experimental \acrshort{arx}	(\cref{tab:tclabsp-model-arx})		&   $96.37$           												&   $68.92$          														&   $82.65$														&   $1.000$             											\\ \bottomrule 
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+% \clearpage
+
+A \cref{tab:resultados_mpc_e_pid_resumo} apresenta um resumo dos indicadores de performance mostrados nas
+\crefrange{tab:resultados_mpc_e_pid_iae}{tab:resultados_mpc_e_pid_itse} e ordena os controladores através
+da média das médias normalizadas de cada indicador. 
+
+\begin{table}[!h]
+	\centering
+	\caption{Resumo da performance dos controladores \acrshort{mpc} e \acrshort{pid}}
+	\label{tab:resultados_mpc_e_pid_resumo}
+	\begin{tabular}{l|cccc|c} \toprule
+		{Modelo utilizado no controlador}              			            &	\begin{tabular}[c]{@{}c@{}}IAE\\(x$10^3$)\end{tabular}			&	\begin{tabular}[c]{@{}c@{}}ISE\\(x$10^4$)\end{tabular}  	&	\begin{tabular}[c]{@{}c@{}}ITAE\\(x$10^6$)\end{tabular}     			& \begin{tabular}[c]{@{}c@{}}ITSE\\(x$10^7$)\end{tabular}		& \begin{tabular}[c]{@{}c@{}c@{}}Média\\das médias\\normalizadas\end{tabular}	\\ \midrule
+		MPC Teó. \acrshort{ss} (\cref{eq:tclab_modelo_teorico})	        	&   $33.00$           												&   $45.99$          											&   $49.55$          														&   $50.41$														&   $0.000$             														\\ 
+		MPC Exp. \acrshort{oe} (\cref{tab:tclabsp-model-oe})	    		&   $43.85$           												&   $49.62$          											&   $67.74$          														&   $58.20$														&   $0.259$             														\\ 
+		MPC Exp. \acrshort{armax} (\cref{tab:tclabsp-model-armax})			&   $47.72$           												&   $54.07$          											&   $74.55$          														&   $63.74$														&   $0.419$             														\\ 
+		MPC Exp. \acrshort{tf} (\cref{tab:tclabsp-model-tf})				&   $55.99$           												&   $58.18$          											&   $87.49$          														&   $70.76$														&   $0.641$             														\\ 
+		PID (\cref{tab:pid_values})	                                        &   $56.50$           												&   $63.45$          											&   $86.94$          														&   $73.97$														&   $0.743$             														\\ 
+		MPC Exp. \acrshort{arx}	(\cref{tab:tclabsp-model-arx})				&   $61.24$           												&   $58.50$          											&   $109.47$         														&   $82.65$														&   $0.858$             														\\ 
+		MPC Exp. \acrshort{ss} (\cref{eq:tclabsp-model-ss})					&   $67.06$           												&   $61.00$          											&   $117.04$         														&   $82.57$														&   $0.964$             														\\ \bottomrule 
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+
 \chapter{Resultados e conclusões}
 \label{ch:resultados}
 
-A partir da \cref{tab:resultados_mpc_e_pid} é possível observar que dentre todos os controladores analisados,
+A partir da \cref{tab:resultados_mpc_e_pid_resumo} é possível observar que dentre todos os controladores analisados,
 o controlador \acrshort{mpc} criado a partir do modelo em espaço de estados e obtido por abordagem teórica
 foi o aquele que mostrou melhor controle da planta estudada. Mesmo quando comparado com o controlador 
 \acrshort{pid} de referência, o controle \acrshort{mpc} em questão mostrou uma maior velocidade para a estabilização
