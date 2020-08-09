@@ -320,7 +320,37 @@ com um controle \acrshort{pid} convencional e ainda documentar todas as etapas d
 por outros estudantes que estejam pesquisando sobre o \acrlong{mpc}.
 
 % Comentários do Brincalepe
-% TODO Falar de possíveis melhorias futuras. (Sintonizar melhor o PID, Alterar a planta para ter atraso, modelar ruido, etc)
-% Detalhar MPC Design. Como foi feita a simulação empírica																			[ok]
-% Avaliar se vale a pena alterar a função FIT por IAE (integral absolute error) 													[ok]
-% TODO Fazer versão digital de lado único para a defesa.
+% Falar de possíveis melhorias futuras. (Sintonizar melhor o PID, Alterar a planta para ter atraso, modelar ruido, etc)			[ok]
+% Detalhar MPC Design. Como foi feita a simulação empírica																		[ok]
+% Avaliar se vale a pena alterar a função FIT por IAE (integral absolute error) 												[ok]
+% Fazer versão digital de lado único para a defesa.																				[ok]
+
+% =====================================================================================================
+% ============================================= Chapter ===============================================
+% =====================================================================================================
+\chapter{Discussões}
+\label{ch:discussoes}
+
+Como recomendação para trabalhos futuros, deixo as seguintes sugestões abaixo:
+
+\begin{itemize}
+	\item \textbf{Realizar a sintonia fina do \acrshort{pid}}. O controlador \acrshort{pid} apresentou um
+			desempenho bem inferior a maioria dos controladores \acrshort{mpc} desenvolvidos. Essa diferença
+			pode diminuir significativamente caso o controlador \acrshort{pid} esteja bem sintonizado, tornando
+			assim a comparação entre ambos os métodos mais próxima.
+	\item \textbf{Modelar distúrbios}. O \acrshort{tclabsp} está equipado com ventiladores que podem
+			atuar como distúrbios observáveis na planta. Modelar estes distúrbios e fazer com que o \acrshort{mpc}
+			atue sobre eles pode aumentar bastante a robustez do projeto, além agregar muito conhecimento de
+			situações industriais reais para quem o desenvolver.
+	\item \textbf{Modificar a planta para aumentar o atraso}. Como visto no capítulo de resultados, o desempenho do
+			controle \acrshort{mpc} pode ser mais expressivo, em comparação com o \acrshort{pid}, principalmente em
+			plantas com atraso. Sendo assim, seria possível fazer algumas modificações no \acrshort{tclab} para que
+			os sensores captem a mudança de temperatura dos aquecedores mais tardiamente. Uma das formas de se fazer
+			isso seria inserindo entre os aquecedores e sensores algum material de condução térmica reduzida.
+	\item \textbf{Testar diferentes sintonias para os controladores \acrshort{mpc}}. Ao concluir este trabalho
+			observou-se que os modelos \acrshort{mpc} experimentais sintonizados com base na bibliografia
+			tiveram uma performance inferior ao modelo sintonizado empiricamente. Atualmente existem diversos estudos
+			que apresentam diferentes técnicas e metodologias para a sintonia de um controlador \acrshort{mpc}.
+			Aplicar técnicas diferentes das usadas neste trabalho podem resultar em uma melhora na performance
+			do controlador para os modelos experimentais.
+\end{itemize}
