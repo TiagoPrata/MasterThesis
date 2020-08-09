@@ -237,7 +237,7 @@ da média das médias normalizadas de cada indicador.
 
 A partir da \cref{tab:resultados_mpc_e_pid_resumo} é possível observar que dentre todos os controladores analisados,
 o controlador \acrshort{mpc} criado a partir do modelo em espaço de estados e obtido por abordagem teórica
-foi o aquele que mostrou melhor controle da planta estudada. Mesmo quando comparado com o controlador 
+foi o aquele que mostrou melhor controle da planta estudada (menor erro relativo). Mesmo quando comparado com o controlador 
 \acrshort{pid} de referência, o controle \acrshort{mpc} em questão mostrou uma maior velocidade para a estabilização
 dos seus múltiplos sinais de saída. Contudo, vale ressaltar que este controlador \acrshort{pid} 
 foi apenas sintonizado utilizando a função de \textit{auto-tunning} disponível no \acrshort{matlab}.
@@ -248,7 +248,7 @@ a planta possui pouco ou nenhum atraso (como a planta utilizada neste estudo), p
 na planta aumentam, a resposta do controlador \acrshort{pid} se degrada rapidamente.
 
 Ainda comparando os controladores \acrshort{mpc} e \acrshort{pid}, além das performances de ambos poderem ser
-diferenciadas devido ao atraso do sistema, \citeonline{Taysom2017} também aponta em seu estudo que os
+diferenciadas devido ao atraso do sistema, \citeonline{Taysom2017} também apontam em seu estudo que os
 controladores \acrshort{mpc} geralmente apresentam uma melhor resposta para sistemas \acrshort{mimo},
 além de serem mais efetivos em sistemas onde os distúrbios podem ser modelados, uma vez que o
 \acrshort{mpc} consegue utilizar o modelo do processo e o modelo do distúrbio conjuntamente para um 
@@ -277,6 +277,9 @@ na tabela já apresentada anteriormente e revela que, apesar de uma sintonia emp
 apresenta uma aproximação do \textit{set-point} bem superior em comparação aos controladores baseados em 
 modelos experimentais que já havíam sido apresentados neste trabalho.
 
+Algumas imagens do \textit{MPC Design}, as tabelas de performance de cada um dos indicadores
+incluindo este modelo empírico e o método de sintonia podem ser encontrados no \cref{ch:mpc_experimental_empirico}.
+
 \begin{figure}[!h]
 	\caption{Resposta do controlador MPC criado empiricamente a partir do modelo experimental (função de transferência)}
 	\begin{center}
@@ -289,18 +292,18 @@ modelos experimentais que já havíam sido apresentados neste trabalho.
 
 \begin{table}[!h]
 	\centering
-	\caption{Qualidade do controlador \acrshort{mpc} sintonizado empiricamente}
+	\caption{Performance do controlador \acrshort{mpc} sintonizado empiricamente}
 	\label{tab:resultados_mpc_e_pid_e_manual}
-	\begin{tabular}{l|cc|c} \toprule
-		{Modelo utilizado no controlador}              			            &	{\textit{Fit} Sensor 1}	    &	{\textit{Fit} Sensor 2}     & {\textit{Fit} médio}			    \\ \midrule
-		MPC Teórico \acrshort{ss} (\cref{eq:tclab_modelo_teorico})	        &   $45.84\%$                   &   $44.07\%$                   &   $44.95\%$                       \\ 
-		\textbf{MPC Experimental \acrshort{tf} (empírico)}                  &   $\mathbf{46.46\%}$          &   $\mathbf{40.68\%}$          &   $\mathbf{43.57\%}$              \\ 
-		MPC Experimental \acrshort{oe} (\cref{tab:tclabsp-model-oe})	    &   $44.35\%$                   &   $40.57\%$                   &   $42.46\%$                       \\ 
-		MPC Experimental \acrshort{armax} (\cref{tab:tclabsp-model-armax})	&   $39.92\%$                   &   $42.50\%$                   &   $41.21\%$                       \\ 
-		MPC Experimental \acrshort{tf} (\cref{tab:tclabsp-model-tf})		&   $40.25\%$                   &   $34.55\%$                   &   $37.40\%$                       \\ 
-		MPC Experimental \acrshort{ss} (\cref{eq:tclabsp-model-ss})			&   $38.55\%$                   &   $33.57\%$                   &   $36.06\%$                       \\ 
-		MPC Experimental \acrshort{arx}	(\cref{tab:tclabsp-model-arx})		&   $43.71\%$                   &   $27.33\%$                   &   $35.52\%$                       \\ 
-		PID (\cref{tab:pid_values})	                                        &   $40.13\%$                   &   $26.44\%$                   &   $33.28\%$                       \\ \bottomrule 
+	\begin{tabular}{l|cccc|c} \toprule
+		{Modelo utilizado no controlador}              			            &	\begin{tabular}[c]{@{}c@{}}IAE\\(x$10^3$)\end{tabular}			&	\begin{tabular}[c]{@{}c@{}}ISE\\(x$10^4$)\end{tabular}  	&	\begin{tabular}[c]{@{}c@{}}ITAE\\(x$10^6$)\end{tabular}     			& \begin{tabular}[c]{@{}c@{}}ITSE\\(x$10^7$)\end{tabular}		& \begin{tabular}[c]{@{}c@{}c@{}}Média\\das médias\\normalizadas\end{tabular}	\\ \midrule
+		MPC Teó. \acrshort{ss} (\cref{eq:tclab_modelo_teorico})	        	&   $33.00$           												&   $45.99$          											&   $49.55$          														&   $50.41$														&   $0.000$             														\\ 
+		\textbf{MPC Exp. \acrshort{tf} (Empírico)}                  		&   $\mathbf{37.53}$          										&   $\mathbf{47.00}$          									&   $\mathbf{55.32}$														&   $\mathbf{53.61}$											&   $\mathbf{0.094}$              												\\ 
+		MPC Exp. \acrshort{oe} (\cref{tab:tclabsp-model-oe})	    		&   $43.85$           												&   $49.62$          											&   $67.74$          														&   $58.20$														&   $0.259$             														\\ 
+		MPC Exp. \acrshort{armax} (\cref{tab:tclabsp-model-armax})			&   $47.72$           												&   $54.07$          											&   $74.55$          														&   $63.74$														&   $0.419$             														\\ 
+		MPC Exp. \acrshort{tf} (\cref{tab:tclabsp-model-tf})				&   $55.99$           												&   $58.18$          											&   $87.49$          														&   $70.76$														&   $0.641$             														\\ 
+		PID (\cref{tab:pid_values})	                                        &   $56.50$           												&   $63.45$          											&   $86.94$          														&   $73.97$														&   $0.743$             														\\ 
+		MPC Exp. \acrshort{arx}	(\cref{tab:tclabsp-model-arx})				&   $61.24$           												&   $58.50$          											&   $109.47$         														&   $82.65$														&   $0.858$             														\\ 
+		MPC Exp. \acrshort{ss} (\cref{eq:tclabsp-model-ss})					&   $67.06$           												&   $61.00$          											&   $117.04$         														&   $82.57$														&   $0.964$             														\\ \bottomrule 
 	\end{tabular}
 	\caption*{Fonte: Autor}
 \end{table}
@@ -318,6 +321,6 @@ por outros estudantes que estejam pesquisando sobre o \acrlong{mpc}.
 
 % Comentários do Brincalepe
 % TODO Falar de possíveis melhorias futuras. (Sintonizar melhor o PID, Alterar a planta para ter atraso, modelar ruido, etc)
-% TODO Detalhar MPC Design. Como foi feita a simulação empírica
-% TODO Avaliar se vale a pena alterar a função FIT por IAE (integral absolute error) 
+% Detalhar MPC Design. Como foi feita a simulação empírica																			[ok]
+% Avaliar se vale a pena alterar a função FIT por IAE (integral absolute error) 													[ok]
 % TODO Fazer versão digital de lado único para a defesa.

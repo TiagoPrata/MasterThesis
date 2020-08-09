@@ -473,5 +473,145 @@ os valores de $\Delta$ e de $T_s$ (tempo de amostragem) indicados da \cref{eq:de
 	\makebox[\width]{Fonte: Autor} 
 \end{figure}
 
+% =====================================================================================================
+% ============================================= Chapter ===============================================
+% =====================================================================================================
+\chapter{MPC Experimental Empírico}
+\label{ch:mpc_experimental_empirico}
+
+\section{Telas do \textit{MPC Design}}
+
+\begin{figure}[!h]
+	\caption{MPC Design - Tela principal}
+	\begin{center}
+		\includegraphics[width=1.00\textwidth]{./5_images/mpcdesign_main.png} 
+		\label{fig:mpcdesign_main}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{figure}[!h]
+	\caption{MPC Design - Limitantes}
+	\begin{center}
+		\includegraphics[width=0.60\textwidth]{./5_images/mpcdesign_constraints.png} 
+		\label{fig:mpcdesign_constraints}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{figure}[!h]
+	\caption{MPC Design - Pesos}
+	\begin{center}
+		\includegraphics[width=0.60\textwidth]{./5_images/mpcdesign_weights.png} 
+		\label{fig:mpcdesign_weights}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\begin{figure}[!h]
+	\caption{MPC Design - Cenário}
+	\begin{center}
+		\includegraphics[width=0.60\textwidth]{./5_images/mpcdesign_scenarios.png} 
+		\label{fig:mpcdesign_scenarios}
+	\end{center}
+	\centering
+	\makebox[\width]{Fonte: Autor} 
+\end{figure}
+
+\clearpage
+
+\section{Tabelas de performance}
+
+\begin{table}[!h]
+	\centering
+	\caption{Performance dos controladores \acrshort{mpc} e \acrshort{pid} - IAE}
+	\label{tab:resultados_mpc_e_pid_manual_iae}
+	\begin{tabular}{l|cc|c|c} \toprule
+		{Modelo utilizado no controlador}              			            &	\begin{tabular}[c]{@{}c@{}}Sensor 1\\(x$10^3$)\end{tabular}		&	\begin{tabular}[c]{@{}c@{}}Sensor 2\\(x$10^3$)\end{tabular}     		& \begin{tabular}[c]{@{}c@{}}Média\\(x$10^3$)\end{tabular}		& 	\begin{tabular}[c]{@{}c@{}}Média\\normalizada\end{tabular}		\\ \midrule
+		MPC Teórico \acrshort{ss} (\cref{eq:tclab_modelo_teorico})	        &   $38.07$           												&   $27.94$          														&   $33.00$														&   $0.000$             											\\ 
+		\textbf{MPC Exp. \acrshort{tf} (Empírico)}                  		&   $\mathbf{41.17}$          										&   $\mathbf{33.90}$          												&   $\mathbf{37.53}$											&   $\mathbf{0.133}$												\\ 
+		MPC Experimental \acrshort{oe} (\cref{tab:tclabsp-model-oe})	    &   $45.53$           												&   $42.16$          														&   $43.85$														&   $0.318$             											\\ 
+		MPC Experimental \acrshort{armax} (\cref{tab:tclabsp-model-armax})	&   $58.16$           												&   $37.27$          														&   $47.72$														&   $0.432$             											\\ 
+		MPC Experimental \acrshort{tf} (\cref{tab:tclabsp-model-tf})		&   $56.90$           												&   $55.08$          														&   $55.99$														&   $0.674$             											\\ 
+		PID (\cref{tab:pid_values})	                                        &   $53.90$           												&   $59.10$          														&   $56.50$														&   $0.690$             											\\ 
+		MPC Experimental \acrshort{arx}	(\cref{tab:tclabsp-model-arx})		&   $59.13$           												&   $63.35$          														&   $61.24$														&   $0.829$             											\\ 
+		MPC Experimental \acrshort{ss} (\cref{eq:tclabsp-model-ss})			&   $75.99$           												&   $58.12$          														&   $67.06$														&   $1.000$             											\\ \bottomrule 
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}   
+
+\begin{table}[!h]
+	\centering
+	\caption{Performance dos controladores \acrshort{mpc} e \acrshort{pid} - ISE}
+	\label{tab:resultados_mpc_e_pid_manual_ise}
+	\begin{tabular}{l|cc|c|c} \toprule
+		{Modelo utilizado no controlador}              			            &	\begin{tabular}[c]{@{}c@{}}Sensor 1\\(x$10^4$)\end{tabular}		&	\begin{tabular}[c]{@{}c@{}}Sensor 2\\(x$10^4$)\end{tabular}     		& \begin{tabular}[c]{@{}c@{}}Média\\(x$10^4$)\end{tabular}			& 	\begin{tabular}[c]{@{}c@{}}Média\\normalizada\end{tabular}		\\ \midrule
+		MPC Teórico \acrshort{ss} (\cref{eq:tclab_modelo_teorico})	        &   $62.95$           												&   $29.03$          														&   $45.99$															&   $0.000$															\\ 
+		\textbf{MPC Exp. \acrshort{tf} (Empírico)}                  		&   $\mathbf{61.43}$          										&   $\mathbf{32.56}$          												&   $\mathbf{47.00}$												&   $\mathbf{0.058}$												\\ 
+		MPC Experimental \acrshort{oe} (\cref{tab:tclabsp-model-oe})	    &   $66.46$           												&   $32.78$          														&   $49.62$															&   $0.207$             											\\ 
+		MPC Experimental \acrshort{armax} (\cref{tab:tclabsp-model-armax})	&   $77.46$           												&   $30.68$          														&   $54.07$															&   $0.462$             											\\ 
+		MPC Experimental \acrshort{tf} (\cref{tab:tclabsp-model-tf})		&   $76.61$           												&   $39.75$          														&   $58.18$															&   $0.698$             											\\ 
+		MPC Experimental \acrshort{arx}	(\cref{tab:tclabsp-model-arx})		&   $67.98$           												&   $49.01$          														&   $58.50$															&   $0.716$             											\\ 
+		MPC Experimental \acrshort{ss} (\cref{eq:tclabsp-model-ss})			&   $81.04$           												&   $40.95$          														&   $61.00$															&   $0.859$             											\\ 
+		PID (\cref{tab:pid_values})	                                        &   $76.83$           												&   $50.06$          														&   $63.45$															&   $1.000$             											\\ \bottomrule 
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+\begin{table}[!h]
+	\centering
+	\caption{Performance dos controladores \acrshort{mpc} e \acrshort{pid} - ITAE}
+	\label{tab:resultados_mpc_e_pid_manual_itae}
+	\begin{tabular}{l|cc|c|c} \toprule
+		{Modelo utilizado no controlador}              			            &	\begin{tabular}[c]{@{}c@{}}Sensor 1\\(x$10^6$)\end{tabular}		&	\begin{tabular}[c]{@{}c@{}}Sensor 2\\(x$10^6$)\end{tabular}     		& \begin{tabular}[c]{@{}c@{}}Média\\(x$10^6$)\end{tabular}			& 	\begin{tabular}[c]{@{}c@{}}Média\\normalizada\end{tabular}		\\ \midrule
+		MPC Teórico \acrshort{ss} (\cref{eq:tclab_modelo_teorico})	        &   $60.99$           												&   $38.11$          														&   $49.55$ 														&   $0.000$            												\\ 
+		\textbf{MPC Exp. \acrshort{tf} (Empírico)}                  		&   $\mathbf{63.90}$          										&   $\mathbf{46.74}$          												&   $\mathbf{55.32}$												&   $\mathbf{0.085}$												\\ 
+		MPC Experimental \acrshort{oe} (\cref{tab:tclabsp-model-oe})	    &   $73.78$           												&   $61.69$          														&   $67.74$ 														&   $0.269$            												\\ 
+		MPC Experimental \acrshort{armax} (\cref{tab:tclabsp-model-armax})	&   $91.79$           												&   $57.31$          														&   $74.55$ 														&   $0.370$            												\\ 
+		PID (\cref{tab:pid_values})	                                        &   $84.97$           												&   $88.90$          														&   $86.94$ 														&   $0.554$            												\\ 
+		MPC Experimental \acrshort{tf} (\cref{tab:tclabsp-model-tf})		&   $90.39$           												&   $84.58$          														&   $87.49$ 														&   $0.562$            												\\ 
+		MPC Experimental \acrshort{arx}	(\cref{tab:tclabsp-model-arx})		&   $105.79$           												&   $113.15$          														&   $109.47$														&   $0.887$             											\\ 
+		MPC Experimental \acrshort{ss} (\cref{eq:tclabsp-model-ss})			&   $136.28$           												&   $97.80$          														&   $117.04$														&   $1.000$             											\\ \bottomrule 
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+\begin{table}[!h]
+	\centering
+	\caption{Performance dos controladores \acrshort{mpc} e \acrshort{pid} - ITSE}
+	\label{tab:resultados_mpc_e_pid_manual_itse}
+	\begin{tabular}{l|cc|c|c} \toprule
+		{Modelo utilizado no controlador}              			            &	\begin{tabular}[c]{@{}c@{}}Sensor 1\\(x$10^7$)\end{tabular}		&	\begin{tabular}[c]{@{}c@{}}Sensor 2\\(x$10^7$)\end{tabular}     		& \begin{tabular}[c]{@{}c@{}}Média\\(x$10^7$)\end{tabular}		& 	\begin{tabular}[c]{@{}c@{}}Média\\normalizada\end{tabular}		\\ \midrule
+		MPC Teórico \acrshort{ss} (\cref{eq:tclab_modelo_teorico})	        &   $74.01$           												&   $26.80$          														&   $50.41$														&   $0.000$             											\\ 
+		\textbf{MPC Exp. \acrshort{tf} (Empírico)}                  		&   $\mathbf{75.15}$          										&   $\mathbf{32.08}$          												&   $\mathbf{53.61}$											&   $\mathbf{0.099}$												\\ 
+		MPC Experimental \acrshort{oe} (\cref{tab:tclabsp-model-oe})	    &   $83.09$           												&   $33.31$          														&   $58.20$														&   $0.241$             											\\ 
+		MPC Experimental \acrshort{armax} (\cref{tab:tclabsp-model-armax})	&   $96.70$           												&   $30.77$          														&   $63.74$														&   $0.413$             											\\ 
+		MPC Experimental \acrshort{tf} (\cref{tab:tclabsp-model-tf})		&   $96.51$           												&   $45.02$          														&   $70.76$														&   $0.631$             											\\ 
+		PID (\cref{tab:pid_values})	                                        &   $92.25$           												&   $55.69$          														&   $73.97$														&   $0.730$             											\\ 
+		MPC Experimental \acrshort{ss} (\cref{eq:tclabsp-model-ss})			&   $114.29$           												&   $50.85$          														&   $82.57$														&   $0.997$             											\\ 
+		MPC Experimental \acrshort{arx}	(\cref{tab:tclabsp-model-arx})		&   $96.37$           												&   $68.92$          														&   $82.65$														&   $1.000$             											\\ \bottomrule 
+	\end{tabular}
+	\caption*{Fonte: Autor}
+\end{table}
+
+\clearpage
+
+\section{Sintonia}
+
+Visando sintonizar empiricamente o controlador em questão, os seguintes passos foram seguidos:
+
+\begin{itemize}
+	\item Ajuste do cenário no \textit{MPC Design} para 300s, de modo a observar o sistema até seu regime estacionário;
+	\item Ajuste dos limitantes (\textit{constraints}) para que os aquecedores não recebessem sinal maior que o permitido;
+	\item Diminuição do tempo de amostragem para aumentar a velocidade entre iterações;
+	\item Aumento gradativo do Horizonte de Predição até que nenhuma alteração perceptível fosse observada nos gráficos de resposta;
+	\item Aumento gradativo do Horizonte de Controle até que nenhuma alteração perceptível fosse observada nos gráficos de resposta;
+	\item Ajustar os seletores de "Robustez/Agressividade" e "Velocidade de estimativa de estados" utilizando \textit{Backtracking} até obter uma performance satisfatória.
+\end{itemize}
+
+
 
 \end{apendicesenv}
