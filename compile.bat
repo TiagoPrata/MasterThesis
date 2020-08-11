@@ -26,11 +26,25 @@ del "*.simbolos" /s /f /q
 del "*.synctex.gz" /s /f /q
 del "*.toc" /s /f /q
 
-pdflatex thesis.tex
-bibtex thesis
-makeindex thesis.idx
-makeglossaries thesis
-pdflatex thesis.tex
-pdflatex thesis.tex
+REM pdflatex thesis.tex
+REM bibtex thesis
+REM makeindex thesis.idx
+REM makeglossaries thesis
+REM pdflatex thesis.tex
+REM pdflatex thesis.tex
+
+pdflatex VersaoDigital.tex
+bibtex VersaoDigital
+makeindex VersaoDigital.idx
+makeglossaries VersaoDigital
+pdflatex VersaoDigital.tex
+pdflatex VersaoDigital.tex
+
+pdflatex VersaoImpressa.tex
+bibtex VersaoImpressa
+makeindex VersaoImpressa.idx
+makeglossaries VersaoImpressa
+pdflatex VersaoImpressa.tex
+pdflatex VersaoImpressa.tex
 
 pause
