@@ -1,4 +1,4 @@
-echo Deleting files
+echo ============== Deleting files =====================
 del "*.acn" /s /f /q
 del "*.acr" /s /f /q
 del "*.alg" /s /f /q
@@ -26,25 +26,20 @@ del "*.simbolos" /s /f /q
 del "*.synctex.gz" /s /f /q
 del "*.toc" /s /f /q
 
-REM pdflatex thesis.tex
-REM bibtex thesis
-REM makeindex thesis.idx
-REM makeglossaries thesis
-REM pdflatex thesis.tex
-REM pdflatex thesis.tex
+echo ============= Compilando Versao Impressa ==============
+pdflatex -jobname=VersaoImpressa "\def\isprintedversion{1} \input{thesis.tex}"
+bibtex thesis
+makeindex thesis.idx
+makeglossaries thesis
+pdflatex -jobname=VersaoImpressa "\def\isprintedversion{1} \input{thesis.tex}"
+pdflatex -jobname=VersaoImpressa "\def\isprintedversion{1} \input{thesis.tex}"
 
-pdflatex VersaoDigital.tex
-bibtex VersaoDigital
-makeindex VersaoDigital.idx
-makeglossaries VersaoDigital
-pdflatex VersaoDigital.tex
-pdflatex VersaoDigital.tex
-
-pdflatex VersaoImpressa.tex
-bibtex VersaoImpressa
-makeindex VersaoImpressa.idx
-makeglossaries VersaoImpressa
-pdflatex VersaoImpressa.tex
-pdflatex VersaoImpressa.tex
+echo ============= Compilando Versao Digital ==============
+pdflatex -jobname=VersaoDigital thesis.tex
+bibtex thesis
+makeindex thesis.idx
+makeglossaries thesis
+pdflatex -jobname=VersaoDigital thesis.tex
+pdflatex -jobname=VersaoDigital thesis.tex
 
 pause
