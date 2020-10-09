@@ -29,16 +29,16 @@ del "*.toc" /s /f /q
 echo ============= Compilando Versao Impressa ==============
 pdflatex -jobname=VersaoImpressa "\def\isprintedversion{1} \input{thesis.tex}"
 bibtex VersaoImpressa
-makeindex thesis.idx
-makeglossaries thesis
+makeindex VersaoImpressa.idx
+makeglossaries VersaoImpressa
 pdflatex -jobname=VersaoImpressa "\def\isprintedversion{1} \input{thesis.tex}"
 pdflatex -jobname=VersaoImpressa "\def\isprintedversion{1} \input{thesis.tex}"
 
 echo ============= Compilando Versao Digital ==============
 pdflatex -jobname=VersaoDigital thesis.tex
 bibtex VersaoDigital
-makeindex thesis.idx
-makeglossaries thesis
+makeindex VersaoDigital.idx
+makeglossaries VersaoDigital
 pdflatex -jobname=VersaoDigital thesis.tex
 pdflatex -jobname=VersaoDigital thesis.tex
 
