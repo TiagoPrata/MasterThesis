@@ -1,0 +1,223 @@
+{
+    "cSpell.language": ",pt,pt_BR",
+    "cSpell.words": [
+        "Brincalepe"
+    ],
+    "latex-workshop.docker.enabled": true,
+    "latex-workshop.latex.recipes": [
+
+        {
+            "name": "pdflatex (versao Impressa e Digital)",
+            "tools": [
+                "pdflatex VersaoImpressa",
+                "bibtex VersaoImpressa",
+                "makeindex VersaoImpressa",
+                "makeglossaries VersaoImpressa",
+                "pdflatex VersaoImpressa",
+                "pdflatex VersaoImpressa",
+                "pdflatex VersaoDigital",
+                "bibtex VersaoDigital",
+                "makeindex VersaoDigital",
+                "makeglossaries VersaoDigital",
+                "pdflatex VersaoDigital",
+                "pdflatex VersaoDigital"
+            ]
+        },
+        {
+            "name": "latexmk 🔃",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "latexmk (latexmkrc)",
+            "tools": [
+                "latexmk_rconly"
+            ]
+        },
+        {
+            "name": "latexmk (lualatex)",
+            "tools": [
+                "lualatexmk"
+            ]
+        },
+        {
+            "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "Compile Rnw files",
+            "tools": [
+                "rnw2tex",
+                "latexmk"
+            ]
+        },
+        {
+            "name": "Compile Jnw files",
+            "tools": [
+                "jnw2tex",
+                "latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "latexmk_rconly",
+            "command": "latexmk",
+            "args": [
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex VersaoImpressa",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-jobname=VersaoImpressa",
+                "\\def\\isprintedversion{1} \\input{\"%DOC%\"}"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex VersaoDigital",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-jobname=VersaoDigital",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex VersaoImpressa",
+            "command": "bibtex",
+            "args": [
+                "VersaoImpressa"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex VersaoDigital",
+            "command": "bibtex",
+            "args": [
+                "VersaoDigital"
+            ],
+            "env": {}
+        },
+        {
+            "name": "makeindex VersaoImpressa",
+            "command": "makeindex",
+            "args": [
+                "VersaoImpressa.idx"
+            ],
+            "env": {}
+        },
+        {
+            "name": "makeindex VersaoDigital",
+            "command": "makeindex",
+            "args": [
+                "VersaoDigital.idx"
+            ],
+            "env": {}
+        },
+        {
+            "name": "makeglossaries VersaoImpressa",
+            "command": "makeglossaries",
+            "args": [
+                "VersaoImpressa"
+            ],
+            "env": {}
+        },
+        {
+            "name": "makeglossaries VersaoDigital",
+            "command": "makeglossaries",
+            "args": [
+                "VersaoDigital"
+            ],
+            "env": {}
+        },
+        {
+            "name": "rnw2tex",
+            "command": "Rscript",
+            "args": [
+                "-e",
+                "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+            ],
+            "env": {}
+        },
+        {
+            "name": "jnw2tex",
+            "command": "julia",
+            "args": [
+                "-e",
+                "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
+            ],
+            "env": {}
+        },
+        {
+            "name": "jnw2texmintex",
+            "command": "julia",
+            "args": [
+                "-e",
+                "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
+            ],
+            "env": {}
+        }
+    ]
+}
