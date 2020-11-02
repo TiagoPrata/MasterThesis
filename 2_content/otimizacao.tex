@@ -637,21 +637,7 @@ A \cref{fig:mhe_example} mostra o gráfico de uma simulação executada através
 exemplificando a aplicação da técnica \acrlong{mhe} para o modelo simplificado da velocidade de um equipamento de corrente
 contínua.
 
-O modelo dinâmico deste equipamento é apresentado na \cref{eq:motor_dynamics} e sua representação no espaço de estados
-na \cref{eq:motor_dynamics_ss}, sendo que esta é a representação utilizada no código-fonte \ref{lst:mhe_example}.
-
-\begin{equation}
-	\label{eq:motor_dynamics}
-	T \dot{S} = -S + Ku + L
-\end{equation}
-
-\noindent
-Onde: 												\\
-$u$ = sinal de controle (tensão aplicada ao motor)	\\
-$S$ = sinal medido (velocidade do motor)			\\
-$K$ = ganho 										\\
-$T$ = constante de tempo 							\\
-$L$ = carga
+O modelo de espaço de estados deste equipamento é apresentado na \cref{eq:motor_dynamics_ss} e utilizado no código-fonte \ref{lst:mhe_example}.
 
 \begin{subequations}
 	\label{eq:motor_dynamics_ss}
