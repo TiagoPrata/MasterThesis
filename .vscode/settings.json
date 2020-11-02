@@ -9,18 +9,22 @@
         {
             "name": "pdflatex (versao Impressa e Digital)",
             "tools": [
-                "pdflatex VersaoImpressa",
-                "bibtex VersaoImpressa",
-                "makeindex VersaoImpressa",
-                "makeglossaries VersaoImpressa",
-                "pdflatex VersaoImpressa",
-                "pdflatex VersaoImpressa",
-                "pdflatex VersaoDigital",
-                "bibtex VersaoDigital",
-                "makeindex VersaoDigital",
-                "makeglossaries VersaoDigital",
-                "pdflatex VersaoDigital",
-                "pdflatex VersaoDigital"
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex",
+                "pdflatex_VersaoImpressa",
+                "bibtex_VersaoImpressa",
+                "makeindex_VersaoImpressa",
+                "makeglossaries_VersaoImpressa",
+                "pdflatex_VersaoImpressa",
+                "pdflatex_VersaoImpressa",
+                "pdflatex_VersaoDigital",
+                "bibtex_VersaoDigital",
+                "makeindex_VersaoDigital",
+                "makeglossaries_VersaoDigital",
+                "pdflatex_VersaoDigital",
+                "pdflatex_VersaoDigital"
             ]
         },
         {
@@ -113,7 +117,7 @@
             "env": {}
         },
         {
-            "name": "pdflatex VersaoImpressa",
+            "name": "pdflatex_VersaoImpressa",
             "command": "pdflatex",
             "args": [
                 "-synctex=1",
@@ -125,7 +129,7 @@
             "env": {}
         },
         {
-            "name": "pdflatex VersaoDigital",
+            "name": "pdflatex_VersaoDigital",
             "command": "pdflatex",
             "args": [
                 "-synctex=1",
@@ -145,7 +149,7 @@
             "env": {}
         },
         {
-            "name": "bibtex VersaoImpressa",
+            "name": "bibtex_VersaoImpressa",
             "command": "bibtex",
             "args": [
                 "VersaoImpressa"
@@ -153,7 +157,7 @@
             "env": {}
         },
         {
-            "name": "bibtex VersaoDigital",
+            "name": "bibtex_VersaoDigital",
             "command": "bibtex",
             "args": [
                 "VersaoDigital"
@@ -161,7 +165,7 @@
             "env": {}
         },
         {
-            "name": "makeindex VersaoImpressa",
+            "name": "makeindex_VersaoImpressa",
             "command": "makeindex",
             "args": [
                 "VersaoImpressa.idx"
@@ -169,7 +173,7 @@
             "env": {}
         },
         {
-            "name": "makeindex VersaoDigital",
+            "name": "makeindex_VersaoDigital",
             "command": "makeindex",
             "args": [
                 "VersaoDigital.idx"
@@ -177,7 +181,7 @@
             "env": {}
         },
         {
-            "name": "makeglossaries VersaoImpressa",
+            "name": "makeglossaries_VersaoImpressa",
             "command": "makeglossaries",
             "args": [
                 "VersaoImpressa"
@@ -185,7 +189,7 @@
             "env": {}
         },
         {
-            "name": "makeglossaries VersaoDigital",
+            "name": "makeglossaries_VersaoDigital",
             "command": "makeglossaries",
             "args": [
                 "VersaoDigital"
