@@ -94,23 +94,22 @@ que ofereciam comercialmente soluções utilizando controle \acrshort{mpc}, fora
 empresas maiores como a Aspen Tech e a Honeywell \cite{Lee2011}. No campo teórico aumentaram as discussões e
 definições com relação à estabilidade, à robustez e ao uso de modelos não-lineares. Além disso
 os pesquisadores notaram que a utilização de modelos de espaço de estado poderia trazer mais
-benefícios e juntamente com isso estabeleceram a forma padrão do algoritmo, demonstrada na
-\cref{eq:mpc_standard_form} \cite{Lee2011} .
+benefícios e juntamente com isso estabeleceram a forma padrão do algoritmo.
 
-\begin{equation}
-	\label{eq:mpc_standard_form}
-    \min_{\hat{u}(0),\cdots,\hat{u}(p-1)}
-    \left\{
-        V_p \triangleq \displaystyle\sum_{i=0}^{p-1}
-            \left(\hat{x}^T(i)Q\hat{x}(i) + \hat{u}^T(i)R\hat{u}(i) \right)
-            + \hat{x}^T(p)Q_t\hat{x}(p)
-    \right\}
-\end{equation}
-% \newline
+% \begin{equation}
+% 	\label{eq:mpc_standard_form}
+%     \min_{\hat{u}(0),\cdots,\hat{u}(p-1)}
+%     \left\{
+%         V_p \triangleq \displaystyle\sum_{i=0}^{p-1}
+%             \left(\hat{x}^T(i)Q\hat{x}(i) + \hat{u}^T(i)R\hat{u}(i) \right)
+%             + \hat{x}^T(p)Q_t\hat{x}(p)
+%     \right\}
+% \end{equation}
+% % \newline
 
-\noindent
-Sendo: 	\\
-$ \hat{x}(i+1) = A\hat{x}(i) + B\hat{u}, \quad \hat{x}(0) = x_0 $
+% \noindent
+% Sendo: 	\\
+% $ \hat{x}(i+1) = A\hat{x}(i) + B\hat{u}, \quad \hat{x}(0) = x_0 $
 
 Ao longo das últimas décadas, desde o lançamento do \acrshort{dmc}, o \acrshort{mpc}
 tem sido alvo de muito estudo teórico e prático, e passou de uma aplicação industrial
