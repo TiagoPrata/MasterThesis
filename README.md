@@ -1,5 +1,7 @@
 # Master Thesis
 
+[![CC BY-NC-ND 3.0](https://licensebuttons.net/l/by-nc-nd/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-nd/3.0/)
+
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 [![using-matlab](https://img.shields.io/badge/Using-MATLAB-red)](https://www.mathworks.com)
 [![using-python](https://img.shields.io/badge/Using-Python-blue)](https://www.python.org)
